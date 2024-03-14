@@ -1,0 +1,52 @@
+# My Swaylock config
+#                    __
+#      _  __ __ _   / /__
+#     | |/ //  ' \ /  '_/
+# by  |___//_/_/_//_/\_\
+# @vmkxyz on gitlab and github
+
+# Add an image as a background 
+image=$HOME/.cache/swaylock_wallpaper.jpg
+
+# font
+#font="name of font"
+
+# indicator
+#no-unlock-indicator
+indicator-radius=200
+indicator-thickness=10
+
+# ignore empty password
+ignore-empty-password
+
+# colors
+key-hl-color=00000066
+separator-color=00000000
+
+inside-color=00000033
+inside-clear-color=00000033
+inside-caps-lock-color=00000033
+inside-ver-color=00000033
+inside-wrong-color=00000033
+
+ring-color=ffffff
+ring-clear-color=ffffff
+ring-caps-lock-color=ffffff
+ring-ver-color=ffffff
+ring-wrong-color=ffffff
+
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+
+text-color=ffffff
+text-clear-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
+
+bs-hl-color=ffffff
+caps-lock-key-hl-color=00000066
+caps-lock-bs-hl-color=00000066
+text-caps-lock-color=ffffff
