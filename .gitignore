@@ -1,1 +1,4 @@
 README.md
+.vim/autoload
+.vim/plugged
+vim/vimwiki
