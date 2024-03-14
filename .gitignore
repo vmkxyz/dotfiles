@@ -1,4 +1,7 @@
-README.md
+# vim
 .vim/autoload
 .vim/plugged
 .vim/vimwiki
+# nvim
+.config/nvim/autoload
+.config/nvim/plugged
