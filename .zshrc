@@ -95,7 +95,7 @@ alias cfgp='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push'
 alias cfgf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME fetch'
 alias cfgl='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME pull'
 alias cfgs='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME status'
-#alias cfgg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias cfgg='$HOME/.local/bin/cfgg.sh'
 
 eval $(thefuck --alias)
 
