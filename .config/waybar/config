@@ -11,11 +11,11 @@
     "height": "min",
     "width": "max",
     "spacing": 4, // gaps between modules
-    
+
     "modules-left": [
             "clock",
 	    "tray"
-    ], 
+    ],
     "modules-center": [
 	    "hyprland/workspaces"
     ],
@@ -33,7 +33,7 @@
 
     ],
     "clock": {
-        "format": "{:  %y/%m/%d      %I:%M:%S %p}",
+        "format": "{: %y/%m/%d    %I:%M:%S %p}",
 	"interval": 1,
 	//"format": "{:%I:%M:%S %p}"
 	//"format-alt": "{:%y/%m/%d}"
@@ -126,7 +126,7 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}", 
+        "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
@@ -154,4 +154,3 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
-

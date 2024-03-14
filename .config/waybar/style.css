@@ -14,8 +14,8 @@
 /* =========== General =========== */
 
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif, SourceCodeProNF;
-    font-size: 13px;
+    font-family: 'Source Code Pro', monospace;
+	font-size: 13px;
 }
 
 window#waybar {
@@ -55,8 +55,8 @@ button:hover {
 #workspaces button {
     padding: 0px 5px 0px 5px;
     margin: 0px 0px 0px 0px;
-    color: @foreground; /* numbers color*/ 
-    box-shadow: none;    
+    color: @foreground; /* numbers color*/
+    box-shadow: none;
 }
 
 
@@ -78,7 +78,7 @@ button:hover {
     margin: 0px 0px 0px 0px;
     padding: 0px 5px;
     box-shadow: none;
-    
+
 }
 #workspaces button.focused {
     background-color: @foreground;
@@ -132,7 +132,7 @@ tooltip label {
     color: @foreground;
     border-radius: 15px;
     padding:2px 8px 0px 8px;
-    margin:5px 0px 0px 0px;
+    margin:4px 0px 0px 0px;
 }
 
 /* =========== Section name =========== */
