@@ -1,0 +1,98 @@
+# Config for lf
+#                    __
+#      _  __ __ _   / /__
+#     | |/ //  ' \ /  '_/
+# by  |___//_/_/_//_/\_\
+# @vmkxyz on gitlab and github
+
+# Basic Settings
+set hidden true
+set ignorecase true
+#set icons true
+set number true
+set relativenumber true
+set shell zsh
+
+# promt format
+set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
+
+# Custom Functions
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd setwallpaper ${{
+    setwallpaper "$f"
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+# Trash bindings
+#cmd trash ${{
+#  files=$(printf "$fx" | tr '\n' ';')
+#  while [ "$files" ]; do
+#    file=${files%%;*}
+#
+#    trash-put "$(basename "$file")"
+#    if [ "$files" = "$file" ]; then
+#      files=''
+#    else
+#      files="${files#*;}"
+#    fi
+#  done
+#}}
+
+cmd restore_trash ${{
+  trash-restore
+}}
+
+# Bindings
+map d
+map m
+
+map au unarchive
+map ae $wine "$f"
+
+# Basic Functions
+map . set hidden!
+map DD delete
+#map DD trash
+#map dr restore_trash
+map p paste
+map d cut
+map y copy
+map <enter> open
+map R reload
+map mf mkfile
+map md mkdir
+map bg setwallpaper
+map c clear
+
+# Movement
+map gd cd ~/Documents
+map gD cd ~/Downloads
+map gp cd ~/Pictures
+map gc cd ~/.config
+map gv cd ~/Videos
+map gs cd ~/Sync
+map gt cd ~/.local/share/Trash/files
+map gm cd ~/Music
+map gG cd ~/Games
+map gw cd ~/Pictures/wallpapers
