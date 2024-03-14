@@ -1,0 +1,70 @@
+# Config for Alacritty (.yml - for older versions of Alacritty)
+#                    __
+#      _  __ __ _   / /__
+#     | |/ //  ' \ /  '_/
+# by  |___//_/_/_//_/\_\
+# @vmkxyz on gitlab and github
+
+window:
+  opacity: 0.8 
+  padding:
+    x: 5
+    y: 5
+  decorations: none
+  strtup-mode: windowed
+  
+colors:
+  primary:
+    background: '0x00040a'
+    foreground: '0xFFFFFF'
+
+  normal:
+    black: '#000000'
+    red: '#AA0000'
+    green: '#00AA00'
+    yellow: '#AA5500'
+    blue: '#0026E6'
+    magenta: '#AA00AA'
+    cyan: '#00AAAA'
+    white: '#AAAAAA'
+
+  bright:
+    black: '#555555'
+    red: '#FF5555'
+    green: '#55FF55'
+    yellow: '#FFFF55'
+    blue: '#5555FF'
+    magenta: '#FF55FF'
+    cyan: '#55FFFF'
+    white: '#FFFFFF'
+
+font:
+  normal:
+    family: "Source Code Pro"
+    style: Regular
+  bold:
+    family: "Source Code Pro"
+    style: Bold 
+  italic:
+    family: "Source Code Pro"
+    style: Italic
+  bold-italic:
+    family: "Source Code Pro"
+    style: Bold Italic
+  size: 10
+draw-bolt-text-with-bright-colors: false
+    
+
+cursor:
+  style:
+    shape: underline
+    unfocused_hollow: true
+    blinking: on
+    blink-interval: 250
+
+scrolling:
+  history: 50000
+  multipler: 3
+
+#key-bindings:
+#  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }

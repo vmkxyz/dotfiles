@@ -1,0 +1,55 @@
+# Config for Alacritty (.toml - for newer versions of Alacritty)
+#                    __
+#      _  __ __ _   / /__
+#     | |/ //  ' \ /  '_/
+# by  |___//_/_/_//_/\_\
+# @vmkxyz on gitlab and github
+
+[colors.bright]
+black = "#555555"
+blue = "#5555FF"
+cyan = "#55FFFF"
+green = "#55FF55"
+magenta = "#FF55FF"
+red = "#FF5555"
+white = "#FFFFFF"
+yellow = "#FFFF55"
+
+[colors.normal]
+black = "#000000"
+blue = "#0026E6"
+cyan = "#00AAAA"
+green = "#00AA00"
+magenta = "#AA00AA"
+red = "#AA0000"
+white = "#AAAAAA"
+yellow = "#AA5500"
+
+[colors.dim]
+
+[colors.primary]
+background = "#00040a"
+foreground = "#FFFFFF"
+
+[cursor]
+style = { shape = "Underline", blinking = "On" }
+blink_interval = 500
+unfocused_hollow = true
+vi_mode_style = "Beam"
+
+[font]
+size = 10
+normal = { family = "Source Code Pro", style = "Regular" }
+bold = { style = "Bold" }
+italic = { style = "Italic" }
+bold_italic = { style = "Bold Italic" }
+
+[scrolling]
+history = 50000
+multiplier = 3
+
+[window]
+padding = { x = 5, y = 5 }
+decorations = "none"
+opacity = 0.8
+startup_mode = "Windowed"
