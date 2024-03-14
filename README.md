@@ -10,6 +10,6 @@ everything is also mirrored on my gitlab (https://gitlab.com/vmkxyz/dotfiles/-/t
 if you'll actually use some of my dotfiles, you may consider starring this repo, it will make me happy :) thank youu
 
 I also stole some parts of my configs from other poeple, they are probably mentioned in the individual dotfiles, but I guess I should also mention the here:
-github: @LukeSmithxyz; 
+github: @LukeSmithxyz; @SSKT7;
 gitlab: Stephan Raabe; @Zaney; 
 and probably a lot of random people on youtube, reddit etc.
