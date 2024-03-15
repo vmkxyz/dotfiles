@@ -46,6 +46,7 @@ Plug 'sbdchd/neoformat'
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 nmap <leader>5 <Plug>OSCYankOperator
