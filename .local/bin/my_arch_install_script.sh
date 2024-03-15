@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "
 ====================================================================================
@@ -61,7 +61,7 @@ if
 then
        sudo pacman -S --needed qtile gdm python-dbus-next swaybg nautilus alacritty firefox gparted discord espanso espanso-wayland espanso-gui
 
-       sudo pacman -Syu 
+       sudo pacman -Syu
        sudo systemctl enable gdm
 
 fi
