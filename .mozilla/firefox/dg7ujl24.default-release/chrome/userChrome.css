@@ -1,0 +1,131 @@
+#navigator-toolbox {
+  font-family:"Source Code Pro" !important 
+}
+
+.tab-close-button.close-icon {
+  display: none;
+}
+
+.titlebar-spacer {
+  display: none;
+}
+
+.titlebar-button.titlebar-close {
+  display: none;
+}
+/*
+.tab-background {
+  width: auto;
+}
+
+.tabbrowser-tab {
+  width: 20px;
+}
+.tabbrowser-tab:not([pinned]) {
+  flex: 100 100;
+    flex-grow: 100;
+    flex-shrink: 100;
+    flex-basis: 0%;
+  width: auto;
+  max-width: 225px;
+  min-width: var(--tab-min-width);
+}
+
+
+.tab-throbber, .tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-overlay {
+  height: 16px;
+  width: 16px;
+}
+
+:root {
+  /* Tabbar: reduce tab margin */
+  --tab-block-margin: 4px 3px !important;
+}
+
+/* Tab: Reduce height */
+.tabbrowser-tab {
+  min-height: 24px !important;
+}
+
+/* Tab: Ensure tab height doesn't augment when arrowscrollbox is visible  */ 
+#tabbrowser-arrowscrollbox {
+  --tab-min-height: 31px !important;
+  max-height: var(--tab-min-height);
+}
+
+/* Tab: Attention icon */
+.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+  background-position-x: left 2px !important;
+  background-position-y: bottom 12.5px !important;
+}
+
+/* URLBar: Fix vertical alignment */
+#urlbar[breakout=true]:not([open="true"]) {
+	--urlbar-height: 20px !important;
+	--urlbar-toolbar-height: 24px !important;
+}
+
+/* URLBar: Fix URL address vertical aligment when megabar is open */
+#urlbar[breakout=true][open="true"] {
+	--urlbar-toolbar-height: 30px !important;
+}
+
+/* URLBar: Reduce row items padding */
+.urlbarView-row-inner {
+	padding-inline: var(--urlbarView-item-inline-padding);
+	padding-block: 2px !important;
+}
+
+/* URLBar: Reduce and realign row bookmark icons */
+.urlbarView-type-icon {
+	width: 10px !important;
+	height: 10px !important;
+	margin-bottom: 0 !important;
+	margin-inline-start: 10px !important;
+}
+
+/* URLBar: Reduce "This time, serach with" padding */
+#urlbar .search-one-offs:not([hidden]) {
+	padding-block: 4px !important;
+}
+
+/* Searchbar: Ensure toolbar height doesn't augment when searchbar is visible */
+#urlbar-container, 
+#search-container {
+	padding-block: 0 !important;
+}
+
+/* Searchbar: Make sure the min-height of the input is the same as the popup */
+#search-container {
+  min-width: 192px !important;
+}
+
+/* Toolbar: Reduce spacing */
+#urlbar-container {
+	--urlbar-container-height: 30px !important;
+  margin-top: 0 !important;
+}
+
+/* Reload Button: Fix vertical alignment */
+#reload-button {
+	margin-block-start: -2px !important;
+}
+
+/* AppMenu: Header */
+.panel-header {
+	padding: 4px 0 0 4px !important;
+}
+
+/* AppMenu: Header button */
+.panel-header > .subviewbutton-back {
+	padding: 4px !important;
+}
+
+/* Windows 10 context menu */
+@media (-moz-os-version: windows-win10) {
+  /* Context Menu: Reduce vertical space */
+  menupopup > menuitem,
+  menupopup > menu {
+    padding-block: 2px !important;
+  }
+}
