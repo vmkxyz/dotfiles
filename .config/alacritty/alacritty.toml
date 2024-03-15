@@ -49,7 +49,8 @@ history = 50000
 multiplier = 3
 
 [window]
-padding = { x = 5, y = 5 }
+padding = { x = 2, y = 0 }
+dynamic_padding = true
 decorations = "none"
 opacity = 0.8
 startup_mode = "Windowed"
