@@ -1,0 +1,3 @@
+some of these scripts might be very old, not working or changing system level configurations
+
+DO NOT RUN these scripts without carefully reading them and understanding what they do first
