@@ -9,13 +9,13 @@
 # @vmkxyz on gitlab and github
 
 # Start hyprpaper
-if pgrep -x "hyprpaper"; then
+if pidof "hyprpaper"; then
     echo "hyprpaper is already running"
 else
     hyprpaper && echo "starting hyprpaper"
 fi
 
-sleep 0.5
+#sleep 0.5
 
 # Path to your wallpapers folder
 wallpapers_folder="$HOME/Pictures/wallpapers"
@@ -53,7 +53,8 @@ for monitor in $(hyprctl monitors | awk '/Monitor/ { print $2 }'); do
 done
 
 # Generate color schemes using pywal
-wal -i "$wallpapers_folder/$random_wallpaper"
+wal -nstei "$wallpapers_folder/$random_wallpaper"
+# See wal --help to adjust the flags
 
 # Copy the current wallpaper to cache for swaylock
 cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/swaylock_wallpaper.jpg"
@@ -62,7 +63,7 @@ cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/swaylock_wallpaper.jp
 echo "$random_wallpaper" > "$current_wallpaper_file"
 
 # Restart Waybar
-if pgrep -x "waybar"; then
+if pidof "waybar"; then
     killall waybar && waybar
 else
     waybar

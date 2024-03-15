@@ -6,7 +6,7 @@
 # @vmkxyz on gitlab and github
 
 # Import colorscheme from 'wal'
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 
 # Export enviroment variables
 export EDITOR='nvim'
@@ -90,7 +90,9 @@ alias sudo='doas'
 alias ks='killall steam'
 alias cfg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cfga='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add'
+alias cfgau='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add -u'
 alias cfgc='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -m'
+alias cfgca='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -a'
 alias cfgp='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push'
 alias cfgf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME fetch'
 alias cfgl='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME pull'
