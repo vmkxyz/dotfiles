@@ -44,6 +44,8 @@ Plug 'ap/vim-css-color'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'sbdchd/neoformat'
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 call plug#end()
 
 nmap <leader>5 <Plug>OSCYankOperator

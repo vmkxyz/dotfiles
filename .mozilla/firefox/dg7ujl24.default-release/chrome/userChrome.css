@@ -1,5 +1,5 @@
 #navigator-toolbox {
-  font-family:"Source Code Pro" !important 
+  font-family:"Source Code Pro" !important
 }
 
 .tab-close-button.close-icon {
@@ -13,9 +13,11 @@
 .titlebar-button.titlebar-close {
   display: none;
 }
-/*
-.tab-background {
+
+/*.tab-background {
   width: auto;
+  height: 20px;
+  margin: 0px 0px 10px 0px;
 }
 
 .tabbrowser-tab {
@@ -31,30 +33,25 @@
   min-width: var(--tab-min-width);
 }
 
-
-.tab-throbber, .tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-overlay {
-  height: 16px;
-  width: 16px;
-}
-
+*/
 :root {
   /* Tabbar: reduce tab margin */
-  --tab-block-margin: 4px 3px !important;
+/*  --tab-block-margin: 4px 3px !important;
 }
 
 /* Tab: Reduce height */
-.tabbrowser-tab {
+/*.tabbrowser-tab {
   min-height: 24px !important;
 }
 
-/* Tab: Ensure tab height doesn't augment when arrowscrollbox is visible  */ 
-#tabbrowser-arrowscrollbox {
+/* Tab: Ensure tab height doesn't augment when arrowscrollbox is visible  */
+/*#tabbrowser-arrowscrollbox {
   --tab-min-height: 31px !important;
   max-height: var(--tab-min-height);
 }
 
 /* Tab: Attention icon */
-.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+/*.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
   background-position-x: left 2px !important;
   background-position-y: bottom 12.5px !important;
 }
@@ -90,7 +87,7 @@
 }
 
 /* Searchbar: Ensure toolbar height doesn't augment when searchbar is visible */
-#urlbar-container, 
+#urlbar-container,
 #search-container {
 	padding-block: 0 !important;
 }
@@ -119,13 +116,4 @@
 /* AppMenu: Header button */
 .panel-header > .subviewbutton-back {
 	padding: 4px !important;
-}
-
-/* Windows 10 context menu */
-@media (-moz-os-version: windows-win10) {
-  /* Context Menu: Reduce vertical space */
-  menupopup > menuitem,
-  menupopup > menu {
-    padding-block: 2px !important;
-  }
 }
