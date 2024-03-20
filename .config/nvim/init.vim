@@ -38,20 +38,14 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
-" Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'sbdchd/neoformat'
-Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
-
-nmap <leader>5 <Plug>OSCYankOperator
-nmap <leader>55 <leader>c_
-vmap <leader>5 <Plug>OSCYankVisual
 
 colorscheme catppuccin-mocha
 
@@ -66,20 +60,14 @@ set clipboard+=unnamedplus,unnamed
 set laststatus=1
 set noshowcmd
 
-set autoindent     " Enable auto-indentation
-set smartindent    " Enable smart indentation
-set tabstop=4      " tab size
+set autoindent
+set smartindent
+set tabstop=4
 set shiftwidth=4
-" set expandtab      " make tabs spaces
+"set expandtab
 
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-
-" reset the cursor on start (for older versions of vim, usually not required)
-augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[2 q"
-augroup END
 
 " Ps = 0  -> blinking block.
 " Ps = 1  -> blinking block (default).
@@ -88,6 +76,11 @@ augroup END
 " Ps = 4  -> steady underline.
 " Ps = 5  -> blinking bar (xterm).
 " Ps = 6  -> steady bar (xterm).
+
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
 
 " Some basics:
 	nnoremap c "_c
