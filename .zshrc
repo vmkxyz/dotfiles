@@ -99,8 +99,6 @@ alias cfgl='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME pull'
 alias cfgs='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME status'
 alias cfgg='$HOME/.local/bin/cfgg.sh'
 
-eval $(thefuck --alias)
-
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

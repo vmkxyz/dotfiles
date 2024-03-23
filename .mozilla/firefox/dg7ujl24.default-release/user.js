@@ -77,3 +77,7 @@ user_pref("network.http.sendReferHeader", "0");
 
 /** FISSION **/
 user_pref("fission.autostart", "true")
+
+/** DISABLE LEFT AND RIGHT TOUCHPAD GESTURES **/
+user_pref("browser.gesture.swipe.right", "");
+user_pref("browser.gesture.swipe.left", "");
