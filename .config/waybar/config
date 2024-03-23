@@ -43,7 +43,7 @@
         "interval": 5,
     },
     "custom/keys": {
-	"exec": "if hyprctl devices | grep 'Czech'; then echo 'cz'; else echo '\nus'; fi | awk 'NR==2'",
+	"exec": "if hyprctl devices | grep 'Dvorak'; then echo 'us (D)'; elif hyprctl devices | grep 'Czech'; then echo 'cz'; else echo '\nus'; fi | awk 'NR==2'",
 	"format": "{} ",
 	"interval": 1,
     },
