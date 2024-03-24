@@ -24,8 +24,8 @@
 # red = "#AA0000"
 # white = "#AAAAAA"
 # yellow = "#AA5500"
-
-# [colors.dim]
+#
+#[colors.dim]
 
 # [colors.primary]
 # background = "#00040a"
