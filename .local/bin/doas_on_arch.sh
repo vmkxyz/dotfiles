@@ -3,7 +3,7 @@
 # see https://wiki.archlinux.org/title/Doas
 # run this script as root
 
-pacman -S --needed opendoas
+pacman -Syu --needed opendoas
 pacman -rdd sudo # Scary!
 ln -s $(which doas) /usr/bin/sudo
 ln -s $(which doas) /bin/sudo
