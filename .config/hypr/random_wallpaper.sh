@@ -9,13 +9,7 @@
 # @vmkxyz on gitlab and github
 
 # Start hyprpaper
-if pidof "hyprpaper"; then
-    echo "hyprpaper is already running"
-else
-    hyprpaper && echo "starting hyprpaper"
-fi
-
-#sleep 0.5
+pidof "hyprpaper" > /dev/null || hyprpaper &
 
 # Path to your wallpapers folder
 wallpapers_folder="$HOME/Pictures/wallpapers"
@@ -25,25 +19,18 @@ current_wallpaper_file="$HOME/.cache/current_wallpaper.txt"
 
 # Function to get the path of the current wallpaper
 get_current_wallpaper() {
-    if [ -f "$current_wallpaper_file" ]; then
-        cat "$current_wallpaper_file"
-    else
-        echo ""
-    fi
+    [ -f "$current_wallpaper_file" ] && < "$current_wallpaper_file"
 }
 
 # Get the current wallpaper
 current_wallpaper=$(get_current_wallpaper)
 
-# Loop until a new wallpaper is chosen
-while true; do
-    # Get a random wallpaper file from the folder
-    random_wallpaper=$(ls "$wallpapers_folder" | shuf -n 1)
+# Get a random wallpaper file from the folder
+random_wallpaper=$(ls "$wallpapers_folder" | shuf -n 1)
 
-    # Check if the randomly chosen wallpaper is different from the current one
-    if [ "$random_wallpaper" != "$(basename "$current_wallpaper")" ]; then
-        break
-    fi
+# Loop until a new wallpaper is chosen
+while [ "$(basename "$random_wallpaper")" = "$(basename "$current_wallpaper")" ]; do
+    random_wallpaper=$(ls "$wallpapers_folder" | shuf -n 1)
 done
 
 # Set the wallpaper for each monitor using hyprpaper
@@ -63,11 +50,8 @@ cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/swaylock_wallpaper.jp
 echo "$random_wallpaper" > "$current_wallpaper_file"
 
 # Restart Waybar
-if pidof "waybar"; then
-    killall waybar && waybar
-else
-    waybar
-fi
+pidof "waybar" > /dev/null && killall waybar
+waybar &
 
 sleep 0.2
 
@@ -75,4 +59,4 @@ sleep 0.2
 $HOME/.config/hypr/pywal_colors_hyprland.sh
 
 # Generate discord colors using pywal-discord
-pywal-discord -t default
+#pywal-discord -t default
