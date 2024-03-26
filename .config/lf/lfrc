@@ -96,3 +96,5 @@ map gt cd ~/.local/share/Trash/files
 map gm cd ~/Music
 map gG cd ~/Games
 map gw cd ~/Pictures/wallpapers
+map gl cd ~/.local
+map gb cd bin
