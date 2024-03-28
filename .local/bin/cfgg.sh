@@ -11,6 +11,4 @@ echo ""
 echo ""
 echo "push? (Y/n)"
 read PUSH
-if [ "$PUSH" = "" ]
-	/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push
-fi
+[ "$PUSH" = "" ] && /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push
