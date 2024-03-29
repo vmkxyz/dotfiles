@@ -85,7 +85,6 @@ alias cleanup='doas pacman -Syu && doas pacman -Rsn $(pacman -Qdtq) && yay -Scc 
 
 alias sudo='doas'
 
-alias ks='killall steam'
 alias cfg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cfga='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add'
 alias cfgau='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add -u'
@@ -95,7 +94,7 @@ alias cfgp='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push'
 alias cfgf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME fetch'
 alias cfgl='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME pull'
 alias cfgs='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME status'
-alias cfgg='$HOME/.local/bin/cfgg.sh'
+alias cfgda='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME/dotfiles add'
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
