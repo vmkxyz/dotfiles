@@ -60,6 +60,7 @@ alias c='clear'
 alias cls='clear'
 alias :q='exit'
 alias e='exit'
+alias d='doas'
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
@@ -81,10 +82,6 @@ alias pqq='pacman -Qq'
 alias pqeq='pacman -Qeq'
 alias pqqe='pacman -Qqe'
 alias cleanup='doas pacman -Syu && doas pacman -Rsn $(pacman -Qdtq) && yay -Scc && yay -Yc'
-
-alias nf='neofetch'
-alias pf='pfetch'
-alias uf='uwufetch'
 
 alias sudo='doas'
 
