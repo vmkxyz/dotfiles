@@ -1,4 +1,4 @@
-" my config for vim / neovim, it can be used with both, I stole most of the lines from Luke Smith so credit to him
+" my config for vim / neovim, it can be used with both, I stole most of it from Luke Smith so credit to him
 " https://github.com/LukeSmithxyz/voidrice/tree/master
 "                    __
 "      _  __ __ _   / /__
@@ -21,21 +21,16 @@ elseif ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/au
 endif
 
 if has ('nvim')
-	if !isdirectory(expand('$HOME/.config/nvim/plugged'))
-		call mkdir(expand('$HOME/.config/nvim/plugged'), 'p')
-	endif
+	call mkdir(expand('$HOME/.config/nvim/plugged'), 'p')
 	let g:plugin_path = '$HOME/.config/nvim/plugged'
 else
-	if !isdirectory(expand('$HOME/.vim/plugged'))
-		call mkdir(expand('$HOME/.vim/plugged'), 'p')
-	endif
+	call mkdir(expand('$HOME/.vim/plugged'), 'p')
 	let g:plugin_path = '$HOME/.vim/plugged'
 endif
 
 call plug#begin(g:plugin_path)
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
-Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
@@ -95,10 +90,8 @@ augroup END
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Perform dot commands over visual blocks:
 	vnoremap . :normal .<CR>
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	map <leader>o :setlocal spell! spelllang=en,cs,de <CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
@@ -161,14 +154,10 @@ augroup END
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 map <leader>v :VimwikiIndex<CR>
 if has ('nvim')
-	if !isdirectory(expand('$HOME/.local/share/nvim/vimwiki'))
-		call mkdir(expand('$HOME/.local/share/nvim/vimwiki'), 'p')
-	endif
+	call mkdir(expand('$HOME/.local/share/nvim/vimwiki'), 'p')
 	let g:vimwiki_path = '$HOME/.local/share/nvim/vimwiki'
 else
-	if !isdirectory(expand('$HOME/.vim/vimwiki'))
-		call mkdir(expand('$HOME/.vim/vimwiki'), 'p')
-	endif
+	call mkdir(expand('$HOME/.vim/vimwiki'), 'p')
 	let g:vimwiki_path = '$HOME/.vim/vimwiki'
 endif
 let g:vimwiki_list = [{'path': g:vimwiki_path, 'syntax': 'markdown', 'ext': '.md'}]
@@ -178,12 +167,6 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 " Save file as sudo on files that require root permission
 	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" Enable Goyo by default for mutt writing
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save. & reset cursor position
  	autocmd BufWritePre * let currPos = getpos(".")
@@ -228,3 +211,6 @@ cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W')
 cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('Wq'))
 cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))
 cnoreabbrev <expr> Q! ((getcmdtype() is# ':' && getcmdline() is# 'Q!')?('q!'):('Q!'))
+
+" Extra mappings
+nnoremap <leader>t :normal! i<C-r>=strftime('%Y/%m/%d  %r')<CR><CR>
