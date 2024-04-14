@@ -32,7 +32,7 @@
 # foreground = "#FFFFFF"
 
 [colors.primary]
-background = "#1E1E2E"
+background = "#09090f"
 foreground = "#CDD6F4"
 dim_foreground = "#CDD6F4"
 bright_foreground = "#CDD6F4"
