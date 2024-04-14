@@ -45,6 +45,7 @@ wal -nstei "$wallpapers_folder/$random_wallpaper"
 
 # Copy the current wallpaper to cache for swaylock
 cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/swaylock_wallpaper.jpg"
+cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/hyprlock_wallpaper.png"
 
 # Update the file with the path of the new wallpaper
 echo "$random_wallpaper" > "$current_wallpaper_file"
