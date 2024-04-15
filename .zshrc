@@ -57,7 +57,6 @@ bindkey '^e' edit-command-line
 
 # Aliases
 alias c='clear'
-alias cls='clear'
 alias :q='exit'
 alias e='exit'
 alias d='doas'
