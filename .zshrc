@@ -18,14 +18,13 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # I don't even know what does this stuff do...
-bindkey -e
-zstyle :compinstall filename '/home/vmk/.zshrc'
+bindkey -v
 
 # History auto/tab complete
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
+compinit -d $HOME/.cache/.zcompdump
 _comp_options+=(globdots)	# show hidden files
 
 # Use vim keys in tab complete menu

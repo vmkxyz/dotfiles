@@ -15,6 +15,7 @@ vim.opt.title = true
 vim.opt.bg = "dark"
 vim.opt.laststatus = 1
 vim.opt.shortmess:append("I")
+vim.opt.termguicolors = true
 --indentation & tabs
 vim.opt.autoindent = true
 vim.opt.smartindent = true
