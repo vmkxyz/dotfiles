@@ -1,2 +1,2 @@
 #!/bin/sh
-grim -g "$(slurp)" /home/vmk/Pictures/grim/$(date +%F_%T).png
+grim -g "$(slurp)" $HOME/Pictures/grim/$(date +%F_%T).png
