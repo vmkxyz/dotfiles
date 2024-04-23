@@ -17,8 +17,8 @@ HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=1000
 
-# I don't even know what does this stuff do...
-bindkey -v
+# emacs mode, echange to -v for vi mode
+bindkey -e
 
 # History auto/tab complete
 autoload -Uz compinit
