@@ -79,7 +79,7 @@ alias pqe='pacman -Qe'
 alias pqq='pacman -Qq'
 alias pqeq='pacman -Qeq'
 alias pqqe='pacman -Qqe'
-alias cleanup='doas pacman -Syu && doas pacman -Rsn $(pacman -Qdtq) && yay -Scc && yay -Yc'
+alias cleanup='doas pacman -Syu && doas pacman -Rsn $(pacman -Qdtq) & paru -Scc' # Run this from time to time
 
 alias sudo='doas'
 
