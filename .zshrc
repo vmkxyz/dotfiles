@@ -13,7 +13,7 @@ export EDITOR='nvim'
 alias v=$EDITOR
 
 # History in cache
-HISTFILE=~/.cache/zsh/history
+HISTFILE=$HOME/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -28,11 +28,11 @@ compinit -d $HOME/.cache/.zcompdump
 _comp_options+=(globdots)	# show hidden files
 
 # Use vim keys in tab complete menu
-#bindkey -M menuselect 'h' vi-backward-char
-#bindkey -M menuselect 'k' vi-up-line-or-history
-#bindkey -M menuselect 'l' vi-foward-char
-#bindkey -M menuselect 'j' vi-down-line-or-history
-#bindkey -v bacward-delete-char
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-foward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v bacward-delete-char
 
 # Colors and PS1
 autoload -U colors && colors
