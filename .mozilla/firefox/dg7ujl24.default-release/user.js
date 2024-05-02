@@ -5,12 +5,7 @@
 by  |___//_/_/_//_/\_\
 @vmkxyz on gitlab and github
 
-> user.js for firefox desktop
-
-> put this file into ~/.mozilla/firefox/dg7ujl24.default-release
-
-> if that doesn't work, go into firefox and type "about:profiles"
-into the adress bar and then open root directory for your profile
+my custom user.js for firefox that enhances privacy and does some quality of life changes
 
 =====================================================================*/
 
@@ -37,8 +32,8 @@ user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 
 /** HARDENS THE SSL PREFERENCE **/
-user_pref("security.ssl3.rsa_des_ede3_sha", "false");
-user_pref("security.ssl.require_safe_negotiation", "false");
+user_pref("security.ssl3.rsa_des_ede3_sha", false);
+user_pref("security.ssl.require_safe_negotiation", false);
 
 /** EXPERIMENTS **/
 user_pref("app.shield.optoutstudies.enabled", false);
@@ -70,14 +65,17 @@ user_pref("browser.tabs.tabMinWidth", 40);
 user_pref("browser.compactmode.show", true);
 
 /** GEOLOCATION **/
-user_pref("geo.enabled", "false");
+user_pref("geo.enabled", false);
 
 /** REFER HEAADER **/
 user_pref("network.http.sendReferHeader", "0");
 
 /** FISSION **/
-user_pref("fission.autostart", "true")
+user_pref("fission.autostart", true);
 
 /** DISABLE LEFT AND RIGHT TOUCHPAD GESTURES **/
 user_pref("browser.gesture.swipe.right", "");
 user_pref("browser.gesture.swipe.left", "");
+
+/** DISABLE ALT MENU **/
+user_pref("ui.key.menuAccessKeyFocuses", false);
