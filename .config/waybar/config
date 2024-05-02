@@ -6,11 +6,15 @@
 // @vmkxyz on gitlab and github
 
 {
+/* =========== General =========== */
+
     "layer": "top",
     "position": "top",
     "height": "min",
     "width": "max",
     "spacing": 4,
+
+/* =========== Modules =========== */
 
     "modules-left": [
 		"clock",
@@ -31,24 +35,31 @@
 	    "network",
 	    "battery",
     ],
+
+/* =========== Clock =========== */
+
     "clock": {
         "format": " {:%y/%m/%d    %I:%M:%S %p}", //putting  inside {} does not work
 		"interval": 1,
 		"tooltip-format": "<small>{calendar}</small>",
     },
-    "custom/fan": {
-        "exec": "sensors | awk '/fan1:/ {print $2}'",
-        "format": "{} ",
-        "interval": 5,
-    },
+
+/* =========== Keyboard =========== */
+
     "custom/keys": {
 		"exec": "hyprctl devices | grep -q 'Czech' && echo 'cz' || echo 'us'",
 		"format": "{} ",
 		"interval": 1,
     },
+
+/* =========== Systray =========== */
+
     "tray": {
         "spacing": 10
     },
+
+/* =========== Hardware =========== */
+
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
@@ -61,10 +72,21 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", "", "", ""]
     },
+    "custom/fan": {
+        "exec": "sensors | awk '/fan1:/ {print $2}'",
+        "format": "{} ",
+        "interval": 5,
+    },
+
+/* =========== Backlight =========== */
+
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+
+/* =========== Battery =========== */
+
     "battery": {
         "states": {
             "warning": 30,
@@ -76,6 +98,9 @@
         "format-alt": "{time} {icon} ",
         "format-icons": ["", "", "", "", ""]
     },
+
+/* =========== Network =========== */
+
     "network": {
         "format-wifi": "{signalStrength}% ", // add {essid} to display wifi name
         "format-ethernet": "",
@@ -84,6 +109,9 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+
+/* =========== Audio =========== */
+
     "pulseaudio": {
         "format": "{volume}% {icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",

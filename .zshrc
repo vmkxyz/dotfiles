@@ -16,6 +16,10 @@ alias v=$EDITOR
 HISTFILE=$HOME/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=1000
+# Load history file
+if [[ -f $HISTFILE ]]; then
+    fc -R
+fi
 
 # emacs mode, echange to -v for vi mode
 bindkey -e
@@ -24,7 +28,7 @@ bindkey -e
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit -d $HOME/.cache/.zcompdump
+compinit -d $HOME/.cache/zsh/.zcompdump
 _comp_options+=(globdots)	# show hidden files
 
 # Use vim keys in tab complete menu
