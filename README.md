@@ -1,15 +1,16 @@
-these are my dotfiles
+These are my dotfiles.
 
-I use Arch btw (with hyprland and waybar)
-there might be configs for different WMs but I probably havent touched those in a long time
-actually there might be configs for more stuff that I dont actually use idk
+I have a thinkpad that I run Arch on (btw). I use Hyprlnad with waybar. <br>
+You can also find some cool Neovim configs, my own firefox user.js made with privacy in mind, some scripts you might find usefull and a lot more.
 
-everything is also mirrored on my gitlab (https://gitlab.com/vmkxyz/dotfiles/-/tree/master?ref_type=heads)
-(I hope the link works)
+Currently, there are also all of my wallpapers here; but I plan to move those to a differend repo in the future.
 
-if you'll actually use some of my dotfiles, you may consider starring this repo, it will make me happy :) thank youu
+~~everything is also mirrored on my gitlab (https://gitlab.com/vmkxyz/dotfiles/-/tree/master?ref_type=heads)
+(I hope the link works)~~ CURRECTLY OUT OF DATE! will be fixed soon
 
-I also stole some parts of my configs from other poeple, they are probably mentioned in the individual dotfiles, but I guess I should also mention the here:
-github: @LukeSmithxyz; @SSKT7; @fishyfishfish55; @adi1090x; @xsghetti
-gitlab: Stephan Raabe; @Zaney;
+I also ~~stole~~ borrowed some parts of other poeple's configs, some of them might mentioned in the individual dotfiles, but I guess I should also mention the here: <br>
+github: @LukeSmithxyz; @SSKT7; @fishyfishfish55; @adi1090x; @xsghetti <br>
+gitlab: Stephan Raabe; @Zaney; <br>
 and probably a lot of random people on youtube, reddit etc.
+
+If you'll like or actually use some of my dotfiles, you can star this repo, it will make me happy :) thank you.
