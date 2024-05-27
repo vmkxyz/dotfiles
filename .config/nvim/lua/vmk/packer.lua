@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
 		--indent blankline
 		use 'lukas-reineke/indent-blankline.nvim'
 		--tabnine
-		use { 'codota/tabnine-nvim', run = './dl_binaries.sh' }
+		--use { 'codota/tabnine-nvim', run = './dl_binaries.sh' }
 
 	--navigation
 		--telescope

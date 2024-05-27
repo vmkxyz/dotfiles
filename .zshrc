@@ -5,12 +5,18 @@
 # by  |___//_/_/_//_/\_\
 # @vmkxyz on gitlab and github
 
-# Import colorscheme from 'wal'
+# Import colorscheme from pywal
 #(cat ~/.cache/wal/sequences &)
 
 # Export enviroment variables
 export EDITOR='nvim'
 alias v=$EDITOR
+
+# some variables
+export PATH=$PATH:~/.local/bin/
+export TERMINAL=alacritty
+set +o prompt_cr +o prompt_sp # disable trailing new line on launch (highlighted percent symbol)
+#PROMPT_EOL_MARK='' # this changes the highlighted percent symbol to blank
 
 # History in cache
 HISTFILE=$HOME/.cache/zsh/history
@@ -21,8 +27,8 @@ if [[ -f $HISTFILE ]]; then
     fc -R
 fi
 
-# emacs mode, echange to -v for vi mode
-bindkey -e
+# set to -e for emacs mode or to -v for vi mode
+#bindkey -v
 
 # History auto/tab complete
 autoload -Uz compinit
@@ -58,11 +64,16 @@ bindkey -s '^o' 'lfcd\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# Execute in shell
+date
+
 # Aliases
 alias c='clear'
 alias :q='exit'
 alias e='exit'
 alias d='doas'
+alias n='nautilus'
+alias f='firefox'
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
@@ -98,5 +109,8 @@ alias cfgl='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME pull'
 alias cfgs='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME status'
 
 # Plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Hooks
+eval "$(zoxide init zsh)"

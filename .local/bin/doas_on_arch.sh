@@ -5,9 +5,7 @@
 # WARNING: FORCE REMOVES SUDO!
 
 pacman -Syu --needed opendoas
-pacman -rdd sudo # Scary!
+pacman -Rddns sudo # Scary!
 ln -s $(which doas) /usr/bin/sudo
-ln -s $(which doas) /bin/sudo
-ln -s $(which doas) /sbin/sudo
 [ ! -e "/etc/doas.conf" ] && touch "/etc/doas.conf"
 echo 'permit :wheel as root\npermit persist :wheel' >> /etc/doas.conf

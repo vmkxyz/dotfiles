@@ -2,4 +2,4 @@
 # RUN AS ROOT
 
 pacman -Syu --needed linux-firmware-qlogic linux-headers
-yay -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
+paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware

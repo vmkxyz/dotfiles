@@ -12,6 +12,9 @@ my custom user.js for firefox that enhances privacy and does some quality of lif
 /** ABOUT:CONFIG WARNING **/
 user_pref("browser.aboutConfig.showWarning", false);
 
+/** USE CUSTOM CSS **/
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
 /** TELEMETRY **/
 user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("datareporting.healthreport.uploadEnabled", false);
