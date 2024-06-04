@@ -97,6 +97,7 @@ alias pqqe='pacman -Qqe'
 alias cleanup='doas pacman -Syu && doas pacman -Rsn $(pacman -Qdtq) & paru -Scc' # Run this from time to time
 
 alias sudo='doas'
+alias cd='z'
 
 alias cfg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cfga='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add'
