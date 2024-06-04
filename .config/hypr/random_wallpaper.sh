@@ -26,11 +26,11 @@ get_current_wallpaper() {
 current_wallpaper=$(get_current_wallpaper)
 
 # Get a random wallpaper file from the folder
-random_wallpaper=$(ls "$wallpapers_folder" | shuf -n 1)
+random_wallpaper=$(ls "$wallpapers_folder" | grep .jpg | shuf -n 1)
 
 # Loop until a new wallpaper is chosen
 while [ "$(basename "$random_wallpaper")" = "$(basename "$current_wallpaper")" ]; do
-    random_wallpaper=$(ls "$wallpapers_folder" | shuf -n 1)
+    random_wallpaper=$(ls "$wallpapers_folder" | grep .jpg | shuf -n 1)
 done
 
 # Set the wallpaper for each monitor using hyprpaper
