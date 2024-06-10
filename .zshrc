@@ -103,12 +103,13 @@ alias ps='doas pacman -Syu'
 alias pps='doas pacman -S'
 alias pss='pacman -Ss'
 alias pr='doas pacman -R'
+alias prns='doas pacman -Rns'
 alias pq='pacman -Q'
 alias pqe='pacman -Qe'
 alias pqq='pacman -Qq'
 alias pqeq='pacman -Qeq'
 alias pqqe='pacman -Qqe'
-alias cleanup='doas pacman -Syu && doas pacman -Rsn $(pacman -Qdtq) & paru -Scc' # Run this from time to time
+alias cleanup="doas pacman -Syu; pacman -Qdtq | xargs -r doas pacman -Rsn; paru -Scc" # Run this from time to time
 
 alias sudo='doas'
 alias cd='z'
