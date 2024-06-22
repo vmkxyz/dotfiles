@@ -1,64 +1,29 @@
+/* set toolbar font */
 #navigator-toolbox {
   font-family:"Source Code Pro" !important
 }
-
+/* disable tab `x` button to close it (use mouse middle click) */
 .tab-close-button.close-icon {
   display: none;
 }
 
+/* disable the spacer that normally is between tabs and the `x` for closing firefox */
 .titlebar-spacer {
   display: none;
 }
 
+/* disable the `x` button for closing firefox */
 .titlebar-button.titlebar-close {
   display: none;
 }
 
+/* disable the PiP button when playing a video (use right-click menu) */
 #picture-in-picture-button-icon {
   display: none;
 }
 
-/*.tab-background {
-  width: auto;
-  height: 20px;
-  margin: 0px 0px 10px 0px;
-}
-
-.tabbrowser-tab {
-  width: 20px;
-}
-.tabbrowser-tab:not([pinned]) {
-  flex: 100 100;
-    flex-grow: 100;
-    flex-shrink: 100;
-    flex-basis: 0%;
-  width: auto;
-  max-width: 225px;
-  min-width: var(--tab-min-width);
-}
-
-*/
+/* all of the below are making the toolbar as small as possible to save space */
 :root {
-  /* Tabbar: reduce tab margin */
-/*  --tab-block-margin: 4px 3px !important;
-}
-
-/* Tab: Reduce height */
-/*.tabbrowser-tab {
-  min-height: 24px !important;
-}
-
-/* Tab: Ensure tab height doesn't augment when arrowscrollbox is visible  */
-/*#tabbrowser-arrowscrollbox {
-  --tab-min-height: 31px !important;
-  max-height: var(--tab-min-height);
-}
-
-/* Tab: Attention icon */
-/*.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-  background-position-x: left 2px !important;
-  background-position-y: bottom 12.5px !important;
-}
 
 /* URLBar: Fix vertical alignment */
 #urlbar[breakout=true]:not([open="true"]) {
