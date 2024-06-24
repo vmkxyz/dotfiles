@@ -15,6 +15,7 @@ set +o prompt_cr +o prompt_sp # disable trailing new line on launch (highlighted
 #PROMPT_EOL_MARK='' # this changes the highlighted percent symbol to blank
 
 # History
+mkdir -p $HOME/.cache/zsh/
 HISTFILE=$HOME/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=$HISTSIZE
