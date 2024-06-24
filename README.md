@@ -6,7 +6,7 @@ You can also find some cool Neovim configs, my own firefox user.js made with pri
 Currently, there are also all of my wallpapers here; but I plan to move those to a differend repo in the future.
 
 ~~everything is also mirrored on my gitlab (https://gitlab.com/vmkxyz/dotfiles/-/tree/master?ref_type=heads)
-(I hope the link works)~~ CURRECTLY OUT OF DATE! will be fixed soon
+(I hope the link works)~~ **CURRECTLY OUT OF DATE!** will be fixed soon
 
 I also ~~stole~~ borrowed some parts of other poeple's configs, some of them might mentioned in the individual dotfiles, but I guess I should also mention the here: <br>
 github: @LukeSmithxyz; @SSKT7; @fishyfishfish55; @adi1090x; @xsghetti <br>

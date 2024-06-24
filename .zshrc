@@ -8,13 +8,9 @@
 # Import colorscheme from pywal
 #(cat ~/.cache/wal/sequences &)
 
-# Export enviroment variables
-export EDITOR='nvim'
-alias v=$EDITOR
+# Enviroment variables are in .zshenv
 
-# some variables
-export PATH=$PATH:~/.local/bin/
-export TERMINAL=alacritty
+# set
 set +o prompt_cr +o prompt_sp # disable trailing new line on launch (highlighted percent symbol)
 #PROMPT_EOL_MARK='' # this changes the highlighted percent symbol to blank
 
@@ -82,6 +78,7 @@ bindkey '^e' edit-command-line
 date
 
 # Aliases
+alias v=$EDITOR # set to nvim; env vars are in .zshenv
 alias c='clear'
 alias :q='exit'
 alias e='exit'
