@@ -9,7 +9,7 @@ Currently, there are also all of my wallpapers here; but I plan to move those to
 (I hope the link works)~~ **CURRECTLY OUT OF DATE!** will be fixed soon
 
 I also ~~stole~~ borrowed some parts of other poeple's configs, some of them might mentioned in the individual dotfiles, but I guess I should also mention the here: <br>
-github: @LukeSmithxyz; @SSKT7; @fishyfishfish55; @adi1090x; @xsghetti <br>
+github: @LukeSmithxyz; @agryphus; @SSKT7; @fishyfishfish55; @adi1090x; @xsghetti <br>
 gitlab: Stephan Raabe; @Zaney; <br>
 and probably a lot of random people on youtube, reddit etc.
 
