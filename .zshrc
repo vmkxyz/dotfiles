@@ -115,7 +115,7 @@ alias cd='z'
 alias cfg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cfga='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add'
 alias cfgau='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add -u'
-alias cfgc='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -m'
+#alias cfgc='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -m' # broken
 alias cfgca='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -a'
 alias cfgp='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push'
 alias cfgf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME fetch'
