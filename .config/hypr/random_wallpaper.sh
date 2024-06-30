@@ -43,9 +43,9 @@ done
 wal -nstei "$wallpapers_folder/$random_wallpaper"
 # See wal --help to adjust the flags
 
-# Copy the current wallpaper to cache for swaylock
-cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/swaylock_wallpaper.jpg"
-cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/hyprlock_wallpaper.png"
+# Copy the randomly chosen wallpaper to cache (e.g. for hyprlock)
+# not to be confused with current_wallpaper.txt
+cp -r "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/active_wallpaper.jpg"
 
 # Update the file with the path of the new wallpaper
 echo "$random_wallpaper" > "$current_wallpaper_file"
@@ -55,9 +55,6 @@ pidof "waybar" > /dev/null && killall waybar
 waybar &
 
 sleep 0.2
-
-# Create pywal colors file for hyprland
-$HOME/.config/hypr/pywal_colors_hyprland.sh
 
 # Generate discord colors using pywal-discord
 #pywal-discord -t default
