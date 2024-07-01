@@ -48,20 +48,30 @@ button:hover {
     padding: 0px 0px;
     border-radius: 15px;
     border: 0px;
-    color: #006000;
     background: @background;
 }
 
 #workspaces button {
     padding: 0px 5px 0px 5px;
     margin: 0px 0px 0px 0px;
-    color: @foreground; /* numbers color*/
+    color: @foreground; /* numbers color */
     box-shadow: none;
 }
 
 #workspaces button:hover {
     background: @background;
-    color: transparent;
+    color: @foreground;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+#workspaces button:hover.active {
+    background: @foreground;
+    color: @background;
     border-radius: 15px;
     border-color: @foreground;
     margin: 0px 0px 0px 0px;
