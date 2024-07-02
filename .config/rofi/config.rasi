@@ -2,14 +2,17 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Rofi Theme File
  * Rofi Version: 1.7.3
+ *
+ * modified by vmk; @vmkxyz on github
+ *
  **/
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "drun,run,window";
     show-icons:                 false;
     display-drun:               " ";
     display-run:                " ";
@@ -167,7 +170,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
@@ -308,4 +311,3 @@ error-message {
     background-color:            @background-colour;
     text-color:                  @foreground-colour;
 }
-
