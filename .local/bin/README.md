@@ -4,3 +4,4 @@ DO NOT RUN these scripts without carefully reading them and understanding what t
 actualy NEVER RUN sripts frop others as root without knowing what they do
 
 do not run any install scripts from this directory
+(im currently working on z_install ehich will be the one install script to get you tarted on a fresh installation)
