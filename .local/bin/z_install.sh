@@ -132,6 +132,7 @@ if prompt_yes_no "Do you want to install BetterDiscord?"; then
 			cd installer && yarn install
 			yarn dist
 			mv dist/BetterDiscord-Linux.AppImage ~/
+			cd .. && rm -r installer
 			echo "The AppImage is in your home directory, run \"chmod +x BetterDiscord-Linux.AppImage\" to make it executable."
         #else
 		#	pacman -S --needed git yarn
