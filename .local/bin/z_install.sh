@@ -52,20 +52,18 @@ sudo pacman -S --needed brightnessctl cliphist doas grim playerctl slurp
 
 
 
-sudo pacman -Syu --needed alacritty alsa-utils audacity bc brightnessctl btop celluloid cliphist dash dhcpcd discord dunst eog evince exfat-utils file-roller firefox gamemode gdm gimp git github-cli gnome-calculator gnome-disk-utility gnome-software gnome-system-monitor gnome-text-editor grim grub hyprland hyprpaper iwd kdeconnect krita lf lutris man mangohud monero-gui nautilus ncdu neofetch neovim noto-fonts-cjk obs-studio opendoas otf-font-awesome playerctl python-pywal reflector rofi shellcheck signal-desktop slurp snapshot steam swayidle swaylock syncthing telegram-desktop terminus-font timeshift tlp transmission-gtk ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-sourcecodepro-nerd ufw unrar v4l2loopback-dkms v4l2loopback-utils waybar wev wl-clipboard xdg-desktop-portal-hyprland xdg-user-dirs-gtk xwaylandvideobridge yt-dlp yubikey-manager zathura zathura-pdf-mupdf zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo pacman -Syu --needed alacritty alsa-utils audacity bc brightnessctl btop celluloid cliphist dash dhcpcd discord dunst eog evince exfat-utils file-roller firefox gamemode gdm gimp git github-cli gnome-calculator gnome-disk-utility gnome-software gnome-system-monitor gnome-text-editor grim grub hyprland hyprpaper iwd kdeconnect krita lf lutris man mangohud monero-gui nautilus ncdu neofetch neovim noto-fonts-cjk obs-studio opendoas otf-font-awesome playerctl python-pywal reflector rofi shellcheck signal-desktop slurp snapshot steam hypridle hyprlock syncthing telegram-desktop terminus-font timeshift tlp transmission-gtk ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-sourcecodepro-nerd ufw unrar v4l2loopback-dkms v4l2loopback-utils waybar wev wl-clipboard xdg-desktop-portal-hyprland xdg-user-dirs-gtk xwaylandvideobridge yt-dlp yubikey-manager zathura zathura-pdf-mupdf zsh zsh-autosuggestions zsh-syntax-highlighting
 
-aur_helper -S --needed pfetch steamcmd trizen wlogout xclicker pywal-discord-git
+aur_helper -S --needed pfetch steamcmd trizen xclicker pywal-discord-git
 
 
 
 # Basic apps
-sudo pacman -Syu --needed alacritty dunst hyprland hyprpaper lf rofi swaylock python-pywal vim  waybar wlogout zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo pacman -Syu --needed alacritty dunst hyprland hyprpaper lf rofi hyprlock python-pywal vim  waybar zsh zsh-autosuggestions zsh-syntax-highlighting
 
 
 # Basic apps (AUR)
 aur_helper -S --needed pywal-discord-git
-# you can download BetterDiscord as an AppImage at https://betterdiscord.app/
-# make it executable and run it
 
 
 #! /bin/sh
@@ -74,9 +72,18 @@ sudo pacman -Syu --needed xdg-desktop-portal-gtk
 
 
 
+# doas instead of sudo
+# NOT TESTED
 
+if promt_yes_no "Do you want to install doas and remove sudo?"; then
+	sudo pacman -Syu opendoas || exit  1 # TODO: handle doas already installed
+	ln -s $(which doas) /usr/bin/sudo
+	[ ! -e "/etc/doas.conf" ] && touch "/etc/doas.conf"
+	echo 'permit :wheel as root\npermit persist :wheel' >> /etc/doas.conf
+	sudo pacman -Rddns sudo || exit 1
+	echo "sudo removed successfully, some sane default config was generated at /etc/doas.conf"
 
-
+fi
 
 
 
