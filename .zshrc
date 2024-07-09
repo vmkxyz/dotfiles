@@ -79,7 +79,7 @@ bindkey '^e' edit-command-line
 date
 
 # Aliases
-alias v=$EDITOR # set to nvim; env vars are in .zshenv
+alias v=$EDITOR # is set to nvim; env vars are in .zshenv
 alias c='clear'
 alias :q='exit'
 alias e='exit'
