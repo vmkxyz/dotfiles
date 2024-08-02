@@ -47,7 +47,7 @@
 /* =========== Keyboard =========== */
 
     "custom/keys": {
-		"exec": "hyprctl devices | grep -q 'Czech' && echo 'cz' || echo 'us'",
+		"exec": "hyprctl devices | grep -q 'Czech' && echo 'cz' || hyprctl devices | grep -q 'keymap: vmk' && echo 'vmk' || echo 'us'",
 		"format": "{} ",
 		"interval": 1,
     },
