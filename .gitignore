@@ -1,6 +1,4 @@
-# vim
-.vim/autoload
-.vim/plugged
-.vim/vimwiki
 # nvim
 .config/nvim/plugin
+# .local/bin/
+.local/bin/platform-tools
