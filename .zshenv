@@ -1,5 +1,6 @@
 # Paths
 export PATH=$PATH:~/.local/bin/
+export PATH=$HOME/.local/bin/platform-tools:$PATH
 
 # Default apps
 export TERMINAL='alacritty'
