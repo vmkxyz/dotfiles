@@ -8,7 +8,7 @@ sort_by        = "natural"
 sort_sensitive = false
 sort_reverse   = false
 sort_dir_first = true
-linemode       = "size"
+linemode       = "custom"
 show_hidden    = true
 show_symlink   = false
 
@@ -46,7 +46,6 @@ suppress_preload = false
 [plugin]
 
 preloaders = [
-	{ name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
 	# Image
 	{ mime = "image/vnd.djvu", run = "noop" },
 	{ mime = "image/*",        run = "image" },
