@@ -1,6 +1,34 @@
 #! /bin/sh
 # script useful for setting up a new desktop, moving to a different one or making sure my dotfiles work properly
 
+# Function to prompt for yes/no input
+prompt_yes_no() {
+    while true; do
+        read -p "$1 [y/N]: " yn
+        # Default to "no" if the user just presses Enter
+        case $yn in
+            [Yy]* ) return 0;;  # Return 0 for yes
+            [Nn]* ) return 1;;  # Return 1 for no
+            "" ) return 1;;     # Return 1 for empty input (default to no)
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+}
+
+prompt_1_2() {
+    while true; do
+		echo "$1"
+		read -p "Enter a number (default=1): " number
+        case $number in
+            1 ) return 0;;
+            2 ) return 1;;
+			"" ) return 0;;
+            * ) echo "Enter a number (default=1): ";;
+        esac
+    done
+}
+
+
 # Function to check if a command exists
 command_exists() {
 	command -v "$1" >/dev/null 2>&1
@@ -98,32 +126,6 @@ fi
 
 # Better-Discord installation
 
-# Function to prompt for yes/no input
-prompt_yes_no() {
-    while true; do
-        read -p "$1 [y/N]: " yn
-        # Default to "no" if the user just presses Enter
-        case $yn in
-            [Yy]* ) return 0;;  # Return 0 for yes
-            [Nn]* ) return 1;;  # Return 1 for no
-            "" ) return 1;;     # Return 1 for empty input (default to no)
-            * ) echo "Please answer yes or no.";;
-        esac
-    done
-}
-
-prompt_1_2() {
-    while true; do
-		echo "$1"
-		read -p "Enter a number (default=1): " number
-        case $number in
-            1 ) return 0;;
-            2 ) return 1;;
-			"" ) return 0;;
-            * ) echo "Enter a number (default=1): ";;
-        esac
-    done
-}
 
 # Ask if the user wants to install BetterDiscord
 if prompt_yes_no "Do you want to install BetterDiscord?"; then
