@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # script useful for setting up a new desktop, moving to a different one or making sure my dotfiles work properly
 
 # Function to prompt for yes/no input
@@ -94,8 +94,11 @@ sudo pacman -Syu --needed alacritty dunst hyprland hyprpaper lf rofi hyprlock py
 aur_helper -S --needed pywal-discord-git
 
 
-#! /bin/sh
 sudo pacman -Syu --needed xdg-desktop-portal-gtk
+
+
+sudo pacman -Syu --needed linux-firmware-qlogic linux-headers terminus-font
+paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
 
 
 
@@ -103,14 +106,13 @@ sudo pacman -Syu --needed xdg-desktop-portal-gtk
 # doas instead of sudo
 # NOT TESTED
 
-if promt_yes_no "Do you want to install doas and remove sudo?"; then
-	sudo pacman -Syu opendoas || exit  1 # TODO: handle doas already installed
-	ln -s $(which doas) /usr/bin/sudo
-	[ ! -e "/etc/doas.conf" ] && touch "/etc/doas.conf"
-	echo 'permit :wheel as root\npermit persist :wheel' >> /etc/doas.conf
-	sudo pacman -Rddns sudo || exit 1
+if promt_yes_no "Do you want to install doas and remove sudo? DONT RUN IF YOU ALREADY HAVE DOAS CONFIGURED"; then
+	sudo pacman -Syu --needed opendoas || exit 1 # TODO: handle doas already installed
+	sudo ln -fs $(which doas) /usr/bin/sudo
+	[ ! -e "/etc/doas.conf" ] && sudo touch "/etc/doas.conf"
+	sudo echo 'permit :wheel as root\npermit persist :wheel' >> /etc/doas.conf
+	sudo pacman -Rddns sudo
 	echo "sudo removed successfully, some sane default config was generated at /etc/doas.conf"
-
 fi
 
 

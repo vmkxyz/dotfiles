@@ -1,0 +1,14 @@
+#! /bin/sh
+# this script executes the most relevant editor
+
+# Set fallback editor
+if command -v vim > /dev/null; then
+	fallback="vim"
+elif command -v vi > /dev/null; then
+	fallback="vi"
+elif [ "$(id -u)" -eq 0 ]; then
+	echo "no editor available" >&2 && exit 1
+fi
+# Root use fallback, user $EDITOR if set or nvim if exists
+[ "$(id -u)" -eq 0 ] && $fallback "$@" && exit 0 || \
+{ [ -n "$EDITOR" ] && [ "$EDITOR" != "" ] && command -v "$EDITOR" > /dev/null 2>&1 && "$EDITOR" "$@" && exit 0; } || $fallback "$@"

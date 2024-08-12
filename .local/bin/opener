@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Script for opening a file, intended for use by a terminal file manager.
 
 # Whether to open in a new window
@@ -55,7 +55,7 @@ case $(file --mime-type "$1" -b) in
                 ;;
         esac
 
-        launch_term nvim "$1"
+        launch_term v "$1"
         ;;
     image/*)
         launch_gui qimgv "$1"
