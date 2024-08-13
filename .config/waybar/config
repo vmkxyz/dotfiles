@@ -68,7 +68,6 @@
             "default": ["", "", ""]
         },
     },
-}
 
 /* =========== Keyboard =========== */
 
@@ -108,7 +107,7 @@
 /* =========== Network =========== */
 
     "network": {
-        "format-wifi": "{signalStrength}% ", // add {essid} to display wifi name
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
@@ -129,3 +128,4 @@
         "format-alt": "{time} {icon} ",
         "format-icons": ["", "", "", "", ""]
     },
+}
