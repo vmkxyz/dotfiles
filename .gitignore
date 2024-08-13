@@ -2,3 +2,6 @@
 .config/nvim/plugin
 # .local/bin/
 .local/bin/platform-tools
+# sc/
+sc/*/target
+sc/*/Cargo.lock
