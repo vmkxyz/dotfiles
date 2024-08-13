@@ -31,7 +31,6 @@
 	    "temperature",
 	    "custom/fan",
 //	    "backlight",
-//	    "hyprland/language",
 	    "network",
 	    "battery",
     ],
@@ -44,18 +43,39 @@
 		"tooltip-format": "<small>{calendar}</small>",
     },
 
+/* =========== Tray =========== */
+
+    "tray": {
+        "spacing": 10
+    },
+
+/* =========== Pulseaudio =========== */
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+    },
+}
+
 /* =========== Keyboard =========== */
 
     "custom/keys": {
 		"exec": "hyprctl devices | grep -q 'Czech' && echo 'cz' || hyprctl devices | grep -q 'keymap: vmk' && echo 'vmk' || echo 'us'",
 		"format": "{} ",
 		"interval": 1,
-    },
-
-/* =========== Systray =========== */
-
-    "tray": {
-        "spacing": 10
     },
 
 /* =========== Hardware =========== */
@@ -85,6 +105,17 @@
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
+/* =========== Network =========== */
+
+    "network": {
+        "format-wifi": "{signalStrength}% ", // add {essid} to display wifi name
+        "format-ethernet": "",
+        "tooltip-format": "{essid}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
 /* =========== Battery =========== */
 
     "battery": {
@@ -98,36 +129,3 @@
         "format-alt": "{time} {icon} ",
         "format-icons": ["", "", "", "", ""]
     },
-
-/* =========== Network =========== */
-
-    "network": {
-        "format-wifi": "{signalStrength}% ", // add {essid} to display wifi name
-        "format-ethernet": "",
-        "tooltip-format": "{essid}",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-
-/* =========== Audio =========== */
-
-    "pulseaudio": {
-        "format": "{volume}% {icon}  {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-}
