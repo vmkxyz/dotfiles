@@ -1,6 +1,8 @@
 # Paths
 export PATH=$PATH:~/.local/bin/
 export PATH=$HOME/.local/bin/platform-tools:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+
 
 # Default apps
 export TERMINAL='alacritty'
@@ -19,3 +21,4 @@ export MAIL_CLIENT='neomutt'
 
 # Else
 export QT_QPA_PLATFORMTHEME='qt5ct'
+export QT_QPA_PLATFORM=wayland

@@ -1,15 +1,32 @@
-These are my dotfiles.
+# My Dotfiles
 
-I have a thinkpad that I run Arch on (btw). I use Hyprlnad with waybar. <br>
-You can also find some cool Neovim configs, my own firefox user.js made with privacy in mind, some scripts you might find usefull and a lot more.
+Welcome, these are my dotfiles. I run Arch linux (btw) as my distro with Hyprland as my WM. Feel free to edit and use anything here you might find useful.
 
-Currently, there are also all of my wallpapers here; but I plan to move those to a differend repo in the future.
+## What's in Here
 
-everything is also mirrored on [my gitlab](https://gitlab.com/vmkxyz/dotfiles/-/tree/master?ref_type=heads)
+- **Hyprland and Waybar Configs:** With wallpaper based colors all over the place.
+- **Neovim Configs:** For a better coding experience. (Or just text editing...)
+- **Firefox `user.js`:** With some sane options and privacy in mind!
+- **Scripts:** Some of them even in [**Rust**](https://youtu.be/LDU_Txk06tM?si=XyNZZpBwhdSF4-0Z&t=74)! (Rust source code in tge [sc](sc/) directory.)
+- **And Much More:** Like firefox useChrome.css and configs for many more programs.
 
-I also ~~stole~~ borrowed some parts of other poeple's configs, some of them might mentioned in the individual dotfiles, but I guess I should also mention the here: <br>
-github: LukeSmithxyz; agryphus; SSKT7; fishyfishfish55; adi1090x; xsghetti <br>
-gitlab: Stephan Raabe; Zaney; <br>
-and probably a lot of random people on youtube, reddit etc.
+## Mirror
 
-If you'll like or actually use some of my dotfiles, you can star this repo, it will make me happy :) thank you.
+This repo is also mirrored on my [GitLab](https://gitlab.com/vmkxyz/dotfiles/-/tree/master?ref_type=heads) for reasons...
+
+## Credits
+
+I also yoinked some stuff from these people:
+
+- **GitHub:**
+  - [LukeSmithxyz](https://github.com/LukeSmithxyz)
+  - [agryphus](https://github.com/agryphus)
+  - [SSKT7](https://github.com/SSKT7)
+  - [fishyfishfish55](https://github.com/fishyfishfish55)
+  - [adi1090x](https://github.com/adi1090x)
+  - [xsghetti](https://github.com/xsghetti)
+- **GitLab:**
+  - [Stephan Raabe](https://gitlab.com/stephan.raabe)
+  - [Zaney](https://gitlab.com/Zaney)
+
+and probably many others on youtube, reddit etc.

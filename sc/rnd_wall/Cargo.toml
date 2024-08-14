@@ -1,8 +1,8 @@
 [package]
 name = "rnd_wall"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 [dependencies]
 rand = "0.8"
-rayon = "1.5"
+wallust = "3.0.0"
