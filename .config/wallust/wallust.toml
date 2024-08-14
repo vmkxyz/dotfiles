@@ -1,0 +1,18 @@
+# see https://codeberg.org/explosion-mental/wallust/src/branch/master/wallust.toml
+
+backend = "wal" # full - resized - wal - thumb -  fastresize - kmeans
+fallback_generator = "interpolate" # interpolate or complementary
+color_space = "labmixed" # lab - labmixed - lch - lchmixed
+threshold = 8 # 1 to 100
+check_contrast = false
+
+# dark - dark16 - darkcomp - darkcomp16
+# light - light16 - lightcomp - lightcomp16
+# harddark - harddark16 - harddarkcomp - harddarkcomp16
+# softdark - softdark16 - softdarkcomp - softdarkcomp16
+# softlight - softlight16 - softlightcomp - softlightcomp16
+palette = "dark"
+
+[templates]
+hypr = { src = 'hyprland-colors.conf', dst = '~/.config/hypr/colors.conf' }
+waybar = { src = 'waybar-colors.css', dst = '~/.config/waybar/colors.css' }
