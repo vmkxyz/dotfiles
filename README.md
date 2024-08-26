@@ -8,7 +8,7 @@ Welcome, these are my dotfiles. I run Arch linux (btw) as my distro with Hyprlan
 - **Neovim Configs:** For a better coding experience. (Or just text editing...)
 - **Firefox `user.js`:** With some sane options and privacy in mind!
 - **Scripts:** Some of them even in [**Rust**](https://youtu.be/LDU_Txk06tM?si=XyNZZpBwhdSF4-0Z&t=74)! (Rust source code in tge [sc](sc/) directory.)
-- **And Much More:** Like firefox useChrome.css and configs for many more programs.
+- **And Much More:** Like firefox userChrome.css and configs for many more programs.
 
 ## Mirror
 
