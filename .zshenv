@@ -3,10 +3,14 @@ export PATH=$PATH:~/.local/bin/
 export PATH=$HOME/.local/bin/platform-tools:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# zsh plugin config
+## timer
+export TIMER_FORMAT='%d'
+export TIMER_PRECISION=2
 
 # Default apps
-export TERMINAL='alacritty'
-export EDITOR='nvim'
+export TERMINAL='foot'
+export EDITOR='nvim' # dont set to 'v' if using my dotfiles
 export VISUAL='nvim'
 export IMAGE_VIEWER='qimgv'
 export VIDEO_PLAYER='mpv'
