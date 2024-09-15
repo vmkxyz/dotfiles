@@ -9,7 +9,7 @@ export TIMER_FORMAT='%d'
 export TIMER_PRECISION=2
 
 # Default apps
-export TERMINAL='foot'
+export TERMINAL='alacritty'
 export EDITOR='nvim' # dont set to 'v' if using my dotfiles
 export VISUAL='nvim'
 export IMAGE_VIEWER='qimgv'
@@ -25,4 +25,4 @@ export MAIL_CLIENT='neomutt'
 
 # Else
 export QT_QPA_PLATFORMTHEME='qt5ct'
-export QT_QPA_PLATFORM=wayland
+#export QT_QPA_PLATFORM=wayland
