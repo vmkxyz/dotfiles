@@ -4,10 +4,10 @@ Welcome, these are my dotfiles. I run Arch linux (btw) as my distro with Hyprlan
 
 ## What's in Here
 
-- **Hyprland and Waybar Configs:** With wallpaper based colors all over the place.
+- **Hyprland and Waybar Configs:** With wallpaper based colors all over the place. (Yeah... waybar and window borders, that's it.)
 - **Neovim Configs:** For a better coding experience. (Or just text editing...)
 - **Firefox `user.js`:** With some sane options and privacy in mind!
-- **Scripts:** Some of them even in [**Rust**](https://youtu.be/LDU_Txk06tM?si=XyNZZpBwhdSF4-0Z&t=74)! (Rust source code in tge [sc](sc/) directory.)
+- **Scripts:** Some of them even in [**Rust**](https://youtu.be/LDU_Txk06tM?si=XyNZZpBwhdSF4-0Z&t=74)! (Rust source code in the [sc](sc/) directory.)
 - **And Much More:** Like firefox userChrome.css and configs for many more programs.
 
 ## Mirror
