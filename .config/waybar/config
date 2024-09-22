@@ -21,7 +21,9 @@
 	    "tray"
     ],
     "modules-center": [
-	    "hyprland/workspaces"
+	    "hyprland/workspaces",
+		"dwl/tags",
+		"river/tags"
     ],
     "modules-right": [
 	    "pulseaudio",
