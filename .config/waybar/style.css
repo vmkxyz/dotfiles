@@ -95,8 +95,8 @@ window#waybar {
     margin: 0px 0px 0px 0px;
     padding: 0px 5px;
     box-shadow: none;
-
 }
+
 #workspaces button.focused {
     background-color: @foreground;
     padding: 0px 0px 0px 0px;
@@ -105,6 +105,67 @@ window#waybar {
 }
 
 #workspaces button.urgent {
+    background-color: #eb4d4b;
+    box-shadow: none;
+}
+
+/* =========== Tags =========== */
+
+#tags {
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px;
+    border-radius: 15px;
+    border: 0px;
+    background: @background;
+}
+
+#tags button {
+    padding: 0px 5px 0px 5px;
+    margin: 0px 0px 0px 0px;
+    color: @foreground; /* numbers color */
+    box-shadow: none;
+}
+
+#tags button:hover {
+    background: @background;
+    color: @foreground;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+#tags button:hover.active {
+    background: @foreground;
+    color: @background;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+/* broken*/
+#tags button.active {
+    color: @background; /* color of active number */
+    background: @foreground; /* color behind active number */
+    border-radius: 15px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    box-shadow: none;
+}
+
+#tags button.focused {
+    background-color: @foreground;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    box-shadow: none;
+}
+
+#tags button.urgent {
     background-color: #eb4d4b;
     box-shadow: none;
 }
