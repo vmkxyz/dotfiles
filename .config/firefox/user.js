@@ -76,6 +76,9 @@ user_pref("security.family_safety.mode", 0);
 user_pref("browser.formfill.enable", false);
 user_pref("signon.autofillForms", false);
 user_pref("signon.prefillForms", false);
+/** "Trending on Google" ad in the url bar **/
+user_pref("browser.urlbar.suggest.trending", false);
+user_pref("browser.urlbar.trending.featureGate", false);
 
 
 
