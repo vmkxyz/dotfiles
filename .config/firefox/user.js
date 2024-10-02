@@ -99,6 +99,9 @@ user_pref("browser.gesture.swipe.right", "");
 user_pref("browser.gesture.swipe.left", "");
 /** DISABLE ALT MENU **/
 user_pref("ui.key.menuAccessKeyFocuses", false);
+/** TAB HOVER PREVIEWS **/
+user_pref("browser.tabs.hoverPreview.enabled", false);
+user_pref("browser.tabs.hoverPreview.showThumbnails", false);
 
 
 
