@@ -69,6 +69,7 @@ map m
 
 map au unarchive
 map ae $wine "$f"
+map C !cat "$f" | wl-copy --type image/png
 
 # Basic Functions
 map . set hidden!
