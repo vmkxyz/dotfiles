@@ -1,0 +1,4 @@
+#!/bin/dash
+export QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=dwl XDG_BACKEND=wayland XDG_SESSION_DESKTOP=dwl
+#WAYLAND_DISPLAY=wayland-1
+exec slstatus -s | exec dwl
