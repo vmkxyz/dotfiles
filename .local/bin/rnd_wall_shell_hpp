@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # DEPRICATED! use rnd_wall written in rust
+# rnd_wall_hpp_rust
 
 # A script to set a random wallpaper and apply it
 # and its (pywal) colors to stuff

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Path to your wallpapers folder
+wallpapers_folder="$HOME/Pictures/wallpapers"
+random_wallpaper=$(ls "$wallpapers_folder" | grep .jpg | shuf -n 1)
+PID=$(pidof wbg)
+wbg "$wallpapers_folder/$random_wallpaper" &
+cp "$wallpapers_folder/$random_wallpaper" "$HOME/.cache/active_wallpaper.jpg"
+sleep 0.2
+kill $PID
