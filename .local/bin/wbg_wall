@@ -1,0 +1,8 @@
+#!/bin/sh
+WP=$1
+[ ! -f $WP ] && exit 1
+PID=$(pidof wbg)
+wbg "$WP" &
+cp "$WP" "$HOME/.cache/active_wallpaper.jpg"
+sleep 0.2
+kill $PID
