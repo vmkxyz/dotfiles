@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do
+	battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
+	[ "$battery_level" = "20" ] && notify-send "Low battery!" "The battery is at 20%." && sleep 300
+	sleep 30
+done
