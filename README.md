@@ -1,6 +1,6 @@
 # My Dotfiles
 
-Welcome, these are my dotfiles. I run Arch linux (btw) as my distro with Hyprland as my WM/compositor. Feel free to edit and use anything here you find useful.
+Welcome, these are my dotfiles. I run Arch linux (btw) as my distro ~~with Hyprland as my WM/compositor.~~ Kinda, I am trying out a few different compositors rn, my current favourite is dwl, I have my fork of it on my github profile (not yet liar). Feel free to edit and use anything here you find useful.
 
 ## What's in Here
 
