@@ -1,0 +1,207 @@
+#!/bin/sh
+
+# ---- autostart
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec wl-paste --type text --watch cliphist store &
+exec wl-paste --type image --watch cliphist store &
+exec syncthing serve --no-browser &
+exec kdeconnect-indicator &
+exec rnd_wall_shell_wbg &
+exec hypridle &
+exec lowbat &
+exec waybar &
+exec dunst &
+#exec sh -c 'sleep 0.5 && udiskie -t &' & # Automounting removable media, tray icon
+
+# ---- variables
+term="foot"
+browser="firefox"
+wm="rivercarro"
+
+# ---- general
+# window (layout) manager
+riverctl default-layout $wm
+#rivertile -main-ratio 0.55 -view-padding 2 -outer-padding 2 &
+rivercarro -inner-gaps 4 -outer-gaps 4 -main-ratio 0.55 &
+
+# focus
+riverctl focus-follows-cursor normal
+
+# borders & background
+riverctl border-width 2
+riverctl border-color-focused 0xfab387
+riverctl border-color-unfocused 0x1e1e2e
+riverctl background-color 0x000000
+
+# Set input and keyboard repeat rate
+riverctl keyboard-layout -options "grp:ctrl_space_toggle" "vmk" # -options "caps:swapescape"
+riverctl set-repeat 50 300
+
+# --- rules
+riverctl rule-add -app-id '*' ssd # make everything use server side decorations so borders don't break
+
+# ---- binds
+# programs
+riverctl map normal Super P spawn 'rofi -show drun'
+riverctl map normal Super+Alt P spawn 'wmenu-run'
+riverctl map normal Super Return spawn $term
+riverctl map normal Super V spawn $browser
+riverctl map normal Super B spawn 'pidof waybar && killall -SIGUSR1 waybar'
+riverctl map normal Super+Alt B spawn 'pidof waybar && killall -SIGUSR2 waybar || waybar &'
+riverctl map normal Super+Shift V spawn 'cliphist list | rofi -dmenu | cliphist decode | wl-copy'
+riverctl map normal None Print spawn 'filename=$HOME/Pictures/grim/$(date +%F_%T).png && slurp | grim -g - $filename && wl-copy -t image/png < $filename'
+riverctl map normal Alt Print spawn 'filename=$HOME/Pictures/grim/$(date +%F_%T).png && grim $filename && wl-copy -t image/png < $filename'
+
+# brightness, media, sound, mic
+# works in lockscreen
+for mode in normal locked; do
+	riverctl map $mode None XF86AudioRaiseVolume		spawn 'amixer sset Master 5%+'
+	riverctl map $mode None XF86AudioLowerVolume		spawn 'amixer sset Master 5%-'
+	riverctl map $mode Shift XF86AudioRaiseVolume		spawn 'amixer sset Master 1%+'
+	riverctl map $mode Shift XF86AudioLowerVolume		spawn 'amixer sset Master 1%-'
+	riverctl map $mode None XF86AudioMute				spawn 'amixer sset Master toggle'
+
+	riverctl map $mode Alt XF86AudioRaiseVolume			spawn 'amixer sset Capture 5%+'
+	riverctl map $mode Alt XF86AudioLowerVolume			spawn 'amixer sset Capture 5%-'
+	riverctl map $mode Alt+Shift XF86AudioRaiseVolume	spawn 'amixer sset Capture 1%+'
+	riverctl map $mode Alt+Shift XF86AudioLowerVolume	spawn 'amixer sset Capture 1%-'
+	riverctl map $mode None XF86AudioMicMute			spawn 'amixer sset Capture toggle'
+
+	riverctl map $mode None XF86AudioPlay		 		spawn 'playerctl play-pause'
+	riverctl map $mode None XF86AudioNext		 		spawn 'playerctl next'
+	riverctl map $mode None XF86AudioPrev		 		spawn 'playerctl previous'
+	riverctl map $mode None Cancel		 				spawn 'playerctl play-pause'
+	riverctl map $mode None XF86Favourites		 		spawn 'playerctl next'
+	riverctl map $mode None XF86Go				 		spawn 'playerctl previous'
+
+	riverctl map $mode None XF86MonBrightnessUp			spawn 'brightnessctl s +10%'
+	riverctl map $mode None XF86MonBrightnessDown		spawn 'brightnessctl s 10%-'
+	riverctl map $mode Shift XF86MonBrightnessUp		spawn 'brightnessctl s +1%'
+	riverctl map $mode Shift XF86MonBrightnessDown		spawn 'brightnessctl s 1%-'
+done
+
+# power
+# works in lockscreen
+for mooed in normal locked; do
+	riverctl map normal Super F12 spawn 'systemctl poweroff'
+	riverctl map normal Super F11 spawn 'systemctl reboot'
+	riverctl map normal Super F10 spawn 'systemctl suspend'
+done
+riverctl map normal Super F9 spawn 'hyprlock'
+
+# river
+riverctl map normal Super X close
+riverctl map normal Super+Shift T exit
+
+# mouse
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+
+# master and slave
+riverctl map normal Super+Shift Return zoom
+# Super+J and Super+K to focus the next/previous view in the layout stack
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+# Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous view in the layout stack
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+# Super+H and Super+L to decrease/increase the main ratio of $wm(1)
+riverctl map normal Super H send-layout-cmd $wm "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd $wm "main-ratio +0.05"
+# Super+Shift+H and Super+Shift+L to increment/decrement the main count of $wm(1)
+riverctl map normal Super+Shift H send-layout-cmd $wm "main-count +1"
+riverctl map normal Super+Shift L send-layout-cmd $wm "main-count -1"
+
+# multi monitor
+# Super+Period and Super+Comma to focus the next/previous output
+riverctl map normal Super Period focus-output next
+riverctl map normal Super Comma focus-output previous
+# Super+Shift+{Period,Comma} to send the focused view to the next/previous output
+riverctl map normal Super+Shift Period send-to-output next
+riverctl map normal Super+Shift Comma send-to-output previous
+
+# tags
+# I add: ` -> tag 9; qwer -> tags 5678 so one hand can be used; note that tags start at 0
+# Super+[1-9] to focus tag [0-8]
+riverctl map normal Super 1 set-focused-tags 1
+riverctl map normal Super 2 set-focused-tags 2
+riverctl map normal Super 3 set-focused-tags 4
+riverctl map normal Super 4 set-focused-tags 8
+riverctl map normal Super 5 set-focused-tags 16
+riverctl map normal Super 6 set-focused-tags 32
+riverctl map normal Super 7 set-focused-tags 64
+riverctl map normal Super 8 set-focused-tags 128
+riverctl map normal Super 9 set-focused-tags 256
+riverctl map normal Super Q set-focused-tags 32
+riverctl map normal Super W set-focused-tags 64
+riverctl map normal Super E set-focused-tags 128
+riverctl map normal Super R set-focused-tags 256
+riverctl map normal Super Grave set-focused-tags 512
+
+# Super+Shift+[1-9] to tag focused view with tag [0-8]
+riverctl map normal Super+Shift 1 set-view-tags 1
+riverctl map normal Super+Shift 2 set-view-tags 2
+riverctl map normal Super+Shift 3 set-view-tags 4
+riverctl map normal Super+Shift 4 set-view-tags 8
+riverctl map normal Super+Shift 5 set-view-tags 16
+riverctl map normal Super+Shift 6 set-view-tags 32
+riverctl map normal Super+Shift 7 set-view-tags 64
+riverctl map normal Super+Shift 8 set-view-tags 128
+riverctl map normal Super+Shift 9 set-view-tags 256
+riverctl map normal Super+Shift Q set-view-tags 32
+riverctl map normal Super+Shift W set-view-tags 64
+riverctl map normal Super+Shift E set-view-tags 128
+riverctl map normal Super+Shift R set-view-tags 256
+riverctl map normal Super+Shift Grave set-view-tags 512
+
+# Super+Control+[1-9] to toggle focus of tag [0-8]
+riverctl map normal Super+Control 1 toggle-focused-tags 1
+riverctl map normal Super+Control 2 toggle-focused-tags 2
+riverctl map normal Super+Control 3 toggle-focused-tags 4
+riverctl map normal Super+Control 4 toggle-focused-tags 8
+riverctl map normal Super+Control 5 toggle-focused-tags 16
+riverctl map normal Super+Control 6 toggle-focused-tags 32
+riverctl map normal Super+Control 7 toggle-focused-tags 64
+riverctl map normal Super+Control 8 toggle-focused-tags 128
+riverctl map normal Super+Control 9 toggle-focused-tags 256
+riverctl map normal Super+Control Q toggle-focused-tags 32
+riverctl map normal Super+Control W toggle-focused-tags 64
+riverctl map normal Super+Control E toggle-focused-tags 128
+riverctl map normal Super+Control R toggle-focused-tags 256
+riverctl map normal Super+Control Grave toggle-focused-tags 512
+
+# Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
+riverctl map normal Super+Shift+Control 1 toggle-view-tags 1
+riverctl map normal Super+Shift+Control 2 toggle-view-tags 2
+riverctl map normal Super+Shift+Control 3 toggle-view-tags 4
+riverctl map normal Super+Shift+Control 4 toggle-view-tags 8
+riverctl map normal Super+Shift+Control 5 toggle-view-tags 16
+riverctl map normal Super+Shift+Control 6 toggle-view-tags 32
+riverctl map normal Super+Shift+Control 7 toggle-view-tags 64
+riverctl map normal Super+Shift+Control 8 toggle-view-tags 128
+riverctl map normal Super+Shift+Control 9 toggle-view-tags 256
+riverctl map normal Super+Shift+Control Q toggle-view-tags 32
+riverctl map normal Super+Shift+Control W toggle-view-tags 64
+riverctl map normal Super+Shift+Control E toggle-view-tags 128
+riverctl map normal Super+Shift+Control R toggle-view-tags 256
+riverctl map normal Super+Shift+Control Grave toggle-view-tags 512
+
+# Super+0 to focus all tags
+# Super+Shift+0 to tag focused view with all tags
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+
+# dynamic layouts
+# Super+Space to toggle float
+riverctl map normal Super Space toggle-float
+riverctl map normal Super F toggle-float
+# Super+F to toggle fullscreen
+riverctl map normal Super A toggle-fullscreen
+
+# Super+M for Monocle layout
+riverctl map normal Super M send-layout-cmd rivercarro "main-location monocle"
+# Super+T to get back to Master and slave layout
+riverctl map normal Super T send-layout-cmd rivercarro "main-location left"
