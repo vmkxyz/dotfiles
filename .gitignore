@@ -5,3 +5,7 @@
 # sc/
 sc/*/target
 sc/*/Cargo.lock
+# wallust colors
+.config/hypr/colors.conf
+.config/waybar/colors.css
+.config/waybar/old_design/colors.css
