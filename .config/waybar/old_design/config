@@ -12,30 +12,35 @@
     "position": "top",
     "height": "min",
     "width": "max",
-    "spacing": 0,
+    "spacing": 4,
 
 /* =========== Modules =========== */
 
     "modules-left": [
-	    "hyprland/workspaces",
-		"river/tags",
-		"dwl/tags"
+		"clock",
+	    "tray"
     ],
     "modules-center": [
-	    "tray"
+	    "hyprland/workspaces",
+		"dwl/tags",
+		"river/tags"
     ],
     "modules-right": [
 	    "pulseaudio",
+	    "custom/keys",
+	    "cpu",
+	    "memory",
 	    "temperature",
+	    "custom/fan",
+//	    "backlight",
 	    "network",
 	    "battery",
-		"clock"
     ],
 
 /* =========== Clock =========== */
 
     "clock": {
-        "format": "|  {:%F   %T}",
+        "format": " {:%y/%m/%d    %I:%M:%S %p}", //putting  inside {} does not work
 		"interval": 1,
 		"tooltip-format": "<small>{calendar}</small>",
     },
@@ -49,12 +54,12 @@
 /* =========== Pulseaudio =========== */
 
     "pulseaudio": {
-        "format": "| {volume}% {icon}  {format_source} ",
+        "format": "{volume}% {icon}  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "|  {format_source} ",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
-        "format-source-muted": " ",
+        "format-source-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -66,23 +71,49 @@
         },
     },
 
+/* =========== Keyboard =========== */
 
-/* =========== Temperature =========== */
+    "custom/keys": {
+		"exec": "hyprctl devices | grep -q 'Czech' && echo 'cz' || hyprctl devices | grep -q 'keymap: vmk' && echo 'vmk' || echo 'us'",
+		"format": "{} ",
+		"interval": 1,
+    },
 
+/* =========== Hardware =========== */
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
     "temperature": {
         "critical-threshold": 110,
-        "format": "| {icon} {temperatureC}°C ",
+        "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "custom/fan": {
+        "exec": "sensors | awk '/fan1:/ {print $2}'",
+        "format": "{} ",
+        "interval": 5,
+    },
+
+/* =========== Backlight =========== */
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
 /* =========== Network =========== */
 
     "network": {
-        "format-wifi": "|   {signalStrength}% ",
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "|   n/a% ",
+        "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
@@ -93,10 +124,10 @@
             "warning": 30,
             "critical": 15
         },
-       "format": "| {icon}  {capacity}% ",
+       "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        "format-alt": "| {icon} {time}",
+        "format-alt": "{time} {icon} ",
         "format-icons": ["", "", "", "", ""]
     },
 }
