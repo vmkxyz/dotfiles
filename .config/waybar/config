@@ -19,11 +19,13 @@
     "modules-left": [
 	    "hyprland/workspaces",
 		"river/tags",
-		"dwl/tags"
-    ],
-    "modules-center": [
+		"dwl/tags", /* note that this requires the ipc patch which can be a pain to set up */
 	    "tray"
     ],
+    "modules-center": [
+		"hyprland/window",
+		"river/window"
+    ], /* adding dwl/window crashes waybar for some reason */
     "modules-right": [
 	    "pulseaudio",
 	    "temperature",
@@ -94,9 +96,9 @@
             "critical": 15
         },
        "format": "| {icon}  {capacity}% ",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "| {icon} {time}",
+        "format-charging": "|  {capacity}% ",
+        "format-plugged": "|  {capacity}% ",
+        "format-alt": "| {icon}  {time}",
         "format-icons": ["", "", "", "", ""]
     },
 }
