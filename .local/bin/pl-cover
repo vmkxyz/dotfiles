@@ -1,0 +1,54 @@
+#!/bin/sh
+# Continuously check for new songs and display the album cover
+
+mpv_socket="/tmp/mpv-socket"
+cover_file="/tmp/mpv-cover.jpg"
+previous_file=""
+previous_tmux_state=1
+force_update=0
+
+# Function to display the cover
+display_cover() {
+	if [ -f "$cover_file" ]; then
+		# Clear the terminal and display the cover
+		clear
+		img2sixel "$cover_file"
+	fi
+}
+
+# Function to check if the tmux session is attached
+is_tmux_session_attached() {
+	tmux list-sessions -F '#{session_name} #{session_attached}' | grep 'mp 1' > /dev/null
+	echo $?
+}
+
+while true; do
+	# Get the currently playing file from mpv
+	new_file=$(echo '{ "command": ["get_property", "path"] }' | socat - "$mpv_socket" | jq -r .data)
+
+	# Get the current tmux attachment state
+	current_tmux_state=$(is_tmux_session_attached)
+
+	# If the tmux session was detached and is now attached, force an update
+	if [ "$previous_tmux_state" -eq 1 ] && [ "$current_tmux_state" -eq 0 ]; then
+		force_update=1
+	fi
+
+	# If the new file is not null, the tmux session is attached, and either:
+	# - the new file is different from the previous one, OR
+	# - force_update is set (meaning the tmux state changed from detached to attached)
+	if [ "$new_file" != "null" ] && [ "$current_tmux_state" -eq 0 ] && { [ "$new_file" != "$previous_file" ] || [ "$force_update" -eq 1 ]; }; then
+		# Extract the album cover and display it
+		ffmpeg -loglevel quiet -y -i "$new_file" -an -vcodec copy "$cover_file" && display_cover
+		# Update the previous_file variable
+		previous_file="$new_file"
+		# Reset the force_update flag
+		force_update=0
+	fi
+
+	# Update the previous tmux state
+	previous_tmux_state="$current_tmux_state"
+
+	# Sleep for a short time before checking again
+	sleep 0.05
+done

@@ -1,0 +1,39 @@
+#!/bin/sh
+# we have a mpd at home
+
+# this script is inteded to be launched with keybind in your wm
+# you need to have these packages installed: tmux, mpv, ffmpeg, img2sixel
+# you'll also need a menu and a terminal emulator that supports sixel like wmenu and foot
+# and lastly you'll need to have the pl-cover script somewhere in your PATH
+
+# ok but what is this?
+# this script is a playlist/album player that runs in tmux
+# it uses mpv to play the song and ffmpeg and img2sixel to extract and print its cover image
+# I made this so that I can listen to music trough a daemon, something like mpd but without being complicated and 20 years old
+# also, this is just a shell script, no c++, no anything else, it's as simple as it can be
+
+# to get started, edit the quick settings to fit your usecase and make a bind to this script in you wm
+# enjoy
+
+# quick settings:
+playlist_dir="$HOME/Music" # don't add a trailing slash, use $HOME instead of ~
+terminal="foot"
+menu="wmenu"
+
+# attach if this is already running
+if tmux has -t mp; then
+	$terminal tmux attach -t mp
+else
+	# select a playlist
+	chosen_dir=$(find $playlist_dir -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | $menu) || exit 0
+
+	# start tmux session called "mp" and run mpv and display-cover.sh in it
+	tmux new-session -d -s mp # new
+	tmux split-window -h -t mp # split
+	tmux send-keys -t mp.0 "clear && mpv --shuffle --no-audio-display --idle --input-ipc-server=/tmp/mpv-socket $playlist_dir/$chosen_dir" Enter # mpv
+	tmux send-keys -t mp.1 "clear && ~/.local/bin/pl-cover" Enter # cover
+	tmux select-pane -t mp.0 # focus back on mpv
+
+	# attach the tmux session
+	$terminal tmux attach -t mp
+fi
