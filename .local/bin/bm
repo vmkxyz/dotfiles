@@ -1,0 +1,3 @@
+#!/bin/sh
+[ "$1" = "add" ] && echo $2 >> .local/share/bm.txt && exit 0
+wtype $(cat .local/share/bm.txt | wmenu)
