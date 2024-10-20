@@ -138,7 +138,7 @@ alias cfgs='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME status'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
-source /usr/share/zsh/plugins/zsh-timer/timer.plugin.zsh
+#source /usr/share/zsh/plugins/zsh-timer/timer.plugin.zsh
 
 # Hooks
 eval "$(zoxide init zsh)"
