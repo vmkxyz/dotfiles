@@ -5,5 +5,5 @@ syncthing serve --no-browser &
 kdeconnect-indicator &
 rnd_wall_shell_wbg &
 hypridle &
-pidof lowbat || lowbat &
+lowbat &
 dunst &
