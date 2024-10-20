@@ -23,6 +23,7 @@ I also yoinked some stuff from these people:
 
 - **GitHub:**
   - [LukeSmithxyz](https://github.com/LukeSmithxyz)
+  - [EricMurphyxyz](https://github.com/ericmurphyxyz)
   - [agryphus](https://github.com/agryphus)
   - [SSKT7](https://github.com/SSKT7)
   - [fishyfishfish55](https://github.com/fishyfishfish55)
