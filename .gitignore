@@ -1,5 +1,7 @@
 # nvim
 .config/nvim/plugin
+# qtile
+.config/qtile/__pycache__
 # .local/bin/
 .local/bin/platform-tools
 # sc/
