@@ -5,9 +5,6 @@
 # by  |___//_/_/_//_/\_\
 # @vmkxyz on gitlab and github
 
-# Import colorscheme from pywal
-#(cat ~/.cache/wal/sequences &)
-
 # Enviroment variables are in .zshenv
 
 # set
@@ -97,7 +94,6 @@ bindkey '^e' edit-command-line
 date
 
 # Aliases
-#alias v=$EDITOR # is set to nvim; env vars are in .zshenv
 alias c='clear'
 alias :q='exit'
 alias e='exit'
@@ -128,15 +124,15 @@ alias cleanup="doas pacman -Syu; pacman -Qdtq | xargs -r doas pacman -Rsn --noco
 alias sudo='doas'
 alias cd='z'
 
-alias cfg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias cfga='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add'
-alias cfgau='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add -u'
-alias cfgc='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit'
-alias cfgca='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -a'
-alias cfgp='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push'
-alias cfgf='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME fetch'
-alias cfgl='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME pull'
-alias cfgs='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME status'
+alias cfg='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME'
+alias cfga='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME add'
+alias cfgau='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME add -u'
+alias cfgc='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME commit'
+alias cfgca='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME commit -a'
+alias cfgp='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME push'
+alias cfgf='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME fetch'
+alias cfgl='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME pull'
+alias cfgs='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME status'
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
