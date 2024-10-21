@@ -1,7 +1,7 @@
 # Paths
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/bin/platform-tools:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/share/cargo/bin:$PATH
 
 # zsh plugin config
 ## timer
