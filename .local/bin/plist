@@ -18,7 +18,7 @@
 # quick settings:
 playlist_dir="$HOME/Music" # don't add a trailing slash, use $HOME instead of ~
 terminal="foot"
-menu="wmenu"
+menu="wmenu -i"
 
 # attach if this is already running
 if tmux has -t mp; then
