@@ -1,8 +1,13 @@
 #!/bin/sh
 while true; do
+	battery_status=$(cat /sys/class/power_supply/BAT0/status)
 	battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
-	[ "$battery_level" -eq 20 ] && notify-send -u critical -i ~/.local/share/icons/dunst "Low Battery" "20% of battery remaining." && sleep 300
-	[ "$battery_level" -eq 10 ] && notify-send -u critical -i ~/.local/share/icons/dunst "Low Battery" "10% of battery remaining." && sleep 300
-	[ "$battery_level" -eq 5 ] && notify-send -u critical -i ~/.local/share/icons/dunst "Critical Battery" "5% of battery remaining." && sleep 300
+
+	if [ "$battery_status" != "Charging" ]; then
+		[ "$battery_level" -eq 20 ] && notify-send -u critical -i ~/.local/share/icons/dunst "Low Battery" "20% of battery remaining." && sleep 300
+		[ "$battery_level" -eq 10 ] && notify-send -u critical -i ~/.local/share/icons/dunst "Low Battery" "10% of battery remaining." && sleep 300
+		[ "$battery_level" -eq 5 ] && notify-send -u critical -i ~/.local/share/icons/dunst "Critical Battery" "5% of battery remaining." && sleep 300
+	fi
+
 	sleep 30
 done
