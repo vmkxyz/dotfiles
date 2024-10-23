@@ -1,3 +1,76 @@
-#!/bin/sh
-[ "$1" = "add" ] && echo $2 >> .local/share/bm.txt && exit 0
-wtype $(cat .local/share/bm.txt | wmenu)
+#!/bin/bash
+
+BOOKMARK_FILE="$HOME/.local/share/bm.txt"
+ACTION="${1:-select}"
+
+# Ensure the bookmark file exists
+mkdir -p "$(dirname "$BOOKMARK_FILE")"
+touch "$BOOKMARK_FILE"
+
+add_bookmark() {
+	local new_bookmark
+	new_bookmark=$(wl-paste) # Get content from clipboard
+
+	if [ -z "$new_bookmark" ]; then
+		notify-send "Bookmark Manager" "No content in clipboard!"
+		exit 1
+	fi
+
+	# Check if the bookmark already exists in the file
+	if grep -Fxq "$new_bookmark" "$BOOKMARK_FILE"; then
+		notify-send "Bookmark Manager" "Bookmark already exists: $new_bookmark"
+		exit 1
+	fi
+
+	echo "$new_bookmark" >> "$BOOKMARK_FILE"
+	notify-send "Bookmark Manager" "Bookmark added: $new_bookmark"
+}
+
+remove_bookmark() {
+	local bookmark_to_remove
+	bookmark_to_remove=$(awk '{print NR ": " $0}' "$BOOKMARK_FILE" | wmenu -l 15) # List bookmarks with line numbers
+
+	if [ -z "$bookmark_to_remove" ]; then
+		notify-send "Bookmark Manager" "No bookmark selected!"
+		exit 1
+	fi
+
+	local line_number
+	line_number=$(echo "$bookmark_to_remove" | cut -d':' -f1)
+	local bookmark_text
+	bookmark_text=$(echo "$bookmark_to_remove" | cut -d':' -f2- | sed 's/^ *//') # Trim leading spaces
+
+	sed -i "${line_number}d" "$BOOKMARK_FILE"
+	notify-send "Bookmark Manager" "Bookmark removed: $bookmark_text"
+}
+
+select_bookmark() {
+	local selected_bookmark
+	selected_bookmark=$(awk '{print NR ": " $0}' "$BOOKMARK_FILE" | wmenu -l 15) # List bookmarks with line numbers
+
+	if [ -z "$selected_bookmark" ]; then
+		exit 1
+	fi
+
+	local bookmark_text
+	bookmark_text=$(echo "$selected_bookmark" | cut -d':' -f2- | sed 's/^ *//') # Trim leading spaces
+
+	echo "$bookmark_text" | wl-copy # Copy to clipboard
+	wtype "$bookmark_text" # Type it out
+}
+
+case "$ACTION" in
+	add)
+		add_bookmark
+		;;
+	remove)
+		remove_bookmark
+		;;
+	select)
+		select_bookmark
+		;;
+	*)
+		notify-send "Bookmark Manager" "Invalid action: $ACTION"
+		exit 1
+		;;
+esac
