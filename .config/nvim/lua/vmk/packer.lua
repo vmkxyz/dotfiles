@@ -2,9 +2,6 @@ return require('packer').startup(function(use)
 	-- Packer
 	use 'wbthomason/packer.nvim'
 
-	--libraries
-		use 'nvim-lua/plenary.nvim'
-
 	--programming
 		--treesitter
 		use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -16,11 +13,11 @@ return require('packer').startup(function(use)
 		}
 		--snippets
 		use {
-		'hrsh7th/nvim-cmp',
-		'hrsh7th/cmp-nvim-lsp',
-		'L3MON4D3/LuaSnip',
-		'saadparwaiz1/cmp_luasnip',
-		'rafamadriz/friendly-snippets'
+			'hrsh7th/nvim-cmp',
+			'hrsh7th/cmp-nvim-lsp',
+			'L3MON4D3/LuaSnip',
+			'saadparwaiz1/cmp_luasnip',
+			'rafamadriz/friendly-snippets'
 		}
 		--indent blankline
 		use 'lukas-reineke/indent-blankline.nvim'
@@ -30,7 +27,8 @@ return require('packer').startup(function(use)
 	--navigation
 		--telescope
 		use {
-			'nvim-telescope/telescope.nvim', tag = '0.1.6',
+			'nvim-telescope/telescope.nvim', tag = '0.1.8',
+			requires = { {'nvim-lua/plenary.nvim'} }
 		}
 		--oil.nvim
 		use 'stevearc/oil.nvim'
