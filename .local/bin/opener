@@ -39,7 +39,6 @@ case $(file --mime-type "$1" -b) in
             || (mpv "$1" &)
         ;;
     application/msword|\
-    application/octet-stream|\
     application/vnd.ms-powerpoint|\
     application/vnd.oasis.opendocument.database|\
     application/vnd.oasis.opendocument.formula|\
