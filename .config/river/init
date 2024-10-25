@@ -83,7 +83,7 @@ done
 
 # power
 # works in lockscreen
-for mooed in normal locked; do
+for mode in normal locked; do
 	riverctl map normal Super F12 spawn 'systemctl poweroff'
 	riverctl map normal Super F11 spawn 'systemctl reboot'
 	riverctl map normal Super F10 spawn 'systemctl suspend'
