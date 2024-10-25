@@ -19,8 +19,6 @@ return require('packer').startup(function(use)
 			'saadparwaiz1/cmp_luasnip',
 			'rafamadriz/friendly-snippets'
 		}
-		--indent blankline
-		use 'lukas-reineke/indent-blankline.nvim'
 		--tabnine
 		--use { 'codota/tabnine-nvim', run = './dl_binaries.sh' }
 
@@ -40,4 +38,6 @@ return require('packer').startup(function(use)
 		use 'brenoprata10/nvim-highlight-colors'
 		--icons
 		use 'nvim-tree/nvim-web-devicons'
+		--indent blankline
+		use 'lukas-reineke/indent-blankline.nvim'
 end)
