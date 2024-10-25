@@ -19,10 +19,10 @@ rm -rf paru
 #paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
 
 echo "============= Setup doas and remove sudo ============="
-sudo ln -fs $(which doas) /usr/bin/sudo
+sudo ln -fs "$(which doas)" /usr/bin/sudo
 if [ ! -e "/etc/doas.conf" ]; then
 	sudo touch "/etc/doas.conf"
-	sudo echo "permit :wheel as root\npermit persist :wheel" >> /etc/doas.conf
+	printf "permit :wheel as root\npermit persist :wheel" | sudo tee -a /etc/doas.conf
 	sudo pacman -Rdd sudo && echo "sudo removed successfully"
 else
 	[ ! -f /etc/doas.conf ] || echo "existing configuration for doas aready, aborting..." && exit 1
