@@ -134,6 +134,16 @@ alias cfgf='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME fetch'
 alias cfgl='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME pull'
 alias cfgs='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME status'
 
+alias g='/usr/bin/git'
+alias ga='/usr/bin/git add'
+alias gau='/usr/bin/git add -u'
+alias gc='/usr/bin/git commit'
+alias gca='/usr/bin/git commit -a'
+alias gp='/usr/bin/git push'
+alias gf='/usr/bin/git fetch'
+alias gl='/usr/bin/git pull'
+alias gs='/usr/bin/git status'
+
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
