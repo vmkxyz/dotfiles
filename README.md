@@ -1,36 +1,59 @@
 # My Dotfiles
 
-The READMEs are kinda a mess...
+Welcome, these are my dotfiles. Feel free to use anything you like here.
 
-Welcome, these are my dotfiles. I run Arch linux (btw) as my distro ~~with Hyprland as my WM/compositor.~~ Kinda, I am trying out a few different compositors rn, my current favourite is dwl, I have my fork of it on my github profile (not yet liar). Feel free to edit and use anything here you find useful.
+This repo is also mirrored on [my GitLab] for reasons...
 
-## What's in Here
 
-- **Configs for multiple WMs:** River, Hypeland, Qtile
-- **Some forks:** Ok those are in other repos, but I have my builds of dwl, slstatus, wmenu and more
-- **Neovim Configs:** For a better coding experience. (Or just text editing...)
-- **Firefox `user.js`:** With some sane options and privacy in mind!
-- **Scripts:** Some of them even in [**Rust**](https://youtu.be/LDU_Txk06tM?t=74)! (Rust source code in the [sc](sc/) directory.)
-- **And Much More:** Like firefox userChrome.css and configs for many more programs.
+## Programs I use
 
-## Mirror
+- os: arch
+- WM/compositor: *[dwl]*
+- statusbar: [dwl-bar-0.7] + *[slstatus]*
+- terminal: foot
+- menu: rofi and *[wmenu]*
+- editor: neovim
+- browser: firefox ([user.js])
+- shell: zsh
 
-This repo is also mirrored on my [GitLab](https://gitlab.com/vmkxyz/dotfiles) for reasons...
+I also have configs for River, Hyprland and Qtile. These might be a bit out-of-date tho.
+I have my own firefox [user.js] which borrows from [Betterfox] and [Arkenfox] and has a few other changes made to it.
+Some usefull scripts can be found at [.local/bin/]
+Any forks can be found on my profile.
+
 
 ## Credits
 
 I also yoinked some stuff from these people:
 
-- **GitHub:**
-  - [LukeSmithxyz](https://github.com/LukeSmithxyz)
-  - [EricMurphyxyz](https://github.com/ericmurphyxyz)
-  - [agryphus](https://github.com/agryphus)
-  - [SSKT7](https://github.com/SSKT7)
-  - [fishyfishfish55](https://github.com/fishyfishfish55)
-  - [adi1090x](https://github.com/adi1090x)
-  - [xsghetti](https://github.com/xsghetti)
-- **GitLab:**
-  - [Stephan Raabe](https://gitlab.com/stephan.raabe)
-  - [Zaney](https://gitlab.com/Zaney)
+- [LukeSmithxyz](https://github.com/LukeSmithxyz)
+- [EricMurphyxyz](https://github.com/ericmurphyxyz)
+- [agryphus](https://github.com/agryphus)
+- [SSKT7](https://github.com/SSKT7)
+- [fishyfishfish55](https://github.com/fishyfishfish55)
+- [adi1090x](https://github.com/adi1090x)
+- [xsghetti](https://github.com/xsghetti)
+- [Stephan Raabe](https://gitlab.com/stephan.raabe)
+- [Zaney](https://gitlab.com/Zaney)
 
 and probably many others on youtube, reddit etc.
+
+[my Gitlab]: https://gitlab.com/vmkxyz/dotfiles/
+[dwl]: https://github.com/vmkxyz/dwl/
+[dwl-bar-0.7]: https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/bar/
+[slstatus]: https://github.com/vmkxyz/slstatus/
+[wmenu]: https://github.com/vmkxyz/wmenu/
+[user.js]: .config/firefox/user.js
+[Betterfox]: https://github.com/yokoffing/Betterfox/
+[Arkenfox]: https://github.com/arkenfox/user.js/
+[.local/bin/]: .local/bin/
+
+[LukeSmithxyz]: https://github.com/LukeSmithxyz
+[EricMurphyxyz]: https://github.com/ericmurphyxyz
+[agryphus]: https://github.com/agryphus
+[SSKT7]: https://github.com/SSKT7
+[fishyfishfish55]: https://github.com/fishyfishfish55
+[adi1090x]: https://github.com/adi1090x
+[xsghetti]: https://github.com/xsghetti
+[Stephan Raabe]: https://gitlab.com/stephan.raabe
+[Zaney]: https://gitlab.com/Zaney
