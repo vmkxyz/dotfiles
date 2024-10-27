@@ -1,26 +1,23 @@
 # My Dotfiles
 
 Welcome, these are my dotfiles. Feel free to use anything you like here.
-
 This repo is also mirrored on [my GitLab] for reasons...
-
 
 ## Programs I use
 
-- os: arch
-- WM/compositor: *[dwl]*
-- statusbar: [dwl-bar-0.7] + *[slstatus]*
-- terminal: foot
-- menu: rofi and *[wmenu]*
-- editor: neovim
-- browser: firefox ([user.js])
-- shell: zsh
+- **os: arch**
+- **WM/compositor:** *[dwl]*
+- **statusbar:** [dwl-bar-0.7] + *[slstatus]*
+- **terminal:** foot
+- **menu:** rofi and *[wmenu]*
+- **editor:** neovim
+- **browser:** firefox ([user.js])
+- **shell:** zsh
 
 I also have configs for River, Hyprland and Qtile. These might be a bit out-of-date tho.
 I have my own firefox [user.js] which borrows from [Betterfox] and [Arkenfox] and has a few other changes made to it.
 Some usefull scripts can be found at [.local/bin/]
 Any forks can be found on my profile.
-
 
 ## Credits
 
