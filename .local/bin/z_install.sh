@@ -1,9 +1,11 @@
 #!/bin/sh
 # a script only really useful to me, I might use this in case of moving to a new deivce to save me some work
 
+# initial pacman
 echo "============= Installing a bunch of packages ============="
 sudo pacman -Syu --needed base-devel dash brightnessctl grim slurp man vim neovim noto-fonts-cjk opendoas otf-font-awesome playerctl reflector ttf-sourcecodepro-nerd ufw cliphist
 
+# paru
 echo "============= Compiling paru ============="
 git clone https://aur.archlinux.org/paru.git
 cd paru || exit 1
@@ -18,6 +20,7 @@ rm -rf paru
 #sudo pacman -Syu --needed linux-firmware-qlogic linux-headers terminus-font
 #paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
 
+# doas
 echo "============= Setup doas and remove sudo ============="
 sudo ln -fs "$(which doas)" /usr/bin/sudo
 if [ ! -e "/etc/doas.conf" ]; then
@@ -27,3 +30,7 @@ if [ ! -e "/etc/doas.conf" ]; then
 else
 	[ ! -f /etc/doas.conf ] || echo "existing configuration for doas aready, aborting..." && exit 1
 fi
+
+# pc speaker
+echo "============= disable pc speaker via modprobe unloading ============="
+printf 'blacklist pcspkr' | sudo tee -a /etc/modprobe.d/nobeep.conf
