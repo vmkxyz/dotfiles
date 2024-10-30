@@ -20,6 +20,11 @@ rm -rf paru
 #sudo pacman -Syu --needed linux-firmware-qlogic linux-headers terminus-font
 #paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
 
+# dirs
+echo "============= Make some directories ============="
+cd ~ || exit 1
+mkdir -p Downloads Documents Games Music Pictures/wallpapers Pictures/grim Sync git Projects
+
 # doas
 echo "============= Setup doas and remove sudo ============="
 sudo ln -fs "$(which doas)" /usr/bin/sudo
@@ -32,5 +37,16 @@ else
 fi
 
 # pc speaker
-echo "============= disable pc speaker via modprobe unloading ============="
+echo "============= Disable pc speaker via modprobe unloading ============="
 printf 'blacklist pcspkr' | sudo tee -a /etc/modprobe.d/nobeep.conf
+
+# dash
+echo "============= Link /bin/sh to dash ============="
+ln -sfT dash /usr/bin/sh
+
+# ufw
+echo "============= enable ufw and allow some ports ============="
+sudo ufw enable
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
+sudo ufw reload ufw
