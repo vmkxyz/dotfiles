@@ -25,12 +25,12 @@ if tmux has -t mp; then
 	$terminal tmux attach -t mp
 else
 	# select a playlist
-	chosen_dir=$(find $playlist_dir -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | $menu) || exit 0
+	chosen_dir=$(find "$playlist_dir" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | $menu) || exit 0
 
 	# start tmux session called "mp" and run mpv and display-cover.sh in it
 	tmux new-session -d -s mp # new
 	tmux split-window -h -t mp # split
-	tmux send-keys -t mp.0 "clear && mpv --shuffle --no-audio-display --idle --input-ipc-server=/tmp/mpv-socket $playlist_dir/$chosen_dir" Enter # mpv
+	tmux send-keys -t mp.0 "clear && mpv --shuffle --no-audio-display --idle --input-ipc-server=/tmp/mpv-socket '$playlist_dir/$chosen_dir'" Enter # mpv
 	tmux send-keys -t mp.1 "clear && ~/.local/bin/pl-cover" Enter # cover
 	tmux select-pane -t mp.0 # focus back on mpv
 
