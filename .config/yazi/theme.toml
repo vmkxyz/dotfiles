@@ -1,11 +1,3 @@
-# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
-# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
-
-# vim:fileencoding=utf-8:foldmethod=marker
-
-# : Manager {{{
-
 [manager]
 cwd = { fg = "white", bold = true }
 
@@ -34,10 +26,6 @@ border_style  = { fg = "gray" }
 # Highlighting
 syntect_theme = ""
 
-# : }}}
-
-
-# : Status {{{
 
 [status]
 separator_open  = ""
@@ -61,20 +49,12 @@ permissions_w = { fg = "lightred" }
 permissions_x = { fg = "lightcyan" }
 permissions_s = { fg = "darkgray" }
 
-# : }}}
-
-
-# : Select {{{
 
 [select]
 border   = { fg = "blue" }
 active   = { fg = "magenta" }
 inactive = {}
 
-# : }}}
-
-
-# : Input {{{
 
 [input]
 border   = { fg = "blue" }
@@ -82,10 +62,6 @@ title    = {}
 value    = {}
 selected = { reversed = true }
 
-# : }}}
-
-
-# : Completion {{{
 
 [completion]
 border   = { fg = "blue" }
@@ -97,20 +73,12 @@ icon_file    = ""
 icon_folder  = ""
 icon_command = ""
 
-# : }}}
-
-
-# : Tasks {{{
 
 [tasks]
 border  = { fg = "blue" }
 title   = {}
 hovered = { underline = true }
 
-# : }}}
-
-
-# : Which {{{
 
 [which]
 cols            = 3
@@ -121,10 +89,6 @@ desc            = { fg = "magenta" }
 separator       = "  "
 separator_style = { fg = "darkgray" }
 
-# : }}}
-
-
-# : Help {{{
 
 [help]
 on      = { fg = "magenta" }
@@ -133,10 +97,6 @@ desc    = { fg = "gray" }
 hovered = { bg = "darkgray", bold = true }
 footer  = { fg = "black", bg = "white" }
 
-# : }}}
-
-
-# : File-specific styles {{{
 
 [filetype]
 
@@ -396,5 +356,3 @@ rules = [
     { name = "*" , text = "" },
     { name = "*/", text = "󰝰", fg = "yellow" },
 ]
-
-# : }}}

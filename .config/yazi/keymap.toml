@@ -13,4 +13,3 @@ prepend_keymap = [
         shell 'printf "Mode Bits: "; read ans; chmod $ans "$@"' --block --confirm
     """, desc = "chmod" },
 ]
-
