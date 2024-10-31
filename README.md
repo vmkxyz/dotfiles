@@ -5,7 +5,7 @@ This repo is also mirrored on [my GitLab] for reasons...
 
 ## Programs I use
 
-- **os: arch**
+- **os:** arch
 - **WM/compositor:** *[dwl]*
 - **statusbar:** [dwl-bar-0.7] + *[slstatus]*
 - **terminal:** foot
@@ -23,15 +23,15 @@ Any forks can be found on my profile.
 
 I also yoinked some stuff from these people:
 
-- [LukeSmithxyz](https://github.com/LukeSmithxyz)
-- [EricMurphyxyz](https://github.com/ericmurphyxyz)
-- [agryphus](https://github.com/agryphus)
-- [SSKT7](https://github.com/SSKT7)
-- [fishyfishfish55](https://github.com/fishyfishfish55)
-- [adi1090x](https://github.com/adi1090x)
-- [xsghetti](https://github.com/xsghetti)
-- [Stephan Raabe](https://gitlab.com/stephan.raabe)
-- [Zaney](https://gitlab.com/Zaney)
+- [LukeSmithxyz]
+- [EricMurphyxyz]
+- [agryphus]
+- [SSKT7]
+- [fishyfishfish55]
+- [adi1090x]
+- [xsghetti]
+- [Stephan Raabe]
+- [Zaney]
 
 and probably many others on youtube, reddit etc.
 
