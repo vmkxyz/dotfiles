@@ -145,11 +145,16 @@ alias gl='/usr/bin/git pull'
 alias gs='/usr/bin/git status'
 
 # Plugins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
-#source /usr/share/zsh/plugins/zsh-timer/timer.plugin.zsh
+# see https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#execute-extra-commands
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+function zvm_after_init() {
+	# Hooks
+	eval "$(zoxide init zsh)"
+	eval "$(fzf --zsh)"
 
-# Hooks
-eval "$(zoxide init zsh)"
-eval "$(fzf --zsh)"
+	# Plugins
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+	#source /usr/share/zsh/plugins/zsh-timer/timer.plugin.zsh
+}

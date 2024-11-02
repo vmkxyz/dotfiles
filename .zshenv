@@ -7,6 +7,13 @@ export PATH=$HOME/.local/share/cargo/bin:$PATH
 ## timer
 export TIMER_FORMAT="%d"
 export TIMER_PRECISION=2
+## zsh vi mode
+export ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
+export ZVM_VI_HIGHLIGHT_BACKGROUND=#414356
+function zvm_config() {
+	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+	ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+}
 
 # Default programs
 export TERMINAL="foot"
