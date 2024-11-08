@@ -7,6 +7,7 @@ vim.cmd[[
 	augroup END
 ]]
 
-vim.cmd [[command! -nargs=0 -bar W :w]]
-vim.cmd [[command! -nargs=0 -bar Wq :wq]]
-vim.cmd [[command! -nargs=0 -bar Q :q]]
+vim.cmd('command! Q q')
+vim.cmd('command! W w')
+vim.cmd('command! WQ wq')
+vim.cmd('command! Wq wq')
