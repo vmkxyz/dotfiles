@@ -1,0 +1,16 @@
+#!/bin/sh
+# NEOVIM ONLY for now
+# WARNING: we are ignoring ssl and downloading with root privileges, you might not like that
+# Lists and downloads vim's spell files because vim is too broken to do it by itself
+# deps: fzf
+
+# Get available
+chosen=$(curl -skl https://ftp.vim.org/pub/vim/runtime/spell/ | grep .spl | awk '{print $6}' | awk -F '"' '{print $2}')
+
+# List available
+echo "$chosen" | fzf -i || exit 1
+
+# Download chosen
+# WARNING: we are ignoring ssl and downloading with root privileges, you might not like that
+sudo mkdir -p /usr/share/nvim/runtime/spell/ || exit 1
+sudo curl -skLO --output-dir /usr/share/nvim/runtime/spell/ https://ftp.vim.org/pub/vim/runtime/spell/"$chosen" || exit 1
