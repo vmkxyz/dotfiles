@@ -30,27 +30,27 @@ if [[ -f $HISTFILE ]]; then
     fc -R
 fi
 
-# set to -e for emacs mode or to -v for vi mode
+## set to -e for emacs mode or to -v for vi mode
 bindkey -v
-export KEYTIMEOUT=1
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
-    esac
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne '\e[4 q'
-}
-zle -N zle-line-init
-#echo -ne '\e[4 q' # Use underline shape cursor on startup.
-#preexec() { echo -ne '\e[4 q' ;} # Use underline shape cursor for each new prompt.
+#export KEYTIMEOUT=1
+#bindkey '^p' history-search-backward
+#bindkey '^n' history-search-forward
+#
+## Change cursor shape for different vi modes.
+#function zle-keymap-select () {
+#    case $KEYMAP in
+#        vicmd) echo -ne '\e[1 q';;      # block
+#        viins|main) echo -ne '\e[5 q';; # beam
+#    esac
+#}
+#zle -N zle-keymap-select
+#zle-line-init() {
+#    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#    echo -ne '\e[4 q'
+#}
+#zle -N zle-line-init
+##echo -ne '\e[4 q' # Use underline shape cursor on startup.
+##preexec() { echo -ne '\e[4 q' ;} # Use underline shape cursor for each new prompt.
 
 
 # Tab complete
