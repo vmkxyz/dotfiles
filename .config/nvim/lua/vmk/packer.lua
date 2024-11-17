@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
 		}
 		--tabnine
 		--use { 'codota/tabnine-nvim', run = './dl_binaries.sh' }
+		--undotree
+		use  'mbbill/undotree'
 
 	--navigation
 		--telescope
