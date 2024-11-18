@@ -1,19 +1,10 @@
 #!/bin/sh
 # we have a mpd at home
 
-# this script is inteded to be launched with keybind in your wm
-# you need to have these packages installed: tmux, mpv, ffmpeg, img2sixel
-# you'll also need a menu and a terminal emulator that supports sixel like wmenu and foot
-# and lastly you'll need to have the pl-cover script somewhere in your PATH
+# daemonized music
+# needed: tmux, mpv, ffmpeg, wmenu, foot, plist-cover
 
-# ok but what is this?
-# this script is a playlist/album player that runs in tmux
-# it uses mpv to play the song and ffmpeg and img2sixel to extract and print its cover image
-# I made this so that I can listen to music trough a daemon, something like mpd but without being complicated and 20 years old
-# also, this is just a shell script, no c++, no anything else, it's as simple as it can be
-
-# to get started, edit the quick settings to fit your usecase and make a bind to this script in you wm
-# enjoy
+# I no longer use this  for music management as I've moved to mpd + mpq + some scripts
 
 # quick settings:
 playlist_dir="$HOME/Music" # don't add a trailing slash, use $HOME instead of ~
