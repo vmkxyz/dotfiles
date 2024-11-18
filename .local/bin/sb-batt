@@ -1,0 +1,18 @@
+#!/bin/sh
+battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
+battery_status=$(cat /sys/class/power_supply/BAT0/status)
+
+if [ "$battery_status" != "Discharging" ]; then
+	icon=""
+else
+	case 1 in
+		$((battery_level >= 80)) ) icon=" " ;;
+		$((battery_level >= 60)) ) icon=" " ;;
+		$((battery_level >= 40)) ) icon=" " ;;
+		$((battery_level >= 20)) ) icon=" " ;;
+		$((battery_level >= 0)) ) icon=" " ;;
+		* ) icon="err " ;;
+	esac
+fi
+
+echo "$icon $battery_level%"

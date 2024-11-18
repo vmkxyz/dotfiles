@@ -1,0 +1,16 @@
+#!/bin/sh
+temperature=$(cat /sys/class/thermal/thermal_zone0/temp)
+
+# this adds 3 trailing zeros, so we get rid of them:
+temperature=$((temperature / 1000))
+
+case 1 in
+	$((temperature >= 70)) ) icon="" ;;
+	$((temperature >= 60)) ) icon="" ;;
+	$((temperature >= 50)) ) icon="" ;;
+	$((temperature >= 40)) ) icon="" ;;
+	$((temperature >= 0)) ) icon="" ;;
+	* ) icon="err " ;;
+esac
+
+echo "$icon $temperature°C"
