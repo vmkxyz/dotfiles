@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # this script executes the most relevant editor
 # tries EDITOR env if exists, otherwise uses fallback, root always uses fallback
 # fallback is vim (if exists) or vi (if exists)

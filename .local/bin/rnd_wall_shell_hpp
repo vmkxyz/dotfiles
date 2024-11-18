@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # DEPRICATED! use rnd_wall written in rust
 # rnd_wall_hpp_rust

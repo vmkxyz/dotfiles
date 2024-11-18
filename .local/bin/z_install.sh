@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # a script only really useful to me, I might use this in case of moving to a new deivce to save me some work
 
 # initial pacman

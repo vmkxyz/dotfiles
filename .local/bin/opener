@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Script for opening a file, intended for use by a terminal file manager.
 
 case $(file --mime-type "$1" -b) in

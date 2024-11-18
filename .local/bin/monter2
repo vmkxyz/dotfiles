@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # a slightly modified version of Luke Smith's mounter script:
 # sudo -A was replaced with pkexec

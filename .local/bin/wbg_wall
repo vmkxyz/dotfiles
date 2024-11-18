@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 WP=$1
 [ ! -f $WP ] && exit 1
 PID=$(pidof wbg)

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # NEOVIM ONLY for now
 # WARNING: we are ignoring ssl and downloading with root privileges, you might not like that
 # Lists and downloads vim's spell files because vim is too broken to do it by itself

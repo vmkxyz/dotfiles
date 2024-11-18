@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Path to your wallpapers folder
 wallpapers_folder="$HOME/Pictures/wallpapers"

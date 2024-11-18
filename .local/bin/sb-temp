@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 temperature=$(cat /sys/class/thermal/thermal_zone0/temp)
 
 # this adds 3 trailing zeros, so we get rid of them:

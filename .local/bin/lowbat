@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 while true; do
 	battery_status=$(cat /sys/class/power_supply/BAT0/status)

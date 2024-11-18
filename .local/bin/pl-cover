@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Continuously check for new songs and display the album cover
 
 mpv_socket="/tmp/mpv-socket"

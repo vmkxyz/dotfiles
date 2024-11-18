@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # This script installs the meson build of rofi (not a fork, just a differend build)
 # should work without uninstalling old rofi
 

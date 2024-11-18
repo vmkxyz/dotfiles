@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 BOOKMARK_FILE="$HOME/.local/share/bm.txt"
 ACTION="${1:-select}"
