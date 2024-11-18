@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+alias mpc='mpc -f "%file%\t[%artist% - ][%album% [#[##%track%#] ]- ][%title%|%file%]"'
+songs=$(mpc listall | sort -V)
+printf '%s\n' "$songs" \
+| awk -F'\t' '{print $2}' \
+| fzf --no-sort --reverse -m \
+| while read -r selection
+do
+	printf '%s\n' "$songs" | awk -F'\t' "\$2==\"$selection\" {print \$1; exit}"
+done | mpc add
