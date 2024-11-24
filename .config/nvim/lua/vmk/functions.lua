@@ -1,9 +1,12 @@
 vim.cmd[[
 	augroup TrimWhitespace
 		autocmd!
-		autocmd BufWritePre * if &filetype != 'markdown' | let b:currPos = getpos(".") | %s/\s\+$//e | %s/\n\+\%$//e | call setpos('.', b:currPos) | endif
+		autocmd BufWritePre * let b:currPos = getpos(".")
+		autocmd BufWritePre * if &filetype != 'markdown' | %s/\s\+$//e | endif
+		autocmd BufWritePre * %s/\n\+\%$//e
 		autocmd BufWritePre *.[ch] %s/\%$/\r/e
 		autocmd BufWritePre *neomutt* %s/^--$/-- /e
+		autocmd BufWritePre * call setpos('.', b:currPos)
 	augroup END
 ]]
 
