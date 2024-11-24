@@ -3,7 +3,7 @@
 
 # initial pacman
 echo "============= Installing a bunch of packages ============="
-sudo pacman -Syu --needed base-devel dash brightnessctl grim slurp man vim neovim noto-fonts-cjk opendoas otf-font-awesome playerctl reflector ttf-sourcecodepro-nerd ufw cliphist
+sudo pacman -Syu --needed base-devel dash brightnessctl grim slurp man vim neovim noto-fonts-cjk opendoas otf-font-awesome playerctl reflector ttf-sourcecodepro-nerd ufw cliphist libxcrypt-compact
 
 # paru
 echo "============= Compiling paru ============="
@@ -19,6 +19,11 @@ rm -rf paru
 # to get rid of the "firmware missing" warnings when running build hooks
 #sudo pacman -Syu --needed linux-firmware-qlogic linux-headers terminus-font
 #paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
+
+# packer nvim
+echo "============= Install packer for neovim ============="
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # dirs
 echo "============= Make some directories ============="
