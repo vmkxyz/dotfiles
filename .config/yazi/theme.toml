@@ -140,7 +140,7 @@ rules = [
     { name = "*.css"  , text = "", fg = "#42a5f5" },
     { name = "*.c"    , text = "", fg = "#599eff" },
     { name = "*.fish" , text = "" },
-    { name = "*.go"   , text = "", fg = "#519aba" },
+    { name = "*.go"   , text = "󰟓", fg = "#519aba" },
     { name = "*.hpp"  , text = "", fg = "#a074c4" },
     { name = "*.h"    , text = "", fg = "#a074c4" },
     { name = "*.htm"  , text = "", fg = "#e44d26" },
