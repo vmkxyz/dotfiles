@@ -6,7 +6,7 @@
 
 # Get available
 echo "Getting a list of available spell files..."
-list=$(curl -skl https://ftp.vim.org/pub/vim/runtime/spell/ | grep .spl | awk '{print $6}' | awk -F '"' '{print $2}')
+list=$(curl -skl https://ftp.vim.org/pub/vim/runtime/spell/ | grep .spl | awk '{print $4}' | awk -F '"' '{print $2}')
 
 # List available
 chosen=$(echo "$list" | fzf -i) || exit 1
