@@ -14,8 +14,6 @@ This repo is also mirrored on [my GitLab] for reasons...
 - **browser:** firefox ([user.js])
 - **shell:** zsh
 
-Note: (2024-11-17) The dwl-bar-0.7 I use is now outdated.
-
 I also have configs for River, Hyprland and Qtile. These might be a bit out-of-date tho.  
 I have my own firefox [user.js] which borrows from [Betterfox] and [Arkenfox] and has a few other changes made to it.  
 Some usefull scripts can be found at [.local/bin/]  
