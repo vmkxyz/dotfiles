@@ -22,3 +22,10 @@
 	on = "!"
 	run = 'shell "$SHELL" --block --confirm'
 	desc = "Open shell here"
+[[manager.prepend_keymap]]
+	on  = "M"
+	run = "plugin mount"
+[[manager.prepend_keymap]]
+	on   = [ "c", "a" ]
+	run  = "plugin compress"
+	desc = "Archive selected files"

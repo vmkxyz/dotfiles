@@ -27,11 +27,19 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 open = [
 	{ run = 'opener "$@"', block = true, desc = "Open" },
 ]
+extract = [
+    { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+    { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
+]
 
 [open]
 rules = [
+	# Directory
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
-
+	# Archive
+    { mime = "application/{,g}zip", use = ["extract"] },
+    { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = ["extract"] },
+	# Fallback
 	{ mime = "*", use = [ "open" ] },
 ]
 
@@ -44,6 +52,28 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
+prepend_preloaders = [
+    # Replace magick, image, video with mediainfo
+	#{ mime = "{audio,video,image}/*", run = "mediainfo" },
+	#{ mime = "application/subrip", run = "mediainfo" },
+  ]
+  prepend_previewers = [
+	# Archive previewer
+	{ mime = "application/*zip",            run = "ouch" },
+	{ mime = "application/x-tar",           run = "ouch" },
+	{ mime = "application/x-bzip2",         run = "ouch" },
+	{ mime = "application/x-7z-compressed", run = "ouch" },
+	{ mime = "application/x-rar",           run = "ouch" },
+	{ mime = "application/x-xz",            run = "ouch" },
+	#
+	{ mime = "application/bittorrent", run = "torrent-preview"},
+    # Replace magick, image, video with mediainfo
+	{ mime = "{audio,video,image}/*", run = "mediainfo"},
+	{ mime = "application/subrip", run = "mediainfo" },
+  ]
+  # There are more extensions which are supported by mediainfo.
+  # Just add file's MIME type to `previewers`, `preloaders` above.
+  # https://mediaarea.net/en/MediaInfo/Support/Formats
 
 preloaders = [
 	# Image
