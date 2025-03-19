@@ -22,7 +22,7 @@ case $(file --mime-type "$1" -b) in
         qimgv "$1"
         ;;
 	video/*)
-        mpv -quiet "$1" &
+        foot mpv --force-window --msg-level=ao/sndio=no "$1" &
         ;;
     application/epub*|\
     application/octet-stream|\
@@ -35,8 +35,8 @@ case $(file --mime-type "$1" -b) in
     audio/*|\
     video/x-ms-asf)
         [ -z "$(mediainfo "$1" | grep "Cover\s*: Yes")" ] \
-            && (mpv --audio-display=no "$1" &) \
-            || (mpv "$1" &)
+            && (foot mpv --force-window --msg-level=ao/sndio=no "$1" &) \
+            || (foot mpv --force-window --msg-level=ao/sndio=no "$1" &)
         ;;
     application/msword|\
     application/vnd.ms-powerpoint|\
