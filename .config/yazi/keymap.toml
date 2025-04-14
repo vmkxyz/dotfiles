@@ -3,14 +3,6 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[manager.prepend_keymap]]
-	on = "j"
-	run = "plugin arrow 1"
-	desc = "Move selection downwards, or wrap."
-[[manager.prepend_keymap]]
-	on = "k"
-	run = "plugin arrow -1"
-	desc = "Move selection upwards, or wrap."
-[[manager.prepend_keymap]]
 	on = "l"
 	run = "plugin smart-enter"
 	desc = "Enter the child directory, or open the file"
