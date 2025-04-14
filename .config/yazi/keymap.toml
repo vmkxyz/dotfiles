@@ -29,3 +29,11 @@
 	on   = [ "c", "a" ]
 	run  = "plugin compress"
 	desc = "Archive selected files"
+[[manager.prepend_keymap]]
+	on = "z"
+	run = "plugin zoxide"
+	desc = "zoxide"
+[[manager.prepend_keymap]]
+	on = "Z"
+	run = "plugin fzf"
+	desc = "fzf"
