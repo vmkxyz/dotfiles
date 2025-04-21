@@ -46,6 +46,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME/renpy"
 
 # Themes
 export QT_QPA_PLATFORMTHEME="qt5ct"
