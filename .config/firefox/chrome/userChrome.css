@@ -1,7 +1,8 @@
 /* set toolbar font */
 #navigator-toolbox {
-  font-family:"Source Code Pro" !important
+  font-family: "Source Code Pro", monospace !important
 }
+
 /* disable tab `x` button to close it (use mouse middle click) */
 .tab-close-button.close-icon {
   display: none;
