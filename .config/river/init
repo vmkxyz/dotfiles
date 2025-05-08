@@ -7,7 +7,7 @@ exec wl-paste --type text --watch cliphist store &
 exec wl-paste --type image --watch cliphist store &
 exec syncthing serve --no-browser &
 exec kdeconnect-indicator &
-exec rnd_wall_shell_wbg &
+exec wbg_wall ~/Pictures/wallpapers/wallpaper_21.jpg &
 exec hypridle &
 exec lowbat &
 exec waybar &
