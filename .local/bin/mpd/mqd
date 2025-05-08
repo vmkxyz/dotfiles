@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+dirs=$(mpc lsdirs)
+
+printf '%s\n' "$dirs" \
+| fzf --reverse -m \
+| while read -r selection
+do
+	mpc add "$selection"
+done

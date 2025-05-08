@@ -1,4 +1,5 @@
 # Paths
+export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/bin/platform-tools:$PATH
 export PATH=$HOME/.local/share/cargo/bin:$PATH
