@@ -3,7 +3,7 @@
 
 # initial pacman
 echo "============= Installing a bunch of packages ============="
-sudo pacman -Syu --needed base-devel dash brightnessctl grim slurp man vim neovim noto-fonts-cjk opendoas otf-font-awesome playerctl reflector ttf-sourcecodepro-nerd ufw cliphist libxcrypt-compact
+sudo pacman -Syu --needed base-devel dash brightnessctl grim slurp man vim neovim noto-fonts-cjk opendoas otf-font-awesome playerctl reflector ttf-sourcecodepro-nerd ufw cliphist libxcrypt-compact git
 
 # paru
 echo "============= Compiling paru ============="
@@ -28,7 +28,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 # dirs
 echo "============= Make some directories ============="
 cd ~ || exit 1
-mkdir -p Downloads Documents Games Music Pictures/wallpapers Pictures/grim Sync git Projects
+mkdir -p Downloads Documents Games Music Pictures/wallpapers Pictures/grim Sync git projects
 
 # doas
 echo "============= Setup doas and remove sudo ============="
