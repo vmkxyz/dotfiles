@@ -19,13 +19,14 @@
     "modules-left": [
 	    "hyprland/workspaces",
 		"river/tags",
-		"dwl/tags", /* note that this requires the ipc patch which can be a pain to set up */
+		"dwl/tags", /* requires the ipc patch */
 	    "tray"
     ],
     "modules-center": [
 		"hyprland/window",
-		"river/window"
-    ], /* adding dwl/window crashes waybar for some reason */
+		"river/window",
+		"dwl/window" /* requires the ipc patch */
+    ],
     "modules-right": [
 	    "pulseaudio",
 	    "temperature",
