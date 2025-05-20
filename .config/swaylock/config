@@ -5,8 +5,9 @@
 # by  |___//_/_/_//_/\_\
 # @vmkxyz on gitlab and github
 
-# Add an image as a background 
-image=$HOME/.cache/swaylock_wallpaper.jpg
+# Add an image as a background
+#image=$HOME/.cache/swaylock_wallpaper.jpg
+image=$HOME/Pictures/wallpapers/wallpaper_21.jpg
 
 # font
 #font="name of font"
