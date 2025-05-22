@@ -84,11 +84,11 @@ done
 # power
 # works in lockscreen
 for mode in normal locked; do
-	riverctl map normal Super F12 spawn 'systemctl poweroff'
-	riverctl map normal Super F11 spawn 'systemctl reboot'
-	riverctl map normal Super F10 spawn 'systemctl suspend'
+	riverctl map normal Super F12 spawn 'loginctl poweroff'
+	riverctl map normal Super F11 spawn 'loginctl reboot'
+	riverctl map normal Super F10 spawn 'loginctl suspend'
 done
-riverctl map normal Super F9 spawn 'hyprlock'
+riverctl map normal Super F9 spawn 'swaylock'
 
 # river
 riverctl map normal Super X close
