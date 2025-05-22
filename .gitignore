@@ -4,6 +4,7 @@
 .config/qtile/__pycache__
 # .local/bin/
 .local/bin/platform-tools
+.local/bin/spotdl
 # sc/
 sc/*/target
 sc/*/Cargo.lock
