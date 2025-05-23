@@ -36,10 +36,10 @@ I also yoinked some stuff from these people:
 and probably many others on youtube, reddit etc.
 
 [my Gitlab]: https://gitlab.com/vmkxyz/dotfiles/
-[dwl]: https://github.com/vmkxyz/dwl/
+[dwl]: https://codeberg.org/vmkxyz/dwl/
 [dwl-bar-0.7]: https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/bar/
-[slstatus]: https://github.com/vmkxyz/slstatus/
-[wmenu]: https://github.com/vmkxyz/wmenu/
+[slstatus]: https://codeberg.org/vmkxyz/slstatus/
+[wmenu]: https://codeberg.org/vmkxyz/wmenu/
 [user.js]: .config/firefox/user.js
 [Betterfox]: https://github.com/yokoffing/Betterfox/
 [Arkenfox]: https://github.com/arkenfox/user.js/
