@@ -5,7 +5,8 @@ This repo is also mirrored on [my GitLab] for reasons...
 
 ## Programs I use
 
-- **os:** arch
+- **os:** Artix
+- **init:** OpenRC
 - **WM/compositor:** *[dwl]*
 - **statusbar:** [dwl-bar-0.7] + *[slstatus]*
 - **terminal:** foot
