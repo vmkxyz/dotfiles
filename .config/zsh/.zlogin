@@ -14,4 +14,5 @@ safe_run \
 	"pipewire" \
 	"pipewire-pulse" \
 	"wireplumber" \
-	"mpd"
+	"mpd" \
+	"otd-daemon"
