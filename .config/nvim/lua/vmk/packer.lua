@@ -32,6 +32,8 @@ return require('packer').startup(function(use)
 		}
 		--oil.nvim
 		use 'stevearc/oil.nvim'
+		--vimwiki
+		use 'vimwiki/vimwiki'
 
 	--visual
 		--colorscheme
