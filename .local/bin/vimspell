@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# NOTICE: we are currently using a mirror to curl the spell files because ftp.vim.org is down
 # NEOVIM ONLY for now
 # WARNING: we are ignoring ssl and downloading with root privileges, you might not like that
 # Lists and downloads vim's spell files because vim is too broken to do it by itself
@@ -6,7 +7,7 @@
 
 # Get available
 echo "Getting a list of available spell files..."
-list=$(curl -skl https://ftp.vim.org/pub/vim/runtime/spell/ | grep .spl | awk '{print $4}' | awk -F '"' '{print $2}')
+list=$(curl -skl https://vim.mirror.garr.it/pub/vim/runtime/spell/ | grep '.spl' | awk -F '[<>]' '/<a href=/ { print $3 }')
 
 # List available
 chosen=$(echo "$list" | fzf -i) || exit 1
@@ -15,4 +16,4 @@ chosen=$(echo "$list" | fzf -i) || exit 1
 # WARNING: we are ignoring ssl and downloading with root privileges, you might not like that
 echo "Downloading $chosen..."
 sudo mkdir -p /usr/share/nvim/runtime/spell/ || exit 1
-sudo curl -skLO --output-dir /usr/share/nvim/runtime/spell/ https://ftp.vim.org/pub/vim/runtime/spell/"$chosen" || exit 1
+sudo curl -skLO --output-dir /usr/share/nvim/runtime/spell/ https://vim.mirror.garr.it/pub/vim/runtime/spell/"$chosen" || exit 1
