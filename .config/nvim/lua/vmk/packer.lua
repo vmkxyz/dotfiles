@@ -33,7 +33,9 @@ return require('packer').startup(function(use)
 		--oil.nvim
 		use 'stevearc/oil.nvim'
 		--vimwiki
-		use 'vimwiki/vimwiki'
+		--use 'vimwiki/vimwiki'
+		--use 'fcpg/vim-waikiki'
+		use 'lervag/wiki.vim'
 
 	--visual
 		--colorscheme

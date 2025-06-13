@@ -24,7 +24,3 @@ vim.opt.shiftwidth = 4
 --splits
 vim.opt.splitbelow = true
 vim.opt.splitright = true
---vimwiki
-vim.opt.compatible = false
-vim.cmd('filetype plugin on')
-vim.cmd('syntax on')

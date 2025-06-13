@@ -14,12 +14,3 @@ vim.cmd('command! Q q')
 vim.cmd('command! W w')
 vim.cmd('command! WQ wq')
 vim.cmd('command! Wq wq')
-
-
-
---vimwiki ignores its functions if they're in /after/ so its put here
-vim.g.vimwiki_list = {{
-	path = '~/Documents/',
-	syntax = 'markdown',
-	ext = 'md'
-}}
