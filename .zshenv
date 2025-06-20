@@ -50,7 +50,3 @@ export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME/renpy"
 # Themes
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export MANPAGER="nvim +Man!"
-
-# Wayland
-# will deal with this later
-export QT_QPA_PLATFORM=wayland
