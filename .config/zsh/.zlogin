@@ -15,4 +15,5 @@ safe_run \
 	"pipewire-pulse" \
 	"wireplumber" \
 	"mpd" \
+	"syncthing serve --no-browser"
 	"otd-daemon"
