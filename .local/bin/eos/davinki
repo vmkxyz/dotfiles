@@ -1,2 +1,0 @@
-#!/usr/bin/env sh
-QT_QPA_PLATFORM=xcb /usr/bin/distrobox-enter  -n resolve-fedora-39  --  /opt/resolve/bin/resolve

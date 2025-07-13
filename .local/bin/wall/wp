@@ -1,0 +1,84 @@
+#!/usr/bin/env sh
+# some cool wp engines: swaybg, wbg, hyprpaper, swww, wpaperd, mpvpaper, azote, wallutils, oguri (d)
+# This script takes file path as an argument and sets it as the wallpaper.
+# When ran with -i or --interactive, it opens a selector so the user can choose a wallpaper interactivly.
+# When ran with -r or --random, it sets a randomw wallpaper from $wp_dir.
+# When ran without an or argument and $fallback is set, it sets $fallback as the wallpaper.
+# All of that while not showing black screen in between wallpapers and killing extra wallpapers running.
+# It also caches the wallpaper for use with other tools or scripts.
+# No, this does not allow for per-monitor wallpapers
+
+# uncomment for a minimal and debloated setup:
+#exit 0
+
+
+# Settings:
+engine="swaybg -m fill -i"			# wallpaper engine command
+fallback=							# default wallpaper (blank = disabled), no quotes
+selector="fzf --no-sort --reverse"	# wallpaper selector command
+wp_dir=~/Pictures/wallpapers		# wallpaper directory, no quotes
+cache_method="symlink"				# cache method, available: copy, symlink, disable
+
+
+# Interactive selection mode
+if [ "$1" = "-i" ] || [ "$1" = "--interactive" ]; then
+	wps=$(find "$wp_dir" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \))
+	wps_rel=$(echo "$wps" | sed "s|^$wp_dir/||")
+	selected=$(echo "$wps_rel" | $selector) || exit 1
+	WP="$wp_dir/$selected"
+
+# Random mode
+elif [ "$1" = "-r" ] || [ "$1" = "--random" ]; then
+	wps=$(find "$wp_dir" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \))
+	WP=$(echo "$wps" | shuf -n 1) || exit 1
+
+# Argument and fallback modes
+else
+	if [ -f "$1" ]; then
+		WP=$(realpath "$1")
+	elif [ -n "$fallback" ] && [ -f "$fallback" ]; then
+		WP=$(realpath "$fallback")
+	else
+		printf "no valid wallpaper chosen, exiting...\n"
+		exit 1
+	fi
+fi
+
+# Log PID of running engine if any
+PID=$(pidof "${engine%% *}")
+
+# Set new wallpaper
+set -- $engine # this should not be quoted
+setsid "$@" "$WP" >/dev/null 2>&1 < /dev/null &
+
+# Cache logic
+mkdir -p "$HOME/.cache"
+ext="${WP##*.}"
+
+case "$cache_method" in
+	copy)
+		rm -f "$HOME/.cache/active_wallpaper."* 2>/dev/null
+		cp "$WP" "$HOME/.cache/active_wallpaper.$ext"
+		;;
+	symlink)
+		ln -sf "$WP" "$HOME/.cache/active_wallpaper"
+		;;
+	disable)
+		;;
+	*)
+		printf "Invalid cache_mode: '%s'\n" "$cache_method" >&2
+		;;
+esac
+
+# Kill the logged PID
+# TODO: fix killing when launched as terminal child
+# This part is a bit broken, basically I suck at scripting so here are 3 half-working "modes"
+# foot will be used as the example terminal
+# mode 1: this hangs the terminal when launched as `foot wp -i` for half a second
+[ -n "$PID" ] && sleep 0.5 && kill "$PID"
+
+# mode 2: this blackscreens in-between wallpapers
+#[ -n "$PID" ] && kill "$PID"
+
+# mode 3: this doesn't kill old wallpapers when launched as `foot wp -i`, but does when launched as `wp -i` from a terminal
+#[ -n "$PID" ] && setsid sh -c "sleep 0.5 && kill $PID" >/dev/null 2>&1 < /dev/null &
