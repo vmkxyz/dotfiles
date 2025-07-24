@@ -1,18 +1,12 @@
-// Config for Waybar modules
-//                    __
-//      _  __ __ _   / /__
-//     | |/ //  ' \ /  '_/
-// by  |___//_/_/_//_/\_\
-// @vmkxyz on gitlab and github
-
+// by vmk
 {
 /* =========== General =========== */
 
     "layer": "top",
-    "position": "top",
+    "position": "bottom",
     "height": "min",
     "width": "max",
-    "spacing": 0,
+    "spacing": -1,
 
 /* =========== Modules =========== */
 
@@ -20,7 +14,7 @@
 	    "hyprland/workspaces",
 		"river/tags",
 		"dwl/tags", /* requires the ipc patch */
-	    "tray"
+		"custom/spacer"
     ],
     "modules-center": [
 		"hyprland/window",
@@ -29,77 +23,89 @@
     ],
     "modules-right": [
 	    "pulseaudio",
+		"custom/spacer",
 	    "temperature",
+		"custom/spacer",
 	    "network",
+		"custom/spacer",
 	    "battery",
-		"clock"
+		"custom/spacer",
+		"clock",
+		"tray"
     ],
+
+/* =========== dwl Tags =========== */
+
+	"dwl/tags": {
+		"num-tags": 10,
+		"tag-labels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+	},
 
 /* =========== Clock =========== */
 
     "clock": {
-        "format": "|  {:%F   %T}",
-		"interval": 1,
+        "format": " {:%F   %T}",
 		"tooltip-format": "<small>{calendar}</small>",
+		"interval": 1
     },
 
 /* =========== Tray =========== */
 
     "tray": {
-        "spacing": 10
+		"spacing": 1
     },
 
 /* =========== Pulseaudio =========== */
 
     "pulseaudio": {
-        "format": "| {icon} {volume}%  {format_source} ",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "|  {format_source} ",
+        "format": "{icon} {volume}%  {format_source}",
+        "format-muted": " ({volume}%)  {format_source}",
+        "format-bluetooth": " {icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": "  ({volume}%)  {format_source}",
         "format-source": " {volume}%",
-        "format-source-muted": " ",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", " "]
-        },
+        "format-source-muted": "  ({volume}%)",
+        "format-icons": ["", "", " "]
     },
 
 
 /* =========== Temperature =========== */
 
     "temperature": {
-        "critical-threshold": 110,
-        "format": "| {icon} {temperatureC}°C ",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{icon} {temperatureC}°C",
+		"tooltip-format": "",
+        "format-icons": ["", "", "", "", ""],
+        "critical-threshold": 110
     },
 
 /* =========== Network =========== */
 
     "network": {
-        "format-wifi": "|   {signalStrength}% ",
-        "format-ethernet": "|  ",
-        "tooltip-format": "| {essid}",
-        "format-linked": "| {ifname} (No IP)  ",
-        "format-disconnected": "|   n/a% ",
-        "format-alt": "| {ifname}: {ipaddr}/{cidr} "
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid}",
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "format-linked": "{ifname}",
+        "format-disconnected": "  n/a%"
     },
 
 /* =========== Battery =========== */
 
     "battery": {
+		"format": "{icon}  {capacity}%",
+        "format-alt": "{icon}  {time}",
+		"tooltip-format": "",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
         "states": {
             "warning": 30,
             "critical": 15
         },
-       "format": "| {icon}  {capacity}% ",
-        "format-charging": "|  {capacity}% ",
-        "format-plugged": "|  {capacity}% ",
-        "format-alt": "| {icon}  {time}",
-        "format-icons": ["", "", "", "", ""]
     },
+
+/* =========== (custom) Spacer =========== */
+
+	"custom/spacer": {
+		"format": " | "
+	},
 }
