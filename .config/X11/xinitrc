@@ -1,1 +1,2 @@
 unset QT_QPA_PLATFORM
+exec slstatus -s | ~/git/dwm/dwm
