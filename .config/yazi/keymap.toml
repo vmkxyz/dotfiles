@@ -29,3 +29,14 @@
 	on = "Z"
 	run = "plugin fzf"
 	desc = "fzf"
+[[mgr.prepend_keymap]]
+	on = [ "g", "r" ]
+	run = "cd /run/media/$USER"
+	desc = "Go to mounted"
+[[mgr.prepend_keymap]]
+	on = [ "g", "d" ]
+	run = "noop"
+[[mgr.prepend_keymap]]
+	on = [ "c", "b" ]
+	run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' ]
+	desc = "Copy the file binary"
