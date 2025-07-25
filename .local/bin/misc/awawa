@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-# for suspending manually cuz dwl+loginctl is broken af
-exec loginctl suspend
