@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+icon=" "
+iface="wlan0"
+
+signal=$(cat /proc/net/wireless | grep "$iface")
+
+if [ $? -eq 0 ]; then
+	percentage=$(echo "$signal" | awk '{ print int(($3/70)*100) }')
+else
+	percentage="n/a"
+fi
+
+echo "$icon $percentage%"
