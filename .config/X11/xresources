@@ -1,0 +1,39 @@
+xterm*faceName: SauceCodeProNF
+xterm*faceSize: 10
+
+
+xterm*background: #09090f
+xterm*foreground: #cdd6f4
+xterm*cursorColor: #f5e0dc
+
+! black
+xterm*color0: #45475a
+xterm*color8: #585b70
+
+! red
+xterm*color1: #f38ba8
+xterm*color9: #f38ba8
+
+! green
+xterm*color2: #a6e3a1
+xterm*color10: #a6e3a1
+
+! yellow
+xterm*color3: #f9e2af
+xterm*color11: #f9e2af
+
+! blue
+xterm*color4: #89b4fa
+xterm*color12: #89b4fa
+
+! magenta
+xterm*color5: #f5c2e7
+xterm*color13: #f5c2e7
+
+! cyan
+xterm*color6: #94e2d5
+xterm*color14: #94e2d5
+
+! white
+xterm*color7: #bac2de
+xterm*color15: #a6adc8
