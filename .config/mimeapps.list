@@ -1,0 +1,17 @@
+[Default Applications]
+image/jpeg=qimgv.desktop
+image/png=qimgv.desktop
+image/svg+xml=qimgv.desktop
+image/webp=qimgv.desktop
+inode/directory=nemo.desktop
+x-scheme-handler/nxm=com.nexusmods.app.desktop
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
+audio/flac=mpv.desktop
+
+[Added Associations]
+image/jpeg=imv.desktop;qimgv.desktop;
+image/png=satty.desktop;qimgv.desktop;
+image/svg+xml=qimgv.desktop;
+image/webp=qimgv.desktop;
+application/x-php=qimgv.desktop;
+audio/flac=mpv.desktop;
