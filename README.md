@@ -12,12 +12,13 @@ This repo is also mirrored on [my GitLab] for reasons...
 - **terminal:** foot
 - **menu:** rofi and *[wmenu]*
 - **editor:** neovim
-- **browser:** firefox ([user.js])
+- **browser:** Firefox ([user.js])
 - **shell:** zsh
 
-I also have configs for River, Hyprland and Qtile. These might be a bit out-of-date tho.  
-I have my own firefox [user.js] which borrows from [Betterfox] and [Arkenfox] and has a few other changes made to it.  
-Some usefull scripts can be found at [.local/bin/]  
+I also have configs for River, *[dwm]*, Qtile and Hyprland.
+River is the only one maintained and I rarely use *[dwm]* if something is extremely broken on Wayland.
+I have my own Firefox [user.js] which borrows from [Betterfox] and [Arkenfox] and has a few other changes made to it.  
+Some useful scripts can be found at [.local/bin/]  
 Any forks can be found on my profile.
 
 ## Credits
@@ -34,7 +35,7 @@ I also yoinked some stuff from these people:
 - [Stephan Raabe]
 - [Zaney]
 
-and probably many others on youtube, reddit etc.
+and probably many others on YouTube, Reddit etc.
 
 [my Gitlab]: https://gitlab.com/vmkxyz/dotfiles/
 [dwl]: https://codeberg.org/vmkxyz/dwl/
@@ -42,6 +43,7 @@ and probably many others on youtube, reddit etc.
 [slstatus]: https://codeberg.org/vmkxyz/slstatus/
 [wmenu]: https://codeberg.org/vmkxyz/wmenu/
 [user.js]: .config/firefox/user.js
+[dwm]: https://codeberg.org/vmkxyz/dwm/
 [Betterfox]: https://github.com/yokoffing/Betterfox/
 [Arkenfox]: https://github.com/arkenfox/user.js/
 [.local/bin/]: .local/bin/
