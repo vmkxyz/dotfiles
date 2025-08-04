@@ -1,6 +1,5 @@
 [ "$(tty)" = "/dev/tty1" ] && start-dwl
 [ "$(tty)" = "/dev/tty2" ] && startx
-[ "$(tty)" = "/dev/tty3" ] && Hyprland
 
 # to safly lauch processes in new subshells if they're not running already and suppress output
 safe_run() {
