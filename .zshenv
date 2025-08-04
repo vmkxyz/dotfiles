@@ -2,6 +2,7 @@
 export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 export PATH=$HOME/.local/share/cargo/bin:$PATH
 export PATH=$HOME/.local/share/go/bin:$PATH
+export PATH=$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH
 
 # zsh plugin config
 ## timer
