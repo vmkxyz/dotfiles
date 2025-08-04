@@ -1,10 +1,13 @@
 #!/usr/bin/env sh
+# mpc add dir picker using fzf
 
-dirs=$(mpc lsdirs)
+# drill through root
+current_path=$(mpc lsdirs | fzf --reverse) || exit 0
 
-printf '%s\n' "$dirs" \
-| fzf --reverse -m \
-| while read -r selection
-do
-	mpc add "$selection"
-done
+selection=$(mpc lsdirs "$current_path" | fzf --reverse -m) || exit 0
+
+while IFS= read -r i; do
+	mpc add "$i"
+done <<EOF
+$selection
+EOF

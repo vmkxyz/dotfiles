@@ -1,11 +1,32 @@
 #!/usr/bin/env sh
+# mpc add file picker using fzf
 
-alias mpc='mpc -f "%file%\t[%artist% - ][%album% [#[##%track%#] ]- ][%title%|%file%]"'
-songs=$(mpc listall | sort -V)
-printf '%s\n' "$songs" \
-| awk -F'\t' '{print $2}' \
-| fzf --no-sort --reverse -m \
-| while read -r selection
-do
-	printf '%s\n' "$songs" | awk -F'\t' "\$2==\"$selection\" {print \$1; exit}"
-done | mpc add
+# only show dirs in root
+current_path=$(mpc lsdirs | fzf --reverse) || exit 0
+
+# drill into dirs
+while :; do
+	selection="$(mpc ls "$current_path" | fzf --reverse -m)" || exit 0
+	is_dir=false
+
+	# this only runs on first dir in $selection
+	while IFS= read -r i; do
+		if [ "$(mpc ls "$i")" != "$i" ]; then # mpc ls returns the argument and exits 0 after failing for some reason
+			current_path="$i"
+			is_dir=true
+			break
+		fi
+	done <<EOF
+$selection
+EOF
+
+	# if $selection is not a dir, mpc add it
+	if [ "$is_dir" = false ]; then
+		while IFS= read -r i; do
+			mpc add "$i"
+		done <<EOF
+$selection
+EOF
+		break
+	fi
+done
