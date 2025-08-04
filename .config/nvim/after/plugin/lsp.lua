@@ -29,6 +29,14 @@ require("mason-lspconfig").setup({
 	end
 })
 
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+})
+
 ---@class MasonSettings
 local DEFAULT_SETTINGS = {
     ---@since 1.0.0

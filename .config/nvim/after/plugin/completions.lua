@@ -9,7 +9,10 @@ cmp.setup({
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-o>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.scroll_docs({ select = true }),
+		['<C-l>'] = cmp.mapping.confirm({ select = true }),
+		['<CR>'] = function(fallback)
+			fallback()
+		end,
 	}),
 	snippet = {
 		expand = function(args)
