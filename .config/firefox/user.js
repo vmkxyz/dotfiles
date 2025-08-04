@@ -232,6 +232,8 @@ user_pref("ui.key.menuAccessKeyFocuses", false);
 /** TAB HOVER PREVIEWS **/
 user_pref("browser.tabs.hoverPreview.enabled", false);
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);
+/** BACKSPACE BACK **/
+user_pref("browser.backspace_action", 0); // 0 is enabled
 
 
 
