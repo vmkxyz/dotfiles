@@ -2,14 +2,26 @@
 sink="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
 src="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
 
-[ "$sink" != "${sink%\[MUTED\]}" ] && sink_icon=""
-[ "$src" != "${src%\[MUTED\]}" ] && src_icon=" " || src_icon=""
+sink_muted=0
+src_muted=0
+
+[ "$sink" != "${sink%\[MUTED\]}" ] && {
+	sink_icon=""
+	sink_muted=1
+}
+
+[ "$src" != "${src%\[MUTED\]}" ] && {
+	src_icon=" "
+	src_muted=1
+} || src_icon=""
+
+wpctl inspect @DEFAULT_AUDIO_SINK@ | grep -qE 'node.name = "bluez_output' && bt_icon=" "
 
 sink="${sink#Volume: }"
 src="${src#Volume: }"
 
 split() {
-	# For ommiting the . without calling and external program.
+	# For ommiting the . without calling an external program.
 	IFS=$2
 	set -- $1
 	printf '%s' "$@"
@@ -18,14 +30,16 @@ split() {
 sink="$(printf "%.0f" "$(split "$sink" ".")")"
 src="$(printf "%.0f" "$(split "$src" ".")")"
 
-if [ "$sink_icon" != "" ]; then
+if [ "$sink_muted" -ne 1 ]; then
 	case 1 in
 		$((sink >= 70)) ) sink_icon=" " ;;
 		$((sink >= 30)) ) sink_icon="" ;;
 		$((sink >= 1)) ) sink_icon="" ;;
-	#	* ) echo   && exit ;;
 		* ) sink_icon="" ;;
 	esac
 fi
 
-echo "$sink_icon $sink%  $src_icon $src%"
+[ "$sink_muted" -eq 1 ] && sink="(${sink}%)" || sink="${sink}%"
+[ "$src_muted" -eq 1 ] && src="(${src}%)" || src="${src}%"
+
+echo "${bt_icon}${sink_icon} ${sink}  ${src_icon} ${src}"
