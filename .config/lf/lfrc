@@ -1,40 +1,40 @@
-# Config for lf
-#                    __
-#      _  __ __ _   / /__
-#     | |/ //  ' \ /  '_/
-# by  |___//_/_/_//_/\_\
-# @vmkxyz on gitlab and github
+# config for lf
+# unfinished because anytime I edit this I want to kms
 
-# Basic Settings
+# Sets
 set hidden true
 set ignorecase true
 #set icons true
-set number true
-set relativenumber true
+#set number true
+#set relativenumber true
 set shell zsh
+set drawbox
+set previewer "~/.config/lf/previewer"
+set sixel true
+set info size:time
 
 # promt format
 set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
+set cursorpreviewfmt "\033[4m" # underline
 
-# Custom Functions
+# Functions
+# why tf isnt this a set
+cmd open ${opener $f}
+
+# file and dir creation, TODO: merge these
 cmd mkdir ${{
   printf "Directory Name: "
   read ans
   mkdir $ans
 }}
-
 cmd mkfile ${{
   printf "File Name: "
   read ans
   $EDITOR $ans
 }}
 
-cmd setwallpaper ${{
-    setwallpaper "$f"
-}}
-
-# Archive bindings
-cmd unarchive ${{
+# archive stuff
+cmd extract ${{
   case "$f" in
       *.zip) unzip "$f" ;;
       *.tar.gz) tar -xzvf "$f" ;;
@@ -44,58 +44,38 @@ cmd unarchive ${{
   esac
 }}
 
-# Trash bindings
-#cmd trash ${{
-#  files=$(printf "$fx" | tr '\n' ';')
-#  while [ "$files" ]; do
-#    file=${files%%;*}
-#
-#    trash-put "$(basename "$file")"
-#    if [ "$files" = "$file" ]; then
-#      files=''
-#    else
-#      files="${files#*;}"
-#    fi
-#  done
-#}}
 
-cmd restore_trash ${{
-  trash-restore
+# zoxide
+cmd zi ${{
+    result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id cd \"$result\""
 }}
 
-# Bindings
-map d
+# Unmap
 map m
 
-map au unarchive
-map ae $wine "$f"
-map C !cat "$f" | wl-copy --type image/png
-
-# Basic Functions
-map . set hidden!
-map DD delete
-#map DD trash
-#map dr restore_trash
+# Mappings
+# general
+map D delete
+#map d trash
 map p paste
-map d cut
+map x cut
 map y copy
 map <enter> open
-map R reload
-map mf mkfile
-map md mkdir
-map bg setwallpaper
-map c clear
+map a mkfile
+map A mkdir
+map <esc> unselect
+map X clear
+map Y clear
+map z zi
+map e extract
 
-# Movement
-map gd cd ~/Documents
-map gD cd ~/Downloads
-map gp cd ~/Pictures
+# c
+map cb !cat "$f" | wl-copy --type image/png
+
+# g
+map gg top
+map G bottom
+map gh cd ~/
+map gr cd /run/media/vmk # no variables lf?? fix your damn file manager
 map gc cd ~/.config
-map gv cd ~/Videos
-map gs cd ~/Sync
-map gt cd ~/.local/share/Trash/files
-map gm cd ~/Music
-map gG cd ~/Games
-map gw cd ~/Pictures/wallpapers
-map gl cd ~/.local
-map gb cd bin
