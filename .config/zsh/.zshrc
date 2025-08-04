@@ -1,10 +1,3 @@
-# Config for the Zoomer Shell (zsh)
-#                    __
-#      _  __ __ _   / /__
-#     | |/ //  ' \ /  '_/
-# by  |___//_/_/_//_/\_\
-# @vmkxyz on gitlab and github
-
 # Enviroment variables are in .zshenv
 
 # set
@@ -84,7 +77,16 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
-bindkey -s '^o' 'lfcd\n'
+#bindkey -s '^o' 'lfcd\n'
+# same thing but yazi
+yazicd() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+bindkey -s '^o' 'yazicd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -133,6 +135,7 @@ alias cfgp='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME push'
 alias cfgf='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME fetch'
 alias cfgl='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME pull'
 alias cfgs='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME status'
+alias cfgd='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME diff'
 
 alias g='/usr/bin/git'
 alias ga='/usr/bin/git add'
@@ -143,6 +146,7 @@ alias gp='/usr/bin/git push'
 alias gf='/usr/bin/git fetch'
 alias gl='/usr/bin/git pull'
 alias gs='/usr/bin/git status'
+alias gd='/usr/bin/git diff'
 
 # Plugins
 # see https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#execute-extra-commands
