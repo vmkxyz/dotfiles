@@ -1,11 +1,3 @@
-# Config for dunst
-# I've only changed a few settings here, it's almost the default config...
-#                    __
-#      _  __ __ _   / /__
-#     | |/ //  ' \ /  '_/
-# by  |___//_/_/_//_/\_\
-# @vmkxyz on gitlab and github
-
 [global]
     ### Display ###
     monitor = 0
@@ -13,9 +5,9 @@
 
     ### Geometry ###
     width = 300
-    height = 200
+    height = (0, 200)
     origin = top-right
-    offset = 10x50
+    offset = (10, 50)
     scale = 0 # 0 = autodetect
     notification_limit = 20
 
