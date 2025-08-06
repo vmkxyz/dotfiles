@@ -8,12 +8,28 @@
 #sudo pacman -Syu --needed linux-firmware-qlogic linux-headers terminus-font
 #paru -Syu --needed aic94xx-firmware wd719x-firmware upd72020x-fw ast-firmware
 
-set -e
+set -e # exit immediately if any command returns a non-zero exit status
 
-pwd="$(pwd)"
+pwd=$(pwd)
 
 info() {
-	printf "\n============ $1 ============\n"
+	printf "\n============ %s ============\n" "$1"
+}
+
+yN() {
+	(
+		printf "%s [y/N] " "$1"
+		read -r answer
+
+		case "$answer" in
+			y|Y)
+				return 0
+				;;
+			*)
+				return 1
+				;;
+		esac
+	)
 }
 
 system_update() {
@@ -51,8 +67,7 @@ setup_doas() {
 	info "Replacing sudo with doas"
 	if [ ! -f /etc/doas.conf ]; then
 		sudo ln -fs "$(command -v doas)" /usr/bin/sudo
-		echo "permit :wheel as root" | sudo tee /etc/doas.conf > /dev/null
-		echo "permit persist :wheel" | sudo tee -a /etc/doas.conf > /dev/null
+		printf "permit :wheel as root\npermit persist :wheel\n" | sudo tee /etc/doas.conf > /dev/null
 		sudo pacman -Rdd --noconfirm sudo
 	else
 		echo "Existing doas.conf found, aborting sudo replacement"
@@ -98,4 +113,10 @@ link_dash
 configure_ufw
 setup_dwl
 
-printf "Script finished, a reboot is recommended."
+printf "\nScript finished, a reboot is recommended.\n"
+if yN "Reboot now?"; then
+	printf "Rebooting...\n"
+	sudo reboot
+else
+	return 0
+fi
