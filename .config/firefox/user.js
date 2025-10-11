@@ -1,9 +1,5 @@
 /*=====================================================================
-                   __
-     _  __ __ _   / /__
-    | |/ //  ' \ /  '_/
-by  |___//_/_/_//_/\_\
-@vmkxyz on github and gitlab
+by @vmkxyz on codeberg, github, discord
 
 my custom user.js for firefox that enhances privacy and does some quality of life changes
 inspired by arkenfox, betterfox, Luke Smith
@@ -12,6 +8,7 @@ is't split into 5 categorie:
 	// 100: settings that you should leave as I've set them
 		// 101: privacy/security settings
 		// 102: performance settings        WARNING: might increse system resource usage
+		// 103: JIT compilation				WARNING: might slow site loading down (few miliseconds)
 	// 200: settings that are nice to have
 	// 300: settings that you might not like
 	// 400: additional arkenfox settings, commented out by default
@@ -188,6 +185,25 @@ user_pref("network.predictor.enable-prefetch", false);
 
 /** EXPERIMENTAL ***/
 user_pref("dom.enable_web_task_scheduling", true);
+
+
+// 103: JIT compilation
+// these are settings that make site loading slower, this usually isn't noticeable (a few miliseconds), in exchange for higher security
+// JIT compiles the site's code into machine code for faster execution
+
+/** JavaScript JIT **/
+user_pref("javascript.options.baselinejit", false);
+user_pref("javascript.options.ion", false);
+user_pref("javascript.options.jit_trustedprincipals", false);
+/** WebAssembly JIT **/
+user_pref("javascript.options.wasm", false);
+user_pref("javascript.options.wasm_trustedprincipals", false);
+user_pref("javascript.options.wasm_baselinejit", false);
+user_pref("javascript.options.wasm_optimizingjit", false);
+/** Asm.js JIT **/
+user_pref("javascript.options.asmjs", false);
+/** Blinterp (JIT-like) **/
+user_pref("javascript.options.blinterp", false);
 
 
 
