@@ -196,10 +196,11 @@ user_pref("javascript.options.baselinejit", false);
 user_pref("javascript.options.ion", false);
 user_pref("javascript.options.jit_trustedprincipals", false);
 /** WebAssembly JIT **/
-user_pref("javascript.options.wasm", false);
-user_pref("javascript.options.wasm_trustedprincipals", false);
-user_pref("javascript.options.wasm_baselinejit", false);
-user_pref("javascript.options.wasm_optimizingjit", false);
+//user_pref("javascript.options.wasm", false);
+//user_pref("javascript.options.wasm_trustedprincipals", false);
+//user_pref("javascript.options.wasm_baselinejit", false);
+//user_pref("javascript.options.wasm_optimizingjit", false);
+/** This breaks some sites and extensions **/
 /** Asm.js JIT **/
 user_pref("javascript.options.asmjs", false);
 /** Blinterp (JIT-like) **/
