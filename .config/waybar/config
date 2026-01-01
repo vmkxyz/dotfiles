@@ -3,7 +3,7 @@
 /* =========== General =========== */
 
     "layer": "top",
-    "position": "bottom",
+    "position": "top",
     "height": "min",
     "width": "max",
     "spacing": -1,
@@ -13,13 +13,13 @@
     "modules-left": [
 	    "hyprland/workspaces",
 		"river/tags",
-		"dwl/tags", /* requires the ipc patch */
+		/*"dwl/tags",  requires the ipc patch */
 		"custom/spacer"
     ],
     "modules-center": [
 		"hyprland/window",
-		"river/window",
-		"dwl/window" /* requires the ipc patch */
+		"river/window"
+		/*"dwl/window"  requires the ipc patch */
     ],
     "modules-right": [
 	    "pulseaudio",
