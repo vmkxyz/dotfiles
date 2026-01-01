@@ -14,7 +14,7 @@
 
 # Settings:
 engine="swaybg -m fill -i"			# wallpaper engine command
-fallback=							# default wallpaper (blank = disabled), no quotes
+fallback=~/.cache/active_wallpaper	# default wallpaper (blank = disabled), no quotes
 selector="fzf --no-sort --reverse"	# wallpaper selector command
 wp_dir=~/Pictures/wallpapers		# wallpaper directory, no quotes
 cache_method="symlink"				# cache method, available: copy, symlink, disable
