@@ -102,21 +102,38 @@ setup_dwl() {
 	cd "$pwd"
 }
 
+main() {
+	detection_out=$(wget -q http://detectportal.firefox.com/success.txt --timeout=10 -O - 2> /dev/null)
+	if ! test "$detection_out" = "success"; then
+		echo "We don't have an Internet connection!"
+		exit 1
+	fi
 
-system_update
-install_paru
-install_packer
-create_dirs
-setup_doas
-blacklist_pc_speaker
-link_dash
-configure_ufw
-setup_dwl
+	system_update
+	install_paru
+	install_packer
+	create_dirs
+	setup_doas
+	blacklist_pc_speaker
+	link_dash
+	configure_ufw
+	setup_dwl
 
-printf "\nScript finished, a reboot is recommended.\n"
-if yN "Reboot now?"; then
-	printf "Rebooting...\n"
-	sudo reboot
-else
-	return 0
+	printf "\nScript finished, a reboot is recommended.\n"
+	if yN "Reboot now?"; then
+		printf "Rebooting...\n"
+		sudo reboot
+	else
+		return 0
+	fi
+}
+
+main
+
+if [ -s /etc/hostname ]; then
+	info "hostname setup"
+	printf "Choose a hostname: "
+	read -r hostname
+	printf "%s" "$hostname" | sudo tee /etc/hostname
+	printf "hostname=\"%s\"" "$hostname" | sudo tee /etc/conf.d/hostname # for OpenRC if /etc/hostname doesnt exist
 fi
