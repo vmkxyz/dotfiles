@@ -1,53 +1,42 @@
-# My Swaylock config
-#                    __
-#      _  __ __ _   / /__
-#     | |/ //  ' \ /  '_/
-# by  |___//_/_/_//_/\_\
-# @vmkxyz on gitlab and github
-
-# Add an image as a background
+# background image
 image=$HOME/.cache/active_wallpaper
-#image=$HOME/Pictures/wallpapers/wallpaper_21.jpg
 
-# font
-#font="name of font"
-
-# indicator
+# indicator (the circle)
 #no-unlock-indicator
 indicator-radius=200
 indicator-thickness=10
 
-# ignore empty password
+# sets
 ignore-empty-password
 
 # colors
-key-hl-color=00000066
-separator-color=00000000
+key-hl-color=11111b66
+separator-color=11111b00
 
-inside-color=00000033
-inside-clear-color=00000033
-inside-caps-lock-color=00000033
-inside-ver-color=00000033
-inside-wrong-color=00000033
+inside-color=11111b33
+inside-clear-color=11111b33
+inside-caps-lock-color=11111b33
+inside-ver-color=11111b33
+inside-wrong-color=11111b33
 
-ring-color=ffffff
-ring-clear-color=ffffff
-ring-caps-lock-color=ffffff
-ring-ver-color=ffffff
-ring-wrong-color=ffffff
+ring-color=cdd6f4
+ring-clear-color=cdd6f4
+ring-caps-lock-color=cdd6f4
+ring-ver-color=cdd6f4
+ring-wrong-color=cdd6f4
 
-line-color=00000000
-line-clear-color=00000000
-line-caps-lock-color=00000000
-line-ver-color=00000000
-line-wrong-color=00000000
+line-color=11111b00
+line-clear-color=11111b00
+line-caps-lock-color=11111b00
+line-ver-color=11111b00
+line-wrong-color=11111b00
 
-text-color=ffffff
-text-clear-color=ffffff
-text-ver-color=ffffff
-text-wrong-color=ffffff
+text-color=cdd6f4
+text-clear-color=cdd6f4
+text-ver-color=cdd6f4
+text-wrong-color=cdd6f4
 
-bs-hl-color=ffffff
-caps-lock-key-hl-color=00000066
-caps-lock-bs-hl-color=00000066
-text-caps-lock-color=ffffff
+bs-hl-color=cdd6f4
+caps-lock-key-hl-color=11111b66
+caps-lock-bs-hl-color=11111b66
+text-caps-lock-color=cdd6f4
