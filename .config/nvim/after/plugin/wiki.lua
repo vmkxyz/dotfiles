@@ -1,1 +1,1 @@
-vim.g.wiki_root = '~/Documents'
+vim.g.wiki_root = '~/Documents/ww'
