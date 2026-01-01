@@ -1,7 +1,11 @@
 #!/usr/bin/env sh
-# this script executes the most relevant editor
-# tries EDITOR env if exists, otherwise uses fallback, root always uses fallback
-# fallback is vim (if exists) or vi (if exists)
+# this script:
+#	executes the most relevant editor
+#	asks whether to use elevated privileges if user doesn't have write permission
+# tries EDITOR and VISUAL env if exists, otherwise uses nvim or fallback, root always uses fallback
+# fallback is vim (if exists) or vi (if exists), never nvim
+#
+# TODO: fix sometimes doesn't ask for privileges
 
 # Set fallback editor
 if command -v vim > /dev/null; then
@@ -11,6 +15,31 @@ elif command -v vi > /dev/null; then
 elif [ "$(id -u)" -eq 0 ]; then
 	echo "no editor available" >&2 && exit 1
 fi
-# Root use fallback, user $EDITOR if set or nvim if exists
-[ "$(id -u)" -eq 0 ] && $fallback "$@" && exit 0 || \
-{ [ -n "$EDITOR" ] && [ "$EDITOR" != "" ] && command -v "$EDITOR" > /dev/null 2>&1 && "$EDITOR" "$@" && exit 0; } || $fallback "$@"
+
+# Check if user has write permissions
+for argument in "$@"; do
+	if [ -f "$argument" ] && [ ! -w "$argument" ]; then
+		echo "You don't have write permission to the file(s) provided."
+		printf "Attempt to use elevated privileges? [y/N] "
+		read -r answer
+		case "$answer" in
+			y|Y|yes|YES)
+				sudo "$fallback" "$@" && exit 0
+				;;
+		esac
+		break
+	fi
+done
+
+# Root use fallback, user $EDITOR or $VISUAL if set, nvim if exists or fallback
+if [ "$(id -u)" -eq 0 ]; then
+	"$fallback" "$@" && exit 0
+elif [ "$EDITOR" != "" ] && command -v "$EDITOR" >/dev/null; then
+	"$EDITOR" "$@" && exit 0
+elif [ "$VISUAL" != "" ] && command -v "$VISUAL" >/dev/null; then
+	"$VISUAL" "$@" && exit 0
+elif command -v nvim; then
+	nvim "$@" && exit 0
+else
+	"$fallback" "$@" && exit 0
+fi
