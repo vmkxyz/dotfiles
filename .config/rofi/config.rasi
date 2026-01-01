@@ -14,7 +14,8 @@
 configuration {
 	modi:                       "drun,run";
     show-icons:                 false;
-    display-drun:               " ";
+    display-drun:               " ";
+    //display-drun:               " ";
     display-run:                " ";
     display-filebrowser:        " ";
     display-window:             " ";
@@ -27,10 +28,10 @@ configuration {
 @import                          "./fonts.rasi"
 
 * {
-    border-colour:               var(selected);
-    handle-colour:               var(selected);
-    background-colour:           var(background);
-    foreground-colour:           var(foreground);
+    border-color:               var(selected);
+    handle-color:               var(selected);
+    background-color:           var(background);
+    foreground-color:           var(foreground);
     alternate-background:        var(background-alt);
     normal-background:           var(background);
     normal-foreground:           var(foreground);
@@ -59,7 +60,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       400px;
+    width:                       430px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -67,33 +68,21 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
+    border:                      1px solid;
     border-radius:               10px;
-    border-color:                #89B4FA;
+    border-color:                @border-color;
     cursor:                      "default";
-    /* Backgroud Colors */
-    background-color:            @background-colour;
-    /* Backgroud Image */
-    //background-image:          url("/path/to/image.png", none);
-    /* Simple Linear Gradient */
-    //background-image:          linear-gradient(red, orange, pink, purple);
-    /* Directional Linear Gradient */
-    //background-image:          linear-gradient(to bottom, pink, yellow, magenta);
-    /* Angle Linear Gradient */
-    //background-image:          linear-gradient(45, cyan, purple, indigo);
+    background-color:            @background-color;
 }
 
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     15px;
     margin:                      0px;
     padding:                     30px;
-    border:                      0px solid;
-    border-radius:               15px;
-    border-color:                #6f91c9;
     background-color:            transparent;
-    transparency :               "real";
+    transparency:                "real";
     children:                    [ "inputbar", "message", "listview" ];
 }
 
@@ -105,9 +94,9 @@ inputbar {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  @foreground-color;
     children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
 }
 
@@ -120,7 +109,7 @@ textbox-prompt-colon {
     enabled:                     true;
     padding:                     5px 0px;
     expand:                      false;
-    str:                         "";
+    str:                         " ";
     background-color:            inherit;
     text-color:                  inherit;
 }
@@ -162,7 +151,7 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       9;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;
@@ -176,14 +165,14 @@ listview {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  @foreground-color;
     cursor:                      "default";
 }
 scrollbar {
     handle-width:                3px ;
-    handle-color:                @handle-colour;
+    handle-color:                @handle-color;
     border-radius:               10px;
     background-color:            @alternate-background;
 }
@@ -196,9 +185,9 @@ element {
     padding:                     5px 10px;
     border:                      0px solid;
     border-radius:               10px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  @foreground-color;
     cursor:                      pointer;
 }
 element normal.normal {
@@ -257,18 +246,18 @@ mode-switcher{
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     1px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  @foreground-color;
 }
 button {
     padding:                     5px 10px;
     border:                      0px solid;
     border-radius:               10px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            @alternate-background;
     text-color:                  inherit;
     cursor:                      pointer;
@@ -285,21 +274,21 @@ message {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  @foreground-color;
 }
 textbox {
     padding:                     8px 10px;
     border:                      0px solid;
     border-radius:               10px;
-    border-color:                @border-colour;
+    border-color:                @border-color;
     background-color:            @alternate-background;
-    text-color:                  @foreground-colour;
+    text-color:                  @foreground-color;
     vertical-align:              0.5;
     horizontal-align:            0.0;
     highlight:                   none;
-    placeholder-color:           @foreground-colour;
+    placeholder-color:           @foreground-color;
     blink:                       true;
     markup:                      true;
 }
@@ -307,7 +296,7 @@ error-message {
     padding:                     10px;
     border:                      2px solid;
     border-radius:               10px;
-    border-color:                @border-colour;
-    background-color:            @background-colour;
-    text-color:                  @foreground-colour;
+    border-color:                @border-color;
+    background-color:            @background-color;
+    text-color:                  @foreground-color;
 }
