@@ -23,14 +23,14 @@ wm="rivercarro"
 # window (layout) manager
 riverctl default-layout $wm
 #rivertile -main-ratio 0.55 -view-padding 2 -outer-padding 2 &
-rivercarro -inner-gaps 4 -outer-gaps 4 -main-ratio 0.55 &
+rivercarro -inner-gaps 0 -outer-gaps 0 -main-ratio 0.55 &
 
 # focus
 riverctl focus-follows-cursor normal
 
 # borders & background
 riverctl border-width 2
-riverctl border-color-focused 0xfab387
+riverctl border-color-focused 0xf5c2e7
 riverctl border-color-unfocused 0x1e1e2e
 riverctl background-color 0x000000
 
@@ -56,17 +56,17 @@ riverctl map normal Alt Print spawn 'filename=$HOME/Pictures/grim/$(date +%F_%T)
 # brightness, media, sound, mic
 # works in lockscreen
 for mode in normal locked; do
-	riverctl map $mode None XF86AudioRaiseVolume		spawn 'amixer sset Master 5%+'
-	riverctl map $mode None XF86AudioLowerVolume		spawn 'amixer sset Master 5%-'
-	riverctl map $mode Shift XF86AudioRaiseVolume		spawn 'amixer sset Master 1%+'
-	riverctl map $mode Shift XF86AudioLowerVolume		spawn 'amixer sset Master 1%-'
-	riverctl map $mode None XF86AudioMute				spawn 'amixer sset Master toggle'
+	riverctl map $mode None XF86AudioRaiseVolume		spawn 'pactl set-sink-volume 0 +5%'
+	riverctl map $mode None XF86AudioLowerVolume		spawn 'pactl set-sink-volume 0 -5%'
+	riverctl map $mode Shift XF86AudioRaiseVolume		spawn 'pactl set-sink-volume 0 +1%'
+	riverctl map $mode Shift XF86AudioLowerVolume		spawn 'pactl set-sink-volume 0 -1%'
+	riverctl map $mode None XF86AudioMute				spawn 'pactl set-sink-mute 0 toggle'
 
-	riverctl map $mode Alt XF86AudioRaiseVolume			spawn 'amixer sset Capture 5%+'
-	riverctl map $mode Alt XF86AudioLowerVolume			spawn 'amixer sset Capture 5%-'
-	riverctl map $mode Alt+Shift XF86AudioRaiseVolume	spawn 'amixer sset Capture 1%+'
-	riverctl map $mode Alt+Shift XF86AudioLowerVolume	spawn 'amixer sset Capture 1%-'
-	riverctl map $mode None XF86AudioMicMute			spawn 'amixer sset Capture toggle'
+	riverctl map $mode Alt XF86AudioRaiseVolume			spawn 'pactl set-source-volume 0 +5%'
+	riverctl map $mode Alt XF86AudioLowerVolume			spawn 'pactl set-source-volume 0 -5%'
+	riverctl map $mode Alt+Shift XF86AudioRaiseVolume	spawn 'pactl set-source-volume 0 +1%'
+	riverctl map $mode Alt+Shift XF86AudioLowerVolume	spawn 'pactl set-source-volume 0 -1%'
+	riverctl map $mode None XF86AudioMicMute			spawn 'pactl set-source-mute 0 toggle'
 
 	riverctl map $mode None XF86AudioPlay		 		spawn 'playerctl play-pause'
 	riverctl map $mode None XF86AudioNext		 		spawn 'playerctl next'
