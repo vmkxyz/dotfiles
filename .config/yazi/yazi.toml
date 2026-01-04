@@ -25,17 +25,16 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 open = [
-	{ run = 'opener "$@"', block = true, desc = "Open" },
+	{ run = 'opener %s', block = true, desc = "Open" },
 ]
 extract = [
-    { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-    { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
+    { run = 'ya pub extract --list %s', desc = "Extract here", for = "unix" },
 ]
 
 [open]
 rules = [
 	# Directory
-	{ name = "*/", use = [ "edit", "open", "reveal" ] },
+	{ url = "*/", use = [ "edit", "open", "reveal" ] },
 	# Archive
     { mime = "application/{,g}zip", use = ["extract"] },
     { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = ["extract"] },
@@ -52,29 +51,18 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
-prepend_preloaders = [
-    # Replace magick, image, video with mediainfo
-	#{ mime = "{audio,video,image}/*", run = "mediainfo" },
-	#{ mime = "application/subrip", run = "mediainfo" },
-  ]
-  prepend_previewers = [
-	# Archive previewer
+prepend_previewers = [
+# Archive previewer
 	{ mime = "application/*zip",            run = "ouch" },
 	{ mime = "application/x-tar",           run = "ouch" },
 	{ mime = "application/x-bzip2",         run = "ouch" },
 	{ mime = "application/x-7z-compressed", run = "ouch" },
 	{ mime = "application/x-rar",           run = "ouch" },
 	{ mime = "application/x-xz",            run = "ouch" },
-	#
 	{ mime = "application/bittorrent", run = "torrent-preview"},
-    # Replace magick, image, video with mediainfo
 	{ mime = "{audio,video,image}/*", run = "mediainfo"},
 	{ mime = "application/subrip", run = "mediainfo" },
-  ]
-  # There are more extensions which are supported by mediainfo.
-  # Just add file's MIME type to `previewers`, `preloaders` above.
-  # https://mediaarea.net/en/MediaInfo/Support/Formats
-
+]
 preloaders = [
 	# Image
 	{ mime = "image/vnd.djvu", run = "noop" },
@@ -85,35 +73,30 @@ preloaders = [
 	{ mime = "application/pdf", run = "pdf" },
 ]
 previewers = [
-	{ name = "*/", run = "folder" },
+	{ url = "*/", run = "folder" },
 	# Code
 	{ mime = "text/*",                 run = "code" },
 	{ mime = "*/xml",                  run = "code" },
-	{ mime = "*/javascript",           run = "code" },
-	{ mime = "*/x-wine-extension-ini", run = "code" },
+	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
 	# JSON
 	{ mime = "application/json", run = "json" },
 	# Image
-	{ mime = "image/vnd.djvu", run = "noop" },
-	{ mime = "image/*",        run = "image" },
+	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
+	{ mime = "image/svg+xml", run = "svg" },
+	{ mime = "image/*", run = "image" },
 	# Video
 	{ mime = "video/*", run = "video" },
 	# PDF
 	{ mime = "application/pdf", run = "pdf" },
 	# Archive
-	{ mime = "application/zip",             run = "archive" },
-	{ mime = "application/gzip",            run = "archive" },
-	{ mime = "application/x-tar",           run = "archive" },
-	{ mime = "application/x-bzip",          run = "archive" },
-	{ mime = "application/x-bzip2",         run = "archive" },
-	{ mime = "application/x-7z-compressed", run = "archive" },
-	{ mime = "application/x-rar",           run = "archive" },
-	{ mime = "application/xz",              run = "archive" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
 	# Fallback
-	{ name = "*", run = "file" },
+	{ url = "*", run = "file" },
 ]
 
 [input]
+cursor_blink = false
+
 # cd
 cd_title  = "Change directory:"
 cd_origin = "top-center"
@@ -169,7 +152,7 @@ quit_title  = "{n} task{s} running, sure to quit? (y/N)"
 quit_origin = "top-center"
 quit_offset = [ 0, 2, 50, 3 ]
 
-[select]
+[pick]
 open_title  = "Open with:"
 open_origin = "hovered"
 open_offset = [ 0, 1, 50, 7 ]
