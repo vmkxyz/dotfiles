@@ -2,28 +2,12 @@
 # mpc add file picker using fzf (global)
 #
 # pretty much yoinked from codesoap (the mpq dev)
-# this is kinda ugly but works perfectly
 
-alias mpc='mpc -f "%file%\t[#[%album%#] - ][%artist% - ][%title%|%file%]"'
+alias mpcf='mpc -f "%file%\t[#[%album%#] - ][%artist% - ][%title%|%file%]"'
 
-all_tracks="$(mpc listall)"
+all_tracks="$(mpcf listall)"
 selection="$(printf '%s\n' "$all_tracks" | awk -F'\t' '{print $2}' | fzf --reverse -m)" || exit 0
 
 printf '%s\n' "$selection" | while IFS= read -r sel; do
 	printf '%s\n' "$all_tracks" | awk -F'\t' -v s="$sel" '$2 == s {print $1}'
 done | mpc add
-
-
-exit 0
-# this is much nicer but super inefficient and adds more songs if more songs have the same name
-# TODO: fix
-
-alias mpc='mpc -f "%file%\t[#[%album%#] - ][%artist% - ][%title%|%file%]"'
-
-selection="$(mpc listall | awk -F'\t' '{print $2}' | fzf --reverse -m)" || exit 0
-
-while IFS= read -r i; do
-	mpc listall | grep -F "$i" | awk -F'\t' '{print $1}' | mpc add
-done <<EOF
-$selection
-EOF

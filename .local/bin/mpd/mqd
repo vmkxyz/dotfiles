@@ -2,12 +2,8 @@
 # mpc add dir picker using fzf
 
 # drill through root
+
 current_path=$(mpc lsdirs | fzf --reverse) || exit 0
-
-selection=$(mpc lsdirs "$current_path" | fzf --reverse -m) || exit 0
-
-while IFS= read -r i; do
-	mpc add "$i"
-done <<EOF
-$selection
-EOF
+mpc lsdirs "$current_path" | fzf --reverse -m | while IFS= read -r track; do
+	mpc add "$track"
+done
