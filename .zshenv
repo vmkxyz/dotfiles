@@ -16,6 +16,13 @@ function zvm_config() {
 	ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 }
 
+# fcitx
+export GTK_IM_MODULE="fcitx5"
+export QT_IM_MODULE="fcitx5"
+export QT_IM_MODULES="fcitx5"
+export SDL_IM_MODULE="fcitx5"
+export XMODIFIERS="@im=fcitx5"
+
 # Default programs
 export TERMINAL="foot"
 export TERMINAL_PROG="foot"
