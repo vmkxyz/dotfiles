@@ -2,7 +2,6 @@
 [ "$(tty)" = "/dev/tty2" ] && startx
 
 # to safly lauch processes in new subshells if they're not running already and suppress output
-sleep 2
 safe_run() {
 	[ "$XDG_SESSION_TYPE" != "tty" ] && return 0
 	for r in "$@"; do
@@ -11,4 +10,7 @@ safe_run() {
 		fi
 	done
 }
-safe_run "mpd" "syncthing serve --no-browser" "otd-daemon"
+safe_run \
+	"mpd" \
+	"syncthing serve --no-browser" \
+	"otd-daemon"
