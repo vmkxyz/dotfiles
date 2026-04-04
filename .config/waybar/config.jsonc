@@ -11,15 +11,15 @@
 /* =========== Modules =========== */
 
     "modules-left": [
-	    "hyprland/workspaces",
 		"river/tags",
-		/*"dwl/tags",  requires the ipc patch */
-		"custom/spacer"
+		"custom/spacer",
+		"river/layout",
+		"custom/spacer",
+		"river/mode",
+		"custom/spacer",
+		"river/window",
     ],
     "modules-center": [
-		"hyprland/window",
-		"river/window"
-		/*"dwl/window"  requires the ipc patch */
     ],
     "modules-right": [
 	    "pulseaudio",
@@ -31,14 +31,21 @@
 	    "battery",
 		"custom/spacer",
 		"clock",
-		"tray"
+		"tray",
     ],
 
-/* =========== dwl Tags =========== */
 
-	"dwl/tags": {
+/* =========== River =========== */
+
+	"river/tags": {
 		"num-tags": 10,
-		"tag-labels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+		"tag-labels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+	},
+	"river/layout": {
+		"format": "[<i>{}</i>]",
+	},
+	"river/window": {
+		"format": "{}",
 	},
 
 /* =========== Clock =========== */
@@ -46,13 +53,13 @@
     "clock": {
         "format": " {:%F   %T}",
 		"tooltip-format": "<small>{calendar}</small>",
-		"interval": 1
+		"interval": 1,
     },
 
 /* =========== Tray =========== */
 
     "tray": {
-		"spacing": 1
+		"spacing": 1,
     },
 
 /* =========== Pulseaudio =========== */
@@ -64,7 +71,7 @@
         "format-bluetooth-muted": "  ({volume}%)  {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "  ({volume}%)",
-        "format-icons": ["", "", " "]
+        "format-icons": ["", "", " "],
     },
 
 
@@ -74,7 +81,7 @@
         "format": "{icon} {temperatureC}°C",
 		"tooltip-format": "",
         "format-icons": ["", "", "", "", ""],
-        "critical-threshold": 110
+        "critical-threshold": 110,
     },
 
 /* =========== Network =========== */
@@ -85,7 +92,7 @@
         "format-wifi": " ",
         "format-ethernet": " ",
         "format-linked": "{ifname}",
-        "format-disconnected": "  n/a%"
+        "format-disconnected": "  n/a%",
     },
 
 /* =========== Battery =========== */
@@ -99,13 +106,14 @@
         "format-icons": ["", "", "", "", ""],
         "states": {
             "warning": 30,
-            "critical": 15
+            "critical": 15,
         },
     },
 
 /* =========== (custom) Spacer =========== */
 
 	"custom/spacer": {
-		"format": " | "
+		"format": " | ",
+		"color": "#cdd6f7",
 	},
 }

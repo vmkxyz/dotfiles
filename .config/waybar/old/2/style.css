@@ -1,0 +1,78 @@
+/*
+* by vmk; @vmkxyz on github and gitlab
+* with as many comments as possible because debugging css is a pain
+*/
+
+* {
+    font-family: Saucecodepronf;
+    font-size: 12px;
+}
+
+@define-color bg #11111b;
+@define-color hl #1e1e2e;
+@define-color fg #cdd6f4;
+
+window#waybar {
+    background: @bg; /* color of everything thats not a module */
+}
+
+button {
+	padding: 0 3px; /* space out numbers from each other and make them as short as possible */
+    border: none; /* disable borders around selected */
+    border-radius: 0; /* make selected not rounded */
+	box-shadow: none; /* disable indicator line on hover */
+}
+
+/*** tags ***/
+#tags button {
+	color: @fg; /* color of not visible tag(s) number(s) */
+    background: @bg; /* color behind not visible tag(s) number(s) */
+}
+
+#tags button.focused {
+	color: @fg; /* color of visible tag(s) number(s) */
+    background: @hl; /* color behind visible tag(s) number(s) */
+}
+
+#tags button.urgent {
+	color: @bg; /* color of urgent visible tag(s) number(s) */
+	background: @fg; /* color behind urgent visible tag(s) number(s) */
+}
+
+
+/*** workspaces ***/
+#workspaces button {
+	color: @fg; /* color of inactive ws numbers */
+	background: @bg; /* color behind inactive ws numbers */
+}
+
+#workspaces button.active {
+	color: @fg; /* color of active ws number */
+	background: @hl; /* color behind active ws number */
+}
+
+#workspaces button.urgent {
+	color: @bg; /* color of urgent active ws number */
+	background: @fg; /* color behind urgent active ws number */
+}
+
+
+/*** all othe modules ***/
+#window,
+#clock,
+#battery,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+	color: @fg; /* text */
+	background: @bg; /* behind text */
+}
+
+#clock {
+	padding: 0 9 0 0px; /* gap between text and left screen edge */
+}
+
+#tray {
+	padding: 0 0 0 10px; /* gap on the left side of the tray module */
+}

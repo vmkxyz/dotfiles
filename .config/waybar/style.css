@@ -1,11 +1,9 @@
-/*
-* by vmk; @vmkxyz on github and gitlab
-* with as many comments as possible because debugging css is a pain
-*/
-
 * {
     font-family: Saucecodepronf;
+	font-weight: 400;
     font-size: 12px;
+	animation: none;
+	transition: none;
 }
 
 @define-color bg #11111b;
@@ -13,66 +11,83 @@
 @define-color fg #cdd6f4;
 
 window#waybar {
-    background: @bg; /* color of everything thats not a module */
-}
-
-button {
-	padding: 0 3px; /* space out numbers from each other and make them as short as possible */
-    border: none; /* disable borders around selected */
-    border-radius: 0; /* make selected not rounded */
-	box-shadow: none; /* disable indicator line on hover */
+    background: @bg;
 }
 
 /*** tags ***/
-#tags button {
-	color: @fg; /* color of not visible tag(s) number(s) */
-    background: @bg; /* color behind not visible tag(s) number(s) */
+button {
+	color: @fg;
+    background: @bg;
+	padding: 0 0px;
+	margin: 0 -7px;
+    border: none;
+    border-radius: 0;
+	box-shadow: none;
 }
 
-#tags button.focused {
-	color: @fg; /* color of visible tag(s) number(s) */
-    background: @hl; /* color behind visible tag(s) number(s) */
+button.focused {
+	color: @fg;
+    background: @hl;
+	margin: 0 -7px;
 }
 
-#tags button.urgent {
-	color: @bg; /* color of urgent visible tag(s) number(s) */
-	background: @fg; /* color behind urgent visible tag(s) number(s) */
+button.occupied {
+	color: #ffa6c7;
+}
+
+button.urgent {
+	color: @bg;
+	background: @fg;
+	margin: 0 -7px;
 }
 
 
-/*** workspaces ***/
-#workspaces button {
-	color: @fg; /* color of inactive ws numbers */
-	background: @bg; /* color behind inactive ws numbers */
-}
-
-#workspaces button.active {
-	color: @fg; /* color of active ws number */
-	background: @hl; /* color behind active ws number */
-}
-
-#workspaces button.urgent {
-	color: @bg; /* color of urgent active ws number */
-	background: @fg; /* color behind urgent active ws number */
-}
 
 
 /*** all othe modules ***/
-#window,
-#clock,
-#battery,
-#temperature,
-#network,
-#pulseaudio,
-#tray {
-	color: @fg; /* text */
-	background: @bg; /* behind text */
+#custom-spacer {
+	color: #6c7086;
+	background: @bg;
 }
-
+#layout {
+	color: @fg;
+	background: @bg;
+}
+#mode {
+	color: @fg;
+	background: @bg;
+}
+#mode.mpd {
+	color: #ca9ee6;
+}
+#window {
+	color: @fg;
+	background: @hl;
+	padding: 0px 4px;
+}
+#pulseaudio {
+	color: #8caaee;
+	background: @bg;
+}
+#temperature {
+	color: #a6d189;
+	background: @bg;
+}
+#network {
+	color: #e5c890;
+	background: @bg;
+}
+#battery {
+	color: #ef9f76;
+	background: @bg;
+}
 #clock {
-	padding: 0 9 0 0px; /* gap between text and left screen edge */
+	color: #e78284;
+	background: @bg;
+	padding: 0px 9px 0px 0px;
 }
-
 #tray {
-	padding: 0 0 0 10px; /* gap on the left side of the tray module */
+	color: @fg;
+	background: @bg;
+	padding: 0px 0px 0px 5px; /* gap on the left side of the tray module */
 }
