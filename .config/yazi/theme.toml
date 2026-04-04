@@ -98,26 +98,26 @@ rules = [
     { url = "*",  fg = "cyan",   bold = true, is = "link" },
     { url = "*",  fg = "green",  bold = true, is = "exec" },
     { url = "*/", fg = "cyan",   bold = true, is = "link" },
-    { url = "*/", fg = "blue",   bold = true }
+    { url = "*/", fg = "#fca4c6",   bold = true }
 ]
 
 [icon]
 globs = []
 dirs  = [
-	{ name = ".config", text = "", fg = "blue" },
-	{ name = ".git", text = "", fg = "blue" },
-	{ name = ".github", text = "", fg = "blue" },
-	{ name = ".npm", text = "", fg = "blue" },
-	{ name = "Desktop", text = "", fg = "blue" },
-	{ name = "Development", text = "", fg = "blue" },
-	{ name = "Documents", text = "", fg = "blue" },
-	{ name = "Downloads", text = "", fg = "blue" },
-	{ name = "Library", text = "", fg = "blue" },
-	{ name = "Movies", text = "", fg = "blue" },
-	{ name = "Music", text = "", fg = "blue" },
-	{ name = "Pictures", text = "", fg = "blue" },
-	{ name = "Public", text = "", fg = "blue" },
-	{ name = "Videos", text = "", fg = "blue" },
+	{ name = ".config", text = "", fg = "#fca4c6" },
+	{ name = ".git", text = "", fg = "#fca4c6" },
+	{ name = ".github", text = "", fg = "#fca4c6" },
+	{ name = ".npm", text = "", fg = "#fca4c6" },
+	{ name = "Desktop", text = "", fg = "#fca4c6" },
+	{ name = "Development", text = "", fg = "#fca4c6" },
+	{ name = "Documents", text = "", fg = "#fca4c6" },
+	{ name = "Downloads", text = "", fg = "#fca4c6" },
+	{ name = "Library", text = "", fg = "#fca4c6" },
+	{ name = "Movies", text = "", fg = "#fca4c6" },
+	{ name = "Music", text = "", fg = "#fca4c6" },
+	{ name = "Pictures", text = "", fg = "#fca4c6" },
+	{ name = "Public", text = "", fg = "#fca4c6" },
+	{ name = "Videos", text = "", fg = "#fca4c6" },
 ]
 files = [
 	{ name = ".babelrc", text = "", fg = "#cbcb41" },
@@ -834,7 +834,7 @@ conds = [
 	{ if = "dummy", text = "" },
 
 	# Fallback
-	{ if = "dir", text = "", fg = "blue" },
+	{ if = "dir", text = "", fg = "#fca4c6" },
 	{ if = "exec", text = "" },
 	{ if = "!dir", text = "" },
 ]
