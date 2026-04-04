@@ -1,17 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 
 # ---- autostart
-systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+#systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+#dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
 exec wl-paste --type text --watch cliphist store &
 exec wl-paste --type image --watch cliphist store &
 exec syncthing serve --no-browser &
 exec kdeconnect-indicator &
-exec wbg_wall ~/Pictures/wallpapers/wallpaper_21.jpg &
-exec hypridle &
-exec lowbat &
-exec waybar &
+exec wp &
+exec pgrep swayidle || swayidle before-sleep swaylock &
+exec pgrep lowbat || lowbat &
+exec start-waybar &
 exec dunst &
+exec fcitx5 -d &
 #exec sh -c 'sleep 0.5 && udiskie -t &' & # Automounting removable media, tray icon
 
 # ---- variables
@@ -22,14 +24,14 @@ wm="rivercarro"
 # ---- general
 # window (layout) manager
 riverctl default-layout $wm
-#rivertile -main-ratio 0.55 -view-padding 2 -outer-padding 2 &
+#rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.55 &
 rivercarro -inner-gaps 0 -outer-gaps 0 -main-ratio 0.55 &
 
 # focus
 riverctl focus-follows-cursor normal
 
 # borders & background
-riverctl border-width 2
+riverctl border-width 1
 riverctl border-color-focused 0xf5c2e7
 riverctl border-color-unfocused 0x1e1e2e
 riverctl background-color 0x000000
@@ -43,13 +45,18 @@ riverctl rule-add -app-id '*' ssd # make everything use server side decorations 
 
 # ---- binds
 # programs
-riverctl map normal Super P spawn 'rofi -show drun'
-riverctl map normal Super+Alt P spawn 'wmenu-run'
 riverctl map normal Super Return spawn $term
+riverctl map normal Super P spawn 'rofi -show drun'
+riverctl map normal Super+Alt P spawn 'rofi -show run'
 riverctl map normal Super V spawn $browser
 riverctl map normal Super B spawn 'pidof waybar && killall -SIGUSR1 waybar'
-riverctl map normal Super+Alt B spawn 'pidof waybar && killall -SIGUSR2 waybar || waybar &'
+riverctl map normal Super+Alt B spawn 'pidof waybar && killall -SIGUSR2 waybar || start-waybar &'
 riverctl map normal Super+Shift V spawn 'cliphist list | rofi -dmenu | cliphist decode | wl-copy'
+riverctl map normal Super equals spawn 'rofi -show calc -modi calc -no-show-match -no-sort'
+riverctl map normal Super O spawn "$term wp -i"
+riverctl map normal Super N spawn 'bmn'
+riverctl map normal Super N spawn "$term tmux attach -t rr || tmux new -s rr"
+riverctl map normal Super N spawn 'kill -9 $(pidof syncthing) && notify-send "SYNCTHING KILLED"'
 riverctl map normal None Print spawn 'filename=$HOME/Pictures/grim/$(date +%F_%T).png && slurp | grim -g - $filename && wl-copy -t image/png < $filename'
 riverctl map normal Alt Print spawn 'filename=$HOME/Pictures/grim/$(date +%F_%T).png && grim $filename && wl-copy -t image/png < $filename'
 
@@ -84,11 +91,32 @@ done
 # power
 # works in lockscreen
 for mode in normal locked; do
-	riverctl map normal Super F12 spawn 'loginctl poweroff'
-	riverctl map normal Super F11 spawn 'loginctl reboot'
-	riverctl map normal Super F10 spawn 'loginctl suspend'
+	riverctl map $mode Super F12 spawn 'loginctl poweroff'
+	riverctl map $mode Super F11 spawn 'loginctl reboot'
+	riverctl map $mode Super F10 spawn 'loginctl suspend'
 done
 riverctl map normal Super F9 spawn 'swaylock'
+
+# mpd mode
+riverctl declare-mode mpd
+riverctl map normal Super S enter-mode mpd
+riverctl map mpd None Escape enter-mode normal
+riverctl map mpd None Space spawn 'mpc toggle'
+riverctl map mpd None N spawn 'mpc next'
+riverctl map mpd None J spawn 'mpc next'
+riverctl map mpd None P spawn 'mpc prev'
+riverctl map mpd None K spawn 'mpc prev'
+riverctl map mpd None S spawn 'mpc shuffle'
+riverctl map mpd None R spawn 'mpc random'
+riverctl map mpd None L spawn 'mpc repeat'
+riverctl map mpd None C spawn 'mpc clear'
+riverctl map mpd None equal spawn "sh -c 'mpc volume +10 && notify-send -t 300 $(mpc volume)'"
+riverctl map mpd None minus spawn "sh -c 'mpc volume -10 && notify-send -t 300 $(mpc volume)'"
+riverctl map mpd None q spawn "$term mpq"
+riverctl map mpd None a spawn "$term mqa"
+riverctl map mpd None d spawn "$term mqd"
+riverctl map mpd None g spawn "$term mqg"
+
 
 # river
 riverctl map normal Super X close
@@ -123,70 +151,33 @@ riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
 
 # tags
-# I add: ` -> tag 9; qwer -> tags 5678 so one hand can be used; note that tags start at 0
-# Super+[1-9] to focus tag [0-8]
-riverctl map normal Super 1 set-focused-tags 1
-riverctl map normal Super 2 set-focused-tags 2
-riverctl map normal Super 3 set-focused-tags 4
-riverctl map normal Super 4 set-focused-tags 8
-riverctl map normal Super 5 set-focused-tags 16
-riverctl map normal Super 6 set-focused-tags 32
-riverctl map normal Super 7 set-focused-tags 64
-riverctl map normal Super 8 set-focused-tags 128
-riverctl map normal Super 9 set-focused-tags 256
-riverctl map normal Super Q set-focused-tags 32
-riverctl map normal Super W set-focused-tags 64
-riverctl map normal Super E set-focused-tags 128
-riverctl map normal Super R set-focused-tags 256
-riverctl map normal Super Grave set-focused-tags 512
+keys=()
+for i in $(seq 1 5)
+do
+	keys+=("$i")
+done
+keys+=("Q")
+keys+=("W")
+keys+=("E")
+keys+=("R")
+keys+=("grave")
 
-# Super+Shift+[1-9] to tag focused view with tag [0-8]
-riverctl map normal Super+Shift 1 set-view-tags 1
-riverctl map normal Super+Shift 2 set-view-tags 2
-riverctl map normal Super+Shift 3 set-view-tags 4
-riverctl map normal Super+Shift 4 set-view-tags 8
-riverctl map normal Super+Shift 5 set-view-tags 16
-riverctl map normal Super+Shift 6 set-view-tags 32
-riverctl map normal Super+Shift 7 set-view-tags 64
-riverctl map normal Super+Shift 8 set-view-tags 128
-riverctl map normal Super+Shift 9 set-view-tags 256
-riverctl map normal Super+Shift Q set-view-tags 32
-riverctl map normal Super+Shift W set-view-tags 64
-riverctl map normal Super+Shift E set-view-tags 128
-riverctl map normal Super+Shift R set-view-tags 256
-riverctl map normal Super+Shift Grave set-view-tags 512
+for i in $(seq 0 9)
+do
+    tags=$((1 << $i))
 
-# Super+Control+[1-9] to toggle focus of tag [0-8]
-riverctl map normal Super+Control 1 toggle-focused-tags 1
-riverctl map normal Super+Control 2 toggle-focused-tags 2
-riverctl map normal Super+Control 3 toggle-focused-tags 4
-riverctl map normal Super+Control 4 toggle-focused-tags 8
-riverctl map normal Super+Control 5 toggle-focused-tags 16
-riverctl map normal Super+Control 6 toggle-focused-tags 32
-riverctl map normal Super+Control 7 toggle-focused-tags 64
-riverctl map normal Super+Control 8 toggle-focused-tags 128
-riverctl map normal Super+Control 9 toggle-focused-tags 256
-riverctl map normal Super+Control Q toggle-focused-tags 32
-riverctl map normal Super+Control W toggle-focused-tags 64
-riverctl map normal Super+Control E toggle-focused-tags 128
-riverctl map normal Super+Control R toggle-focused-tags 256
-riverctl map normal Super+Control Grave toggle-focused-tags 512
+    # Super+[1-9] to focus tag [0-8]
+    riverctl map normal Super "${keys[$i]}" set-focused-tags $tags
 
-# Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
-riverctl map normal Super+Shift+Control 1 toggle-view-tags 1
-riverctl map normal Super+Shift+Control 2 toggle-view-tags 2
-riverctl map normal Super+Shift+Control 3 toggle-view-tags 4
-riverctl map normal Super+Shift+Control 4 toggle-view-tags 8
-riverctl map normal Super+Shift+Control 5 toggle-view-tags 16
-riverctl map normal Super+Shift+Control 6 toggle-view-tags 32
-riverctl map normal Super+Shift+Control 7 toggle-view-tags 64
-riverctl map normal Super+Shift+Control 8 toggle-view-tags 128
-riverctl map normal Super+Shift+Control 9 toggle-view-tags 256
-riverctl map normal Super+Shift+Control Q toggle-view-tags 32
-riverctl map normal Super+Shift+Control W toggle-view-tags 64
-riverctl map normal Super+Shift+Control E toggle-view-tags 128
-riverctl map normal Super+Shift+Control R toggle-view-tags 256
-riverctl map normal Super+Shift+Control Grave toggle-view-tags 512
+    # Super+Shift+[1-9] to tag focused view with tag [0-8]
+    riverctl map normal Super+Shift "${keys[$i]}" set-view-tags $tags
+
+    # Super+Control+[1-9] to toggle focus of tag [0-8]
+    riverctl map normal Super+Control "${keys[$i]}" toggle-focused-tags $tags
+
+    # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
+    riverctl map normal Super+Shift+Control "${keys[$i]}" toggle-view-tags $tags
+done
 
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
@@ -197,9 +188,8 @@ riverctl map normal Super+Shift 0 set-view-tags $all_tags
 # dynamic layouts
 # Super+Space to toggle float
 riverctl map normal Super Space toggle-float
-riverctl map normal Super F toggle-float
 # Super+F to toggle fullscreen
-riverctl map normal Super A toggle-fullscreen
+riverctl map normal Super F toggle-fullscreen
 
 # Super+M for Monocle layout
 riverctl map normal Super M send-layout-cmd rivercarro "main-location monocle"
