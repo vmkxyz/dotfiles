@@ -15,8 +15,8 @@
 # Settings:
 engine="swaybg -m fill -i"			# wallpaper engine command
 fallback=~/.cache/active_wallpaper	# default wallpaper (blank = disabled), no quotes
-selector="fzf --no-sort --reverse"	# wallpaper selector command
 wp_dir=~/Pictures/wallpapers		# wallpaper directory, no quotes
+selector="fzf --no-sort --reverse --preview 'fzf-preview.sh $wp_dir/{}'"	# wallpaper selector command
 cache_method="symlink"				# cache method, available: copy, symlink, disable
 
 
@@ -24,7 +24,7 @@ cache_method="symlink"				# cache method, available: copy, symlink, disable
 if [ "$1" = "-i" ] || [ "$1" = "--interactive" ]; then
 	wps=$(find "$wp_dir" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \))
 	wps_rel=$(echo "$wps" | sed "s|^$wp_dir/||")
-	selected=$(echo "$wps_rel" | $selector) || exit 1
+	selected=$(echo ./"$wps_rel" | eval "$selector") || exit 1
 	WP="$wp_dir/$selected"
 
 # Random mode
