@@ -26,6 +26,13 @@
 /* all of the below are making the toolbar as small as possible to save space */
 :root {
 
+/* rounded corners
+--toolbarbutton-border-radius: 0px !important;
+--tab-border-radius: 0px !important;
+--arrowpanel-border-radius: 0px !important;
+--arrowpanel-menuitem-border-radius: 0px !important;
+*/
+
 /* URLBar: Fix vertical alignment */
 #urlbar[breakout=true]:not([open="true"]) {
 	--urlbar-height: 20px !important;
