@@ -107,7 +107,7 @@ alias grep='grep --color=auto'
 alias ls='exa -a --color=always --group-directories-first'
 alias ll='exa -alb --color=always --group-directories-first --time-style long-iso'
 alias fzfp="fzf --preview 'fzf-preview.sh {}'"
-alias ac="ani-cli --sub"
+alias ac="ani-cli"
 alias ad="ani-cli --dub"
 
 alias p='doas pacman'
