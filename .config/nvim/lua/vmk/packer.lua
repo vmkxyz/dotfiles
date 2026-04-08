@@ -44,4 +44,9 @@ return require('packer').startup(function(use)
 		use 'nvim-tree/nvim-web-devicons'
 		--indent blankline
 		use 'lukas-reineke/indent-blankline.nvim'
+	--other
+		--typst previewer
+		use {
+			'chomosuke/typst-preview.nvim', tag = '1.*'
+		}
 end)
