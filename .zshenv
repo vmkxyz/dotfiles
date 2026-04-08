@@ -54,7 +54,16 @@ export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME/renpy"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+#export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet # corefx will not be moved
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export OMNISHARPHOME="$XDG_CONFIG_HOME"/omnisharp
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
 
 # Themes
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export MANPAGER="nvim +Man!"
+
+export LS_COLORS="di=1;35"
+export EXA_COLORS="di=1;35"
