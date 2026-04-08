@@ -125,7 +125,11 @@ alias pqe='pacman -Qe'
 alias pqq='pacman -Qq'
 alias pqeq='pacman -Qeq'
 alias pqqe='pacman -Qqe'
-alias cleanup="doas pacman -Syu; pacman -Qdtq | xargs -r doas pacman -Rsn --noconfirm; trizen -Scc" # Run this from time to time
+alias cleanup="doas pacman -Syu;
+	pacman -Qdtq | xargs -r doas pacman -Rsn --noconfirm;
+	trizen -Scc;
+	flatpak uninstall --unused;"
+
 
 alias sudo='doas'
 alias cd='z'
