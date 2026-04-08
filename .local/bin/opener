@@ -45,7 +45,7 @@ case $(file --mime-type "$1" -b) in
     inode/x-empty|\
     text/*)
         case "${1##*.}" in
-            org|typ)
+            org)
                 # Any "document" like file ought to be in emacs
                 emacsclient -c "$1"
                 exit
