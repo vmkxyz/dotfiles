@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+#music_dir="$HOME/Music"
+#subdir=$(find "$music_dir" -type d | sed "s|$music_dir/||" | fzf --reverse -m) || exit 0
+subdir=$(mpc lsdirs | fzf --reverse -m) || exit 0
+
+songs=$(mpc listall | grep "^$subdir")
+printf '%s\n' "$songs" \
+| fzf --no-sort --reverse -m \
+| while read -r selection
+do
+	mpc add "$selection"
+done

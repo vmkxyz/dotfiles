@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+while true; do
+	dwlb -status all "^lm(foot mpq)$(sb-mpd)^lm()| ^fg(8caaee)$(sb-volume)^fg() | ^fg(a6d189)$(sb-temp)^fg() | ^fg(e5c890)$(sb-wifi)^fg() | ^fg(ef9f76)$(sb-batt)^fg() | ^fg(e78284)$(date +" %F   %I:%M:%S %p")^fg() "
+done

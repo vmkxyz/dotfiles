@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+
+# NAME:    rofi-menu-shutdown
+# PURPOSE: Implements a rofi mode which lists the options to either log out, shut down, or reboot.
+# EXAMPLE: rofi -show shutdown -modi shutdown:rofi-menu-shutdown
+
+if [ "$@" ]
+then
+    case "$@" in
+		suspend)
+			exec loginctl suspend;;
+        poweroff)
+            #exec shutdown -P now ;;
+			exec loginctl poweroff;;
+        reboot)
+            #exec shutdown -r now ;;
+			exec loginctl reboot;;
+        terminate)
+            exec loginctl terminate-session "$XDG_SESSION_ID";;
+        lock)
+			exec swaylock
+
+    esac
+
+    exit;
+else
+    echo suspend
+    echo poweroff
+    echo reboot
+	echo terminate
+	echo lock
+fi

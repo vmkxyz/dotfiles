@@ -1,0 +1,24 @@
+# default keymap: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml
+
+[mgr]
+prepend_keymap = [
+	# plugins
+	{ on = "l",          run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+	{ on = [ "c", "a" ], run = "plugin compress",    desc = "Archive selected files" },
+	{ on = "z",          run = "plugin zoxide",      desc = "zoxide" },
+	{ on = "Z",          run = "plugin fzf",         desc = "fzf" },
+	{ on = "M",          run = "plugin mount" },
+
+	# utility
+	{ on = "=",          run = """shell 'printf "Mode Bits: "; read ans; chmod $ans "$@"' --block --confirm""",          desc = "chmod" },
+	{ on = "!",          run = 'shell "$SHELL" --block --confirm',                                                       desc = "Open shell here" },
+	{ on = [ "c", "b" ], run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' ], desc = "Copy the file binary" },
+
+	# goto
+	{ on = [ "g", "r" ], run = "cd /run/media/$USER", desc = "Go to mounted" },
+	{ on = [ "g", "d" ], run = "noop" },
+	{ on = [ "g", "c" ], run = "noop" },
+
+	# tabs
+	{ on = "t", run = "tab_create --current", desc = "Create a new tab in CWD" },
+]

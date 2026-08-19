@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+raw=$(printf "currentsong\nclose\n" | nc localhost 6600 | grep -F "Title: ")
+[ -z "$raw" ] && printf "" && exit 0
+title="${raw#Title: }"
+icon=" "
+format="$icon $title"
+printf "| ^fg(ca9ee6)%s^fg() " "$format" # this is for slstatus

@@ -1,0 +1,4 @@
+unset QT_QPA_PLATFORM
+xrdb -load ~/.config/X11/xresources
+#slstatus &
+exec ~/git/dwm/dwm

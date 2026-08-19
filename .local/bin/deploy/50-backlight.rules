@@ -1,0 +1,8 @@
+# /etc/polkit-1/rules.d/50-backlight.rules
+# chmod 644 /etc/polkit-1/rules.d/50-backlight.rules
+polkit.addRule(function(action, subject) {
+	if (action.id == "org.freedesktop.udisks2.backlight" &&
+		subject.isInGroup("video")) {
+		return polkit.Result.YES;
+	}
+});

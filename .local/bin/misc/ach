@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+lsof -p "$1" | grep -E 'snd|pulse|pipewire|jack'

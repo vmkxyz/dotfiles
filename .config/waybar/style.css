@@ -1,0 +1,107 @@
+* {
+    font-family: Saucecodepronf;
+	font-weight: 400;
+    font-size: 12px;
+	animation: none;
+	transition: none;
+    border: none;
+    border-radius: 0;
+    min-height: 17px;
+    margin: 0;
+    padding: 0;
+}
+
+@define-color bg #11111b;
+@define-color hl #1e1e2e;
+@define-color fg #cdd6f4;
+
+window#waybar {
+    background: @bg;
+}
+
+
+/*** tags ***/
+button {
+	color: @fg;
+    background: @bg;
+	padding: 0 0px;
+	margin: 0 0px;
+    border: none;
+    border-radius: 0;
+	box-shadow: none;
+}
+
+button.focused {
+	color: @fg;
+    background: @hl;
+	margin: 0 0px;
+}
+
+button.occupied {
+	color: #ffa6c7;
+}
+
+button.urgent {
+	color: @bg;
+	background: @fg;
+	margin: 0 0px;
+}
+
+
+
+
+/*** all othe modules ***/
+#custom-spacer {
+	color: #6c7086;
+	background: @bg;
+}
+#layout {
+	color: @fg;
+	background: @bg;
+}
+#mode {
+	color: @fg;
+	background: @bg;
+}
+#mode.mpd {
+	color: #ca9ee6;
+}
+#window {
+	color: @fg;
+	background: @hl;
+	padding: 0px 4px;
+}
+#custom-mpd {
+	color: #ca9ee6;
+	background: @bg;
+}
+#pulseaudio {
+	color: #8caaee;
+	background: @bg;
+}
+#temperature {
+	color: #a6d189;
+	background: @bg;
+}
+#network {
+	color: #e5c890;
+	background: @bg;
+}
+#custom-wifi {
+	color: #e5c890;
+	background: @bg;
+}
+#battery {
+	color: #ef9f76;
+	background: @bg;
+}
+#clock {
+	color: #e78284;
+	background: @bg;
+	padding: 0px 9px 0px 0px;
+}
+#tray {
+	color: @fg;
+	background: @bg;
+	padding: 0px 0px 0px 5px; /* gap on the left side of the tray module */
+}

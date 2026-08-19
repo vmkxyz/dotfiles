@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+# mpc add file picker using fzf
+
+# only show dirs in root
+current_path=$(mpc lsdirs | fzf --reverse) || exit 0
+
+while :; do
+	selection=$(mpc ls "$current_path" | fzf --reverse -m) || exit 0
+	is_dir=false
+
+	# this only runs on first dir in $selection
+	# heredoc must be used instead of printf because $ite, would be local to pipe subshell
+	while IFS= read -r item; do
+		# if mpc ls is not given a path, it returns the argument and exits 0
+		if [ "$(mpc ls "$item")" != "$item" ]; then
+			current_path="$item"
+			is_dir=true
+			break
+		fi
+	done <<EOF
+$selection
+EOF
+
+
+	# if $selection is not a dir, mpc add it
+	if [ "$is_dir" = false ]; then
+		printf '%s\n' "$selection" |
+		while IFS= read -r item; do
+			mpc add "$item"
+		done
+		break
+	fi
+done

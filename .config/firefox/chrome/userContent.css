@@ -1,0 +1,5 @@
+@-moz-document url("about:newtab"), url("about:home") {
+	#main-button, .logo-and-wordmark, .sidebar-inline-end{
+		display: none !important;
+	}
+}

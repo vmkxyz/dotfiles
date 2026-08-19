@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+BAT=/sys/class/power_supply/BAT0
+
+read -r battery_level < "$BAT/capacity"
+read -r battery_status < "$BAT/status"
+
+if [ "$battery_status" != "Discharging" ]; then
+	icon=""
+else
+	case 1 in
+		$((battery_level >= 80)) ) icon=" " ;;
+		$((battery_level >= 60)) ) icon=" " ;;
+		$((battery_level >= 40)) ) icon=" " ;;
+		$((battery_level >= 20)) ) icon=" " ;;
+		* ) icon=" " ;;
+	esac
+fi
+
+printf '%s %s%%' "$icon" "$battery_level"

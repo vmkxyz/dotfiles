@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+QUERY=$(rofi -dmenu) || exit 0
+
+read -r LAT LON NAME <<< "$(curl -sG \
+	--data-urlencode "name=$QUERY" \
+	--data-urlencode "count=1" \
+	https://geocoding-api.open-meteo.com/v1/search \
+	| jq -r '.results[0] | "\(.latitude) \(.longitude) \(.name)"')"
+
+read -r TEMP <<< "$(curl -sG \
+	--data-urlencode "latitude=$LAT" \
+	--data-urlencode "longitude=$LON" \
+	--data-urlencode "current_weather=true" \
+	https://api.open-meteo.com/v1/forecast \
+	| jq -r '.current_weather.temperature')"
+
+
+echo "${NAME}: ${TEMP}°C"
+notify-send "${NAME}: ${TEMP}°C"

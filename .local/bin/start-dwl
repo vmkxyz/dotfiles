@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=wlroots
+export XDG_BACKEND=wayland
+export XDG_SESSION_DESKTOP=wlroots
+export MOZ_ENABLE_WAYLAND=1
+#export RTC_USE_PIPEWIRE=true
+export XDG_SESSION_TYPE=wayland
+
+status_loop() {
+	while true; do
+		slstatus -s &
+		wait $!
+	done
+}
+
+status_loop | exec dbus-run-session /home/"$USER"/git/dwl0.8/dwl_tray/dwl

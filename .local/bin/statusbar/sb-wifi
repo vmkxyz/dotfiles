@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+#interface=$(nmcli -t -f DEVICE,TYPE device | grep ':wifi$' | cut -d: -f1 | head -n 1)
+interface="wlan0"
+icon=" "
+
+ssid=$(nmcli -g GENERAL.CONNECTION device show "$interface" 2>/dev/null)
+
+state=$(nmcli -g GENERAL.STATE device show "$interface" 2>/dev/null)
+case $state in
+	"20 (unavailable)") ssid="off" ;;
+	"30 (disconnected)") ssid="none" ;;
+esac
+
+sanitize_bash() {
+	# remove all backslashes with bash parameter expansion
+    echo "${1//\\/}"
+}
+
+sanitize_tr() {
+	echo "$ssid" | tr -d '\'
+}
+
+#printf "%s %s" "$icon" "$ssid"
+printf "%s %s" "$icon" "$(sanitize_tr $ssid)"

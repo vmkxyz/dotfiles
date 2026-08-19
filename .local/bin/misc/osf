@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+. "$HOME/git/OpenSeeFace/env/bin/activate"
+python "$HOME/git/OpenSeeFace//facetracker.py" -c 0 -W 1280 -H 720 --discard-after 0 --scan-every 0 --no-3d-adapt 1 --max-feature-updates 900

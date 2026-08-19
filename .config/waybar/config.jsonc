@@ -1,0 +1,160 @@
+// by vmk
+{
+/* =========== General =========== */
+
+    "layer": "top",
+    "position": "top",
+    "height": "min",
+    "width": "max",
+    "spacing": -1,
+
+/* =========== Modules =========== */
+
+    "modules-left": [
+		"river/tags",
+		"dwl/tags",
+		"custom/spacer",
+		//"river/layout",
+		//"custom/spacer",
+		//"river/mode",
+		//"custom/spacer",
+		"river/window",
+		"dwl/window",
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+		"custom/mpd",
+		"custom/spacer",
+	    "pulseaudio",
+		"custom/spacer",
+	    "temperature",
+		"custom/spacer",
+	    //"network",
+		"custom/wifi",
+		"custom/spacer",
+	    "battery",
+		"custom/spacer",
+		"clock",
+		"tray",
+		//"idle_inhibitor",
+		""
+    ],
+
+
+/* =========== dwl and adjacent =========== */
+
+	"dwl/window": {
+		"format": "{} ",
+	},
+
+/* =========== River =========== */
+
+	"river/tags": {
+		"num-tags": 10,
+		"tag-labels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+	},
+	"river/layout": {
+		"format": "[<i>{}</i>]",
+	},
+	"river/window": {
+		"format": "{}",
+	},
+
+/* =========== Clock =========== */
+
+    "clock": {
+        "format-alt": " {:%F   %T}",
+        "format": " {:%F   %I:%M:%S %p}",
+		"tooltip-format": "<small>{calendar}</small>",
+		"interval": 1,
+    },
+
+/* =========== Tray =========== */
+
+    "tray": {
+		"spacing": 1,
+    },
+
+/* =========== Pulseaudio =========== */
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%  {format_source}",
+        "format-muted": " ({volume}%)  {format_source}",
+        "format-bluetooth": " {icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": "  ({volume}%)  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "  ({volume}%)",
+        "format-icons": ["", "", " "],
+    },
+
+
+/* =========== Temperature =========== */
+
+    "temperature": {
+        "format": "{icon} {temperatureC}°C",
+		"tooltip": false,
+        "format-icons": ["", "", "", "", ""],
+        "critical-threshold": 110,
+    },
+
+/* =========== Network =========== */
+
+    "network": {
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid}",
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "format-linked": "{signalStrength}",
+        "format-disconnected": "  n/a%",
+    },
+
+/* =========== Battery =========== */
+
+    "battery": {
+		"format": "{icon}  {capacity}%",
+        "format-alt": "{icon}  {time}",
+		"tooltip": false,
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "states": {
+            "warning": 30,
+            "critical": 15,
+        },
+    },
+
+/* =========== idle inibitor =========== */
+
+	"idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "   ",
+            "deactivated": " 󰒲  "
+        },
+		"tooltip-format-activated": "Caffinated",
+		"tooltip-format-deactivated": "Sleep allowed",
+	},
+
+/* =========== customs =========== */
+
+	"custom/spacer": {
+		"format": " | ",
+		"color": "#cdd6f7",
+		"tooltip": false,
+	},
+	"custom/wifi": {
+		"return-type": "json",
+		//"exec": "echo '{\"text\":\"hello\"}'",
+		"exec": "sb-wifi_json",
+		"format": "{text}",
+		"format-alt": "  {alt}",
+		"interval": 5,
+	},
+	"custom/mpd": {
+		"exec": "sb-mpd_waybar",
+		"format": "{}",
+		"interval": 3,
+		"tooltip": false,
+	},
+}

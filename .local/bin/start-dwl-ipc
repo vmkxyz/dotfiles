@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=wlroots
+export XDG_BACKEND=wayland
+export XDG_SESSION_DESKTOP=wlroots
+export MOZ_ENABLE_WAYLAND=1
+#export RTC_USE_PIPEWIRE=true
+export XDG_SESSION_TYPE=wayland
+
+exec dbus-run-session dwl -s dwlb &
+#exec dbus-run-session /home/"$USER"/git/dwl0.8/dwl_ipc/dwl -s dwlb &

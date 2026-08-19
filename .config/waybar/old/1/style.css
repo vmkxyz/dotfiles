@@ -1,0 +1,431 @@
+/*
+* Config for Waybar style
+*                    __
+*      _  __ __ _   / /__
+*     | |/ //  ' \ /  '_/
+* by  |___//_/_/_//_/\_\
+* @vmkxyz on gitlab and github
+*/
+
+/* =========== Pywal =========== */
+
+/* @import "/home/vmk/.cache/wal/colors-waybar.css"; */
+@import url("colors.css");
+
+/* =========== Font =========== */
+
+* {
+    font-family: 'Source Code Pro', monospace;
+	font-size: 13px;
+}
+
+/* =========== Main waybar window =========== */
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0px 0px;
+}
+
+/* =========== Basics for all modules =========== */
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 10px;
+    color: #000000;
+    margin: 5px 0px 0px 0px;
+}
+
+/* =========== Workspaces =========== */
+
+#workspaces {
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px;
+    border-radius: 15px;
+    border: 0px;
+    background: @background;
+}
+
+#workspaces button {
+    padding: 0px 5px 0px 5px;
+    margin: 0px 0px 0px 0px;
+    color: @foreground; /* numbers color */
+    box-shadow: none;
+}
+
+#workspaces button:hover {
+    background: @background;
+    color: @foreground;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+#workspaces button:hover.active {
+    background: @foreground;
+    color: @background;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    color: @background; /* color of active number */
+    background: @foreground; /* color behind active number */
+    border-radius: 15px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    box-shadow: none;
+}
+
+#workspaces button.focused {
+    background-color: @foreground;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    box-shadow: none;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+    box-shadow: none;
+}
+
+/* =========== Tags =========== */
+
+#tags {
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px;
+    border-radius: 15px;
+    border: 0px;
+    background: @background;
+}
+
+#tags button {
+    padding: 0px 5px 0px 5px;
+    margin: 0px 0px 0px 0px;
+    color: @foreground; /* numbers color */
+    box-shadow: none;
+}
+
+#tags button:hover {
+    background: @background;
+    color: @foreground;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+#tags button:hover.active {
+    background: @foreground;
+    color: @background;
+    border-radius: 15px;
+    border-color: @foreground;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    transition: none;
+    box-shadow: none;
+}
+
+/* broken*/
+#tags button.active {
+    color: @background; /* color of active number */
+    background: @foreground; /* color behind active number */
+    border-radius: 15px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 5px;
+    box-shadow: none;
+}
+
+#tags button.focused {
+    background-color: @foreground;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    box-shadow: none;
+}
+
+#tags button.urgent {
+    background-color: #eb4d4b;
+    box-shadow: none;
+}
+
+/* =========== Tooltips =========== */
+
+tooltip {
+    border-radius: 7px;
+    background-color: @background;
+    border-color: @foreground;
+    opacity:0.8;
+    padding:20px;
+    margin:0px;
+}
+
+tooltip label {
+    color: #ffffff;
+    margin:0px;
+}
+
+/* =========== mode, idk waht this does =========== */
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+/* =========== Keyboard =========== */
+
+#custom-keys {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+    padding:2px 8px 0px 8px;
+    margin:4px 0px 0px 0px;
+}
+
+/* =========== idk what this does =========== */
+
+#window,
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+/* =========== Clock =========== */
+
+#clock {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+    padding: 3px 10px 0px 10px;
+    margin: 5px 0px 0px 5px;
+}
+
+/* =========== Battery =========== */
+
+#battery {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+    margin: 5px 5px 0px 0px;
+}
+
+#battery.charging, #battery.plugged {
+    background-color: @background;
+    color: @foreground;
+}
+
+@keyframes blink {
+    to {
+        background-color: @background;
+        color: @foreground;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+/* =========== Hardware =========== */
+
+#cpu {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#memory {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#disk {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#temperature {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#custom-fan {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+    padding:2px 8px 0px 8px;
+    margin:5px 0px 0px 0px;
+}
+
+/* =========== Backlight =========== */
+
+#backlight {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+/* =========== Network =========== */
+
+#network {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+/* =========== Audio =========== */
+
+#pulseaudio {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#pulseaudio.muted {
+    background-color: @background;
+    color: @foreground;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+/* =========== Systray =========== */
+
+#tray {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 15px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}

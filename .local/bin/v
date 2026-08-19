@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+# asks whether to use sudo if user doesn't have write permission
+# tries $EDITOR, $VISUAL, nvim and $fallback in that order and uses the first that exists
+# $fallback tries vim and vi in that order and is set to the first that exists
+# root (and sudo) always uses $fallback
+#
+# TODO: fix sometimes doesnt ask for sudo,
+# fix dont ask for sudo for non root files
+
+# Set fallback editor
+if command -v vim > /dev/null; then
+	fallback="vim"
+elif command -v vi > /dev/null; then
+	fallback="vi"
+elif [ "$(id -u)" -eq 0 ]; then
+	echo "no editor available" >&2 && exit 1
+fi
+
+# Check if user has write permissions
+for argument in "$@"; do
+	if [ -f "$argument" ] && [ ! -w "$argument" ]; then
+		echo "You don't have write permission to the file(s) provided."
+		printf "Attempt to use elevated privileges? [y/N] "
+		read -r answer
+		case "$answer" in
+			y|Y|yes|YES)
+				sudo "$fallback" "$@" && exit 0
+				;;
+		esac
+		break
+	fi
+done
+
+# Root use fallback, user $EDITOR or $VISUAL if set, nvim if exists or fallback
+if [ "$(id -u)" -eq 0 ]; then
+	"$fallback" "$@" && exit 0
+elif [ "$EDITOR" != "" ] && command -v "$EDITOR" >/dev/null; then
+	"$EDITOR" "$@" && exit 0
+elif [ "$VISUAL" != "" ] && command -v "$VISUAL" >/dev/null; then
+	"$VISUAL" "$@" && exit 0
+elif command -v nvim; then
+	nvim "$@" && exit 0
+else
+	"$fallback" "$@" && exit 0
+fi

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+while true; do
+	slstatus -s | dwlb -status-stdin all &
+	wait $!
+done

@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+INTERFACE=$(nmcli -t -f DEVICE,TYPE device | grep ':wifi$' | cut -d: -f1 | head -n 1)
+
+if [ -z "$INTERFACE" ]; then
+    exit 1
+fi
+
+SSID=$(nmcli -g GENERAL.CONNECTION device show "$INTERFACE" 2>/dev/null)
+IP=$(nmcli -g IP4.ADDRESS device show "$INTERFACE" 2>/dev/null)
+
+if [ -z "$SSID" ]; then
+    exit 1
+fi
+
+SIGNAL=$(grep "$INTERFACE" /proc/net/wireless | awk '{ print int(($3/70)*100) }')
+SIGNAL="$SIGNAL%"
+
+if [ -z "$SIGNAL" ]; then
+    SIGNAL="n/a"
+fi
+
+printf '{"text": "%s", "alt": "%s", "tooltip": "%s"}' "  $SIGNAL" "$SSID" "$IP"

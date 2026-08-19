@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# mpc add dir picker using fzf
+
+# drill through root
+
+current_path=$(mpc lsdirs | fzf --reverse) || exit 0
+mpc lsdirs "$current_path" | fzf --reverse -m | while IFS= read -r track; do
+	mpc add "$track"
+done

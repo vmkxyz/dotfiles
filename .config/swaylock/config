@@ -1,0 +1,42 @@
+# background image
+image=$HOME/.cache/active_wallpaper
+
+# indicator (the circle)
+#no-unlock-indicator
+indicator-radius=200
+indicator-thickness=10
+
+# sets
+ignore-empty-password
+
+# colors
+key-hl-color=11111b66
+separator-color=11111b00
+
+inside-color=11111b33
+inside-clear-color=11111b33
+inside-caps-lock-color=11111b33
+inside-ver-color=11111b33
+inside-wrong-color=11111b33
+
+ring-color=cdd6f4
+ring-clear-color=cdd6f4
+ring-caps-lock-color=cdd6f4
+ring-ver-color=cdd6f4
+ring-wrong-color=cdd6f4
+
+line-color=11111b00
+line-clear-color=11111b00
+line-caps-lock-color=11111b00
+line-ver-color=11111b00
+line-wrong-color=11111b00
+
+text-color=cdd6f4
+text-clear-color=cdd6f4
+text-ver-color=cdd6f4
+text-wrong-color=cdd6f4
+
+bs-hl-color=cdd6f4
+caps-lock-key-hl-color=11111b66
+caps-lock-bs-hl-color=11111b66
+text-caps-lock-color=cdd6f4

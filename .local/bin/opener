@@ -1,0 +1,61 @@
+#!/usr/bin/env sh
+# Script for opening a file, intended for use by a terminal file manager.
+
+case $(file --mime-type "$1" -b) in
+    image/*)
+        qimgv "$1"
+        ;;
+	video/*|\
+	audio/*)
+        foot mpv --force-window --msg-level=ao/sndio=no "$1" >/dev/null 2>&1 < /dev/null &
+        ;;
+    application/epub*|\
+    application/octet-stream|\
+    application/pdf|\
+    application/postscript|\
+    application/vnd.djvu|\
+    image/vnd.djvu)
+        zathura "$1"
+        ;;
+    application/msword|\
+    application/vnd.ms-powerpoint|\
+    application/vnd.oasis.opendocument.database|\
+    application/vnd.oasis.opendocument.formula|\
+    application/vnd.oasis.opendocument.graphics|\
+    application/vnd.oasis.opendocument.graphics-template|\
+    application/vnd.oasis.opendocument.presentation|\
+    application/vnd.oasis.opendocument.presentation-template|\
+    application/vnd.oasis.opendocument.spreadsheet|\
+    application/vnd.oasis.opendocument.spreadsheet-template|\
+    application/vnd.oasis.opendocument.text|\
+    application/vnd.openxmlformats-officedocument.presentationml.presentation|\
+    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|\
+    application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+        libreoffice "$1" || flatpak run org.libreoffice.LibreOffice "$1"
+        ;;
+	text/csv|\
+	text/tsv)
+		sc-im "$1"
+		;;
+    application/javascript|\
+    application/json|\
+	application/pgp-encrypted|\
+    application/x-subrip|\
+	application/mbox|\
+    inode/x-empty|\
+    text/*)
+        case "${1##*.}" in
+            org)
+                # Any "document" like file ought to be in emacs
+                emacsclient -c "$1"
+                exit
+                ;;
+        esac
+
+        v "$1"
+        ;;
+    *)
+        ;;
+esac
+
+exit 0

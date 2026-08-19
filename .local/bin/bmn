@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+file="$HOME/Documents/ww/bookmarks"
+selection=$(printf '%s\n' "$(cat "$file")" | awk -F'|' '{print $1}' | rofi -dmenu) || exit 0
+
+text=$(awk -F'|' -v s="$selection" '$1 == s {print $2}' "$file")
+
+printf '%s' "$text" | wl-copy
+wtype "$text"

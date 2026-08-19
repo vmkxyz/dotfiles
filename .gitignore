@@ -1,0 +1,17 @@
+# nvim
+.config/nvim/plugin
+# qtile
+.config/qtile/__pycache__
+# .local/bin/
+.local/bin/platform-tools
+.local/bin/spotdl
+.local/bin/dwarfs*
+.local/bin/samr
+.local/bin/misc/suspend
+# sc/
+sc/*/target
+sc/*/Cargo.lock
+# wallust colors
+.config/hypr/colors.conf
+.config/waybar/colors.css
+.config/waybar/old_design/colors.css

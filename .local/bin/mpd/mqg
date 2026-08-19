@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+# mpc add file picker using fzf (global)
+#
+# pretty much yoinked from codesoap (the mpq dev)
+
+alias mpcf='mpc -f "%file%\t[#[%album%#] - ][%artist% - ][%title%|%file%]"'
+
+all_tracks="$(mpcf listall)"
+selection="$(printf '%s\n' "$all_tracks" | awk -F'\t' '{print $2}' | fzf --reverse -m)" || exit 0
+
+printf '%s\n' "$selection" | while IFS= read -r sel; do
+	printf '%s\n' "$all_tracks" | awk -F'\t' -v s="$sel" '$2 == s {print $1}'
+done | mpc add
