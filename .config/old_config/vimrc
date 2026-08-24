@@ -2,12 +2,6 @@
 " https://github.com/LukeSmithxyz/voidrice/tree/master
 " note that some stuff may be useless on vim since there is some neovim-only stuff
 " THIS CONFIG IS NO LONGER MAINTANED, because I have fully moved to neovim and now use lua to configure it
-"                    __
-"      _  __ __ _   / /__
-"     | |/ //  ' \ /  '_/
-" by  |___//_/_/_//_/\_\
-" @vmkxyz on gitlab and github
-
 let mapleader = ","
 
 if ! filereadable(system('echo -n "$HOME/.vim/autoload/plug.vim"'))

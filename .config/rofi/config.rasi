@@ -1,15 +1,3 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- *
- * Rofi Theme File
- * Rofi Version: 1.7.3
- *
- * modified by vmk; @vmkxyz on github
- *
- **/
-
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run";
