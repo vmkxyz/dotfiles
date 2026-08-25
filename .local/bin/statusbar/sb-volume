@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# TODO: redduce all wpctl commands into one
+# TODO: reduce all wpctl commands into one
 
 sink="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
 src="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"

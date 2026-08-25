@@ -3,15 +3,7 @@
 # qtile
 .config/qtile/__pycache__
 # .local/bin/
-.local/bin/platform-tools
-.local/bin/spotdl
-.local/bin/dwarfs*
-.local/bin/samr
-.local/bin/misc/suspend
+.local/bin/ignore
 # sc/
 sc/*/target
 sc/*/Cargo.lock
-# wallust colors
-.config/hypr/colors.conf
-.config/waybar/colors.css
-.config/waybar/old_design/colors.css

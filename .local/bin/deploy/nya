@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+case $1 in
+    pre)
+        declare -a devices=(GP12 GP13 XHC0 GPP0 GPP8 PT24 PT29)
+
+        for device in "${devices[@]}"; do
+            if $(grep -qw ^${device}.*enabled /proc/acpi/wakeup); then
+                echo ${device} > /proc/acpi/wakeup
+            fi
+        done
+    ;;
+esac
+

@@ -1,1 +1,2 @@
+#!/usr/bin/env sh
 swayidle -w timeout 10 'wlopm --off \*' resume 'wlopm --on \*'
