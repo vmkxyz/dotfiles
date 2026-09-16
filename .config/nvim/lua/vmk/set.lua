@@ -1,27 +1,37 @@
---this probably shouldn't be here
-vim.g.mapleader = " "
---numbering
-vim.opt.nu = true
-vim.opt.relativenumber = true
---searching with /
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
---use system clipboard
-vim.opt.clipboard = "unnamedplus,unnamed"
---this
-vim.opt.completeopt = "menuone,noinsert,noselect"
---some basics
+-- basics
+vim.g.mapleader = ' '
+vim.opt.clipboard = 'unnamedplus,unnamed'			-- system clipboard
+--vim.opt.completeopt = 'menuone,noinsert,noselect'
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
+-- basics 2 (idk what to call these)
 vim.opt.title = true
-vim.opt.bg = "dark"
-vim.opt.laststatus = 1
-vim.opt.shortmess:append("I")
+vim.opt.bg = 'dark'
+vim.opt.laststatus = 1			-- dfault vim status line
+vim.opt.shortmess:append('I')
 vim.opt.termguicolors = true
 vim.opt.linebreak = true
---indentation & tabs
+vim.opt.cursorline = true
+vim.opt.ruler = true
+--vim.opt.colorcolumn = '80'
+--vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#11111b' })
+
+--numbering
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- searching
+vim.opt.incsearch = true		-- search chars as entered
+vim.opt.hlsearch = false		-- (don't) highlight matches
+vim.opt.ignorecase = true
+vim.opt.smartcase = true		-- case sensitive if an uppercase is enetered
+
+-- tabs
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4			-- tab width in spaces
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+
 --splits
 vim.opt.splitbelow = true
 vim.opt.splitright = true
