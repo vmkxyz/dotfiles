@@ -1,5 +1,5 @@
 # nvim
-.config/nvim/plugin
+.config/nvim/nvim-pack-lock.json
 # qtile
 .config/qtile/__pycache__
 # .local/bin/
