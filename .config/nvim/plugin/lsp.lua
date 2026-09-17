@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf })
 		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf })
-		vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { buffer = ev.buf })
+		vim.keymap.set('n', 'gre', require('telescope.builtin').lsp_references, { buffer = ev.buf })
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf })
 
 	end,

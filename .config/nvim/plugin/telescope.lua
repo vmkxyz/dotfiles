@@ -8,3 +8,4 @@ require('telescope').setup {
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>b', builtin.buffers, {})

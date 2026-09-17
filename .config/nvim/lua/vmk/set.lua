@@ -13,6 +13,7 @@ vim.opt.termguicolors = true
 vim.opt.linebreak = true
 vim.opt.cursorline = true
 vim.opt.ruler = true
+vim.opt.scrolloff = 8
 --vim.opt.colorcolumn = '80'
 --vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#11111b' })
 
@@ -28,7 +29,8 @@ vim.opt.smartcase = true		-- case sensitive if an uppercase is enetered
 
 -- tabs
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4			-- tab width in spaces
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 

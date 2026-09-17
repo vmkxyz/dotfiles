@@ -39,4 +39,6 @@ vim.pack.add({
 		version = vim.version.range('1.x'),
 	},
 	'https://github.com/mbbill/undotree',
+	'https://github.com/windwp/nvim-autopairs',
+	'https://github.com/abecodes/tabout.nvim',
 })
