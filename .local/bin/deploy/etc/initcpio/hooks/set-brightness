@@ -1,0 +1,3 @@
+run_hook() {
+    echo 65535 > /sys/class/backlight/amdgpu_bl1/brightness
+}

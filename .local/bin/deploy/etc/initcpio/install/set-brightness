@@ -1,0 +1,6 @@
+#!/bin/sh
+# chmod +x
+
+build() {
+    add_runscript
+}
