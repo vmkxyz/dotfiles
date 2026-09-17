@@ -3,7 +3,11 @@
 
 case $(file --mime-type "$1" -b) in
     image/*)
-        qimgv "$1"
+		if (qimgv -v); then
+			qimgv "$1"
+		else
+			imv "$1"
+		fi
         ;;
 	video/*|\
 	audio/*)
