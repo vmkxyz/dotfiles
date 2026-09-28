@@ -1,3 +1,4 @@
+-- remove trailing whitespace
 vim.cmd[[
 	augroup TrimWhitespace
 		autocmd!
@@ -10,10 +11,16 @@ vim.cmd[[
 	augroup END
 ]]
 
-vim.cmd('command! Q q')
-vim.cmd('command! W w')
-vim.cmd('command! WQ wq')
-vim.cmd('command! Wq wq')
+-- aliases
+vim.cmd([[
+	cabbrev Q q
+	cabbrev W w
+	cabbrev Q! q!
+	cabbrev W! W!
+	cabbrev WQ wq
+	cabbrev Wq wq
+	cabbrev wQ wq
+]])
 
 -- remove plugins from disk that are no longer in vim.pack.add() specs
 vim.api.nvim_create_user_command("PackClean", function()

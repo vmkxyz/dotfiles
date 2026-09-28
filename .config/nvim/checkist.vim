@@ -1,4 +1,3 @@
-Plug 'tpope/vim-surround'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-commentary'
 Plug 'sbdchd/neoformat'

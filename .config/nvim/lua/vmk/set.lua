@@ -1,6 +1,6 @@
 -- basics
 vim.g.mapleader = ' '
-vim.opt.clipboard = 'unnamedplus,unnamed'			-- system clipboard
+vim.opt.clipboard = {'unnamedplus', 'unnamed'}			-- system clipboard
 --vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
@@ -12,8 +12,8 @@ vim.opt.shortmess:append('I')
 vim.opt.termguicolors = true
 vim.opt.linebreak = true
 vim.opt.cursorline = true
-vim.opt.ruler = true
 vim.opt.scrolloff = 8
+--vim.opt.ruler = true
 --vim.opt.colorcolumn = '80'
 --vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#11111b' })
 
